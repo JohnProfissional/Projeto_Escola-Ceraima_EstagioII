@@ -1,0 +1,124 @@
+#header{
+	background: #E9967A;
+	color: #000000;
+	font-family: Avantgarde;
+	padding: 20px;
+	text-align: center;
+	width: auto;
+	height: auto;
+
+}
+
+#nav{
+	background: #FFC0CB;
+	height: 50px;
+	text-decoration: #ffffff;
+	font-family: Avantgarde;
+	width: auto;
+	text-decoration: none;
+	list-style: none;
+	height: auto;
+}
+
+#menu-h{
+	list-style: none;
+	padding: 0;
+	background: #ffffff;
+	width: auto;
+	text-align:center;
+	height: auto;
+
+}
+
+
+#menu-h li{
+	/*colocar em linha*/
+	display: inline-block;
+	height: auto;
+}
+
+#menu-h li a{
+	/*retira o sublinhado do menu*/
+	text-decoration: none;
+	color: black;
+	/*padding são os espaços*/
+	padding: 10px;
+	height: auto;
+}
+/*para quando passa o mouse mudar de cor*/
+#menu-h li a:hover{
+	background: blue;
+	height: auto;
+}
+
+#tabela{
+	margin:auto;
+}
+
+
+#footer{
+	background: #E9967A;
+	height:20px;
+	color: #000000;
+	margin-top: 0px;
+	padding: 0px;
+	font-family: Avantgarde;
+	width: 1400px;
+
+	/*para o rodapé no final da pagina */
+	position: fixed;
+    bottom:0;
+    left:0;
+    text-align: center;
+}
+
+#container{
+	width: auto;
+	height:auto;
+  left:50%;
+  top:70%;
+  margin-left:50px;
+  margin-right:50px;
+  margin-top:10px;
+  display: grid;
+  background: #f8f9fd;
+  padding: 40px;
+  padding-top:10px;
+  padding-right: 15px;
+  font-family: Avantgarde;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 370px;
+}
+
+
+
+.table-sm{
+	background: #ffffff;
+	border-top: 20px;
+	border-top-color:#fff ;
+
+}
+
+.table-sm th{
+	background: #3d89f8;
+	color: #ffffff;
+}
+
+
+.btn-primary{
+	background:#3d89f8;
+	color: #ffffff;
+}
+
+body{
+	background: #f8f9fd;
+	width:auto;
+	height: auto;
+	font-family: Avantgarde;
+
+}
+
+
+

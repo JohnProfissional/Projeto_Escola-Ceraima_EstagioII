@@ -1,0 +1,17 @@
+Sexta-feira, 04/11/2022!
+Reunião com a Diretora Iziane Lopes, na ESCOLA MUNICIPAL COLÔNIA AGRÍCOLA DE CERAÍMA:
+
+Qual o objetivo principal do sistema?
+Você pediu estes menus ou o antigo estagiário?
+Qual a função para cada MENU?
+	- Eventos
+	- Usuario
+	- Reserva
+	- Sala
+	- Patrimonio
+	- Testes
+	- Manutenção
+	- Previsão de entregar de equipamentos
+
+Adicionar mais funções no botão sair!
+ 
