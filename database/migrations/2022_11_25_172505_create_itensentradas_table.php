@@ -16,7 +16,7 @@ class CreateItensentradasTable extends Migration
         Schema::create('itensentradas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('cod.bem');
+            $table->integer('codbem');
             $table->string('descricaodobem',100);
             $table->string('tombo',80);
             $table->decimal('valordobem', 6,2);
