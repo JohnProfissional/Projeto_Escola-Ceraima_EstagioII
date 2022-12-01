@@ -35,3 +35,4 @@ class CreateSaidasTable extends Migration
         Schema::dropIfExists('saidas');
     }
 }
+

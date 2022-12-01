@@ -40,3 +40,4 @@ class CreateItensdevolucaosTable extends Migration
         Schema::dropIfExists('itensdevolucaos');
     }
 }
+

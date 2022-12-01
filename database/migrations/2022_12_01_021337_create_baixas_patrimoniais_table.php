@@ -36,3 +36,4 @@ class CreateBaixasPatrimoniaisTable extends Migration
         Schema::dropIfExists('baixas_patrimoniais');
     }
 }
+

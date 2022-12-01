@@ -39,3 +39,4 @@ class CreatePatrimoniosInserviveisTable extends Migration
         Schema::dropIfExists('patrimonios_inserviveis');
     }
 }
+
