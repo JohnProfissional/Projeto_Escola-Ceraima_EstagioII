@@ -9,5 +9,6 @@ class Usuario extends Model
 {
     use HasFactory;
     protected $table = "usuarios";
-    protected $guarded =[''];
+
+    protected $fillable = ['nomeusuario', 'cargo', 'email', 'senha'];
 }
