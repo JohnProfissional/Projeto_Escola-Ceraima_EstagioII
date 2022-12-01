@@ -16,10 +16,12 @@ class CreateBaixasPatrimoniaisTable extends Migration
         Schema::create('baixas_patrimoniais', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('responsavelentrega',60);
+            $table->string('responsavelentregar',60);
             $table->date('datadabaixa');
-            $table->string('encarregadosecretaria',60);
-            $table->integer('quantidadedebaixa');
+            $table->string('encarregadodaretirada',60);
+            $table->integer('quantidaderetirada');
+            $table->string('itemretirado', 60);
+            $table->string('numerodoitemretirado',60);
 
         });
     }

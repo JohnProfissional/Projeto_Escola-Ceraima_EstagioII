@@ -16,7 +16,7 @@ class CreateSetoresTable extends Migration
         Schema::create('setores', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('descricaodasala',60);
+            $table->string('descricaodosetor',60);
             $table->string('nomebem',60);
             $table->string('numerodebem',);
             $table->integer('quantidadedebem');
