@@ -12,6 +12,7 @@ class BemexcedenteController extends Controller
         //return view('bensexcedentes.index',compact('Bemexcedente'));
         return view('bensexcedentes.index', ['bensexcedentes'=>$bensexcedentes]);
     }
+    
     //
     public function show(){
         $bensexcedentes = Bemexcedente::all();
