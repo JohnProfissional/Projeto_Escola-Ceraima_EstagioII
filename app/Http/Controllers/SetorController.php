@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class SetorController extends Controller
 {
-    //
+    public function index(){
+        $setores = Setor::all();
+        //return view('setores.index',compact('Setor'));
+        return view('setores.index', ['setores'=>$setores]); //passa objeto
+    }    
+
+
     public function show(){
         $setores = Setor::all();
         echo $setores;

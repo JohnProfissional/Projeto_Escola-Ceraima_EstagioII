@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ItensdevolucaoController extends Controller
 {
+    public function index(){
+        $itensdevolucaos = Itensdevolucao::all();
+        //return view('itensdevolucaos.index',compact('Itensdevolucao'));
+        return view('itensdevolucaos.index', ['itensdevolucaos'=>$itensdevolucaos]); //passa objeto
+    }
     //
     public function show(){
         $itensdevolucaos = Itensdevolucao::all();

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PatrimonioController extends Controller
 {
+    public function index(){
+        $patrimonios = Patrimonio::all();
+        //return view('patrimonios.index',compact('Patrimonio'));
+        return view('patrimonios.index', ['patrimonios'=>$patrimonios]); //passa objeto
+    }    
     //
     public function show(){
         $patrimonios = Patrimonio::all();

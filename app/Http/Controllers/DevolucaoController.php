@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class DevolucaoController extends Controller
 {
+    public function index(){
+        $devolucaos = Devolucao::all();
+        //return view('devolucaos.index',compact('Devolucao'));
+        return view('devolucaos.index', ['devolucaos'=>$devolucaos]);
+    }
     //
     public function show(){
         $devolucaos = Devolucao::all();

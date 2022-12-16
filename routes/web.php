@@ -44,7 +44,7 @@ Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home
 
 
 
-
+Route::get('/usuarios', [UsuarioController::class, 'show']);
 
 Route::get('/index/usuarios',[UsuarioController::class,'index'])->middleware(['auth'])->name('usuario.index');
 

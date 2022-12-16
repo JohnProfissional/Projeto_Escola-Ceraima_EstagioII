@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ReservaController extends Controller
 {
+    public function index(){
+        $reservas = Reserva::all();
+        //return view('reservas.index',compact('Reserva'));
+        return view('reservas.index', ['reservas'=>$reservas]); //passa objeto
+    }    
     //
     public function show(){
         $reservas = Reserva::all();
