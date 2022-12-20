@@ -13,6 +13,9 @@ class SetorController extends Controller
         return view('setores.index', ['setores'=>$setores]); //passa objeto
     }    
 
+    public function create(){
+        return view('setores.create');
+    }
 
     public function show(){
         $setores = Setor::all();

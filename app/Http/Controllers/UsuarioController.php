@@ -13,6 +13,10 @@ class UsuarioController extends Controller
         //return view('usuarios.index',compact('Usuario'));
         return view('usuarios.index', ['usuarios'=>$usuarios]); //passa objeto
     }
+
+    public function create(){
+        return view('usuarios.create');
+    }
     
 
     public function show(){
