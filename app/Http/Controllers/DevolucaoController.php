@@ -12,6 +12,10 @@ class DevolucaoController extends Controller
         //return view('devolucaos.index',compact('Devolucao'));
         return view('devolucaos.index', ['devolucaos'=>$devolucaos]);
     }
+
+    public function create(){
+        return view('devolucaos.create');
+    }
     //
     public function show(){
         $devolucaos = Devolucao::all();

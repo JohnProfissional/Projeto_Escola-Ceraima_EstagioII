@@ -12,6 +12,10 @@ class ManutencaoController extends Controller
         //return view('manutencaos.index',compact('Manutencao'));
         return view('manutencaos.index', ['manutencaos'=>$manutencaos]); //passa objeto
     }
+
+    public function create(){
+        return view('manutencaos.create');
+    }
     //
     public function show(){
         $manutencaos = Manutencao::all();

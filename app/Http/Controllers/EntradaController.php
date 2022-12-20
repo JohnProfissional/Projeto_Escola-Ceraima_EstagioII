@@ -12,6 +12,10 @@ class EntradaController extends Controller
         //return view('entradas.index',compact('Entrada'));
         return view('entradas.index', ['entradas'=>$entradas]); //passa objeto
     }
+
+    public function create(){
+        return view('entradas.create');
+    }
     //
     public function show(){
         $entradas = Entrada::all();

@@ -13,6 +13,9 @@ class Baixa_PatrimonialController extends Controller
         return view('baixaspatrimoniais.index', ['baixaspatrimoniais'=>$baixaspatrimoniais]);
     }
     
+    public function create(){
+        return view('baixaspatrimoniais.create');
+    }
     //
     public function show(){
         $baixas_patrimoniais = Baixa_Patrimonial::all();

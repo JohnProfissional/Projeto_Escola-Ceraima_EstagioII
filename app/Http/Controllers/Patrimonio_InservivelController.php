@@ -12,6 +12,10 @@ class Patrimonio_InservivelController extends Controller
         //return view('patrimoniosinserviveis.index',compact('Patrimonio_Inservivel'));
         return view('patrimoniosinserviveis.index', ['patrimoniosinserviveis'=>$patrimoniosinserviveis]); //passa objeto
     } 
+
+    public function create(){
+        return view('patrimoniosinserviveis.create');
+    }
     //
     public function show(){
         $patrimonios_inserviveis = Patrimonio_Inservivel::all();

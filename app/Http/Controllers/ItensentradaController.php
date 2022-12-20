@@ -12,6 +12,10 @@ class ItensentradaController extends Controller
         //return view('itensentradas.index',compact('Itensentrada'));
         return view('itensentradas.index', ['itensentradas'=>$itensentradas]); //passa objeto
     }
+
+    public function create(){
+        return view('itensentradas.create');
+    }
     //
     public function show(){
         $itensentradas = Itensentrada::all();

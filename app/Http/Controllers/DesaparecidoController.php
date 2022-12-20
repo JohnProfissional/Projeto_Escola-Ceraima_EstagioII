@@ -12,6 +12,10 @@ class DesaparecidoController extends Controller
         //return view('desaparecidos.index',compact('Desaparecido'));
         return view('desaparecidos.index', ['desaparecidos'=>$desaparecidos]);
     }
+
+    public function create(){
+        return view('desaparecidos.create');
+    }
     //
     public function show(){
         $desaparecidos = Desaparecido::all();

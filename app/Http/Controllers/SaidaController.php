@@ -12,6 +12,10 @@ class SaidaController extends Controller
         //return view('saidas.index',compact('Saida'));
         return view('saidas.index', ['saidas'=>$saidas]); //passa objeto
     }    
+
+    public function create(){
+        return view('saidas.create');
+    }
     //
     public function show(){
         $saidas = Saida::all();

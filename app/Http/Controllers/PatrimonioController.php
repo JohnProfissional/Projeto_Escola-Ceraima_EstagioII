@@ -12,6 +12,10 @@ class PatrimonioController extends Controller
         //return view('patrimonios.index',compact('Patrimonio'));
         return view('patrimonios.index', ['patrimonios'=>$patrimonios]); //passa objeto
     }    
+
+    public function create(){
+        return view('patrimonios.create');
+    }
     //
     public function show(){
         $patrimonios = Patrimonio::all();

@@ -12,6 +12,10 @@ class ItenssaidaController extends Controller
         //return view('itenssaidas.index',compact('Itenssaida'));
         return view('itenssaidas.index', ['itenssaidas'=>$itenssaidas]); //passa objeto
     }
+
+    public function create(){
+        return view('itenssaidas.create');
+    }
     //
     public function show(){
         $itenssaidas = Itenssaida::all();

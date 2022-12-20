@@ -11,7 +11,11 @@ class ReservaController extends Controller
         $reservas = Reserva::all();
         //return view('reservas.index',compact('Reserva'));
         return view('reservas.index', ['reservas'=>$reservas]); //passa objeto
-    }    
+    }   
+    
+    public function create(){
+        return view('reservas.create');
+    }
     //
     public function show(){
         $reservas = Reserva::all();

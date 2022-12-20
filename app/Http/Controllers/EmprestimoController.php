@@ -12,6 +12,10 @@ class EmprestimoController extends Controller
         //return view('emprestimos.index',compact('Emprestimo'));
         return view('emprestimos.index', ['emprestimos'=>$emprestimos]); //passa objeto
     }
+
+    public function create(){
+        return view('emprestimos.create');
+    }
     //
     public function show(){
         $emprestimos = Emprestimo::all();

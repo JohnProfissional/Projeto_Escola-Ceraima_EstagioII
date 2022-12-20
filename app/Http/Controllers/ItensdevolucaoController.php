@@ -12,6 +12,9 @@ class ItensdevolucaoController extends Controller
         //return view('itensdevolucaos.index',compact('Itensdevolucao'));
         return view('itensdevolucaos.index', ['itensdevolucaos'=>$itensdevolucaos]); //passa objeto
     }
+    public function create(){
+        return view('itensdevolucaos.create');
+    }
     //
     public function show(){
         $itensdevolucaos = Itensdevolucao::all();
