@@ -16,6 +16,11 @@ class EntradaController extends Controller
     public function create(){
         return view('entradas.create');
     }
+
+    public function edit($id){
+        $Entrada = Entrada::findorFail($id);
+        return view('entrada.edit',['Entrada'=>$Entrada]);
+    }
     //
     public function show(){
         $entradas = Entrada::all();

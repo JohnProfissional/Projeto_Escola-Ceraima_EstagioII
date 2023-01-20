@@ -16,6 +16,11 @@ class Patrimonio_InservivelController extends Controller
     public function create(){
         return view('patrimoniosinserviveis.create');
     }
+
+    public function edit($id){
+        $Patrimonio_Inservivel = Patrimonio_Inservivel::findorFail($id);
+        return view('patrimonio_inservivel.edit',['Patrimonio_Inservivel'=>$Patrimonio_Inservivel]);
+    }
     //
     public function show(){
         $patrimonios_inserviveis = Patrimonio_Inservivel::all();

@@ -16,6 +16,11 @@ class ReservaController extends Controller
     public function create(){
         return view('reservas.create');
     }
+
+    public function edit($id){
+        $Reserva = Reserva::findorFail($id);
+        return view('reserva.edit',['Reserva'=>$Reserva]);
+    }
     //
     public function show(){
         $reservas = Reserva::all();

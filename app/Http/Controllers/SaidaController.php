@@ -16,6 +16,11 @@ class SaidaController extends Controller
     public function create(){
         return view('saidas.create');
     }
+
+    public function edit($id){
+        $Saida = Saida::findorFail($id);
+        return view('Saida.edit',['Saida'=>$Saida]);
+    }
     //
     public function show(){
         $saidas = Saida::all();

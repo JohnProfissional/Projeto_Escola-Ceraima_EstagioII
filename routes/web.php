@@ -3,15 +3,26 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController; 
 use App\Http\Controllers\EventoController;
-use App\Http\Controllers\UsuarioController;
-
-use App\Http\Controllers\ManutencaoController;
-use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PrevisaoEntregarController;
-use App\Http\Controllers\ReservaController;
-
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\TesteController;
+
+use App\Http\Controllers\Baixa_PatrimonialController;
+use App\Http\Controllers\BemexcedenteController;
+use App\Http\Controllers\DesaparecidoController;
+use App\Http\Controllers\DevolucaoController;
+use App\Http\Controllers\EmprestimoController;
+use App\Http\Controllers\EntradaController;
+use App\Http\Controllers\ItensdevolucaoController;
+use App\Http\Controllers\ItensentradaController;
+use App\Http\Controllers\ItenssaidaController;
+use App\Http\Controllers\ManutencaoController;
+use App\Http\Controllers\Patrimonio_InservivelController;
+use App\Http\Controllers\PatrimonioController;
+use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\SaidaController;
+use App\Http\Controllers\SetorController;
+use App\Http\Controllers\UsuarioController;
 
 
 /*
@@ -43,19 +54,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 
-
+Route::prefix('usuarios')->group(function () {
+Route::get('/index',[UsuarioController::class,'index'])->middleware(['auth'])->name('usuarios.index');
+Route::post('/create',[UsuarioController::class,'create'])->middleware(['auth'])->name('usuarios.create');
+Route::get('/create/usuarios',[UsuarioController::class,'create'])->middleware(['auth'])->name('usuarios.create');
+Route::post('/store',[UsuarioController::class,'store'])->middleware(['auth'])->name('usuarios.store');
 Route::get('/usuarios', [UsuarioController::class, 'show']);
-
-Route::get('/index/usuarios',[UsuarioController::class,'index'])->middleware(['auth'])->name('usuario.index');
-
-Route::post('/create/usuarios',[UsuarioController::class,'create'])->middleware(['auth'])->name('usuario.create');
-
-Route::get('/create/usuarios',[UsuarioController::class,'create'])->middleware(['auth'])->name('usuario.create');
-
-Route::post('/storeusuarios',[UsuarioController::class,'store'])->middleware(['auth'])->name('usuario.store');
-
-Route::post('/usuarios/edit/{id}',[UsuarioController::class,'edit'])->middleware(['auth'])->name('usuario.edit');
-Route::delete('/usuarios/{id}',[UsuarioController::class, 'destroy'])->middleware(['auth'])->name('usuario.delete');
+Route::post('/edit/{id}',[UsuarioController::class,'edit'])->middleware(['auth'])->name('usuarios.edit');
+Route::delete('/usuarios/{id}',[UsuarioController::class, 'destroy'])->middleware(['auth'])->name('usuarios.delete');
+});
 
 
 

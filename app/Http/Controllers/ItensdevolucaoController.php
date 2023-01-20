@@ -15,6 +15,11 @@ class ItensdevolucaoController extends Controller
     public function create(){
         return view('itensdevolucaos.create');
     }
+
+    public function edit($id){
+        $Itensdevolucao = Itensdevolucao::findorFail($id);
+        return view('itensdevolucao.edit',['Itensdevolucao'=>$Itensdevolucao]);
+    }
     //
     public function show(){
         $itensdevolucaos = Itensdevolucao::all();

@@ -16,6 +16,11 @@ class ItensentradaController extends Controller
     public function create(){
         return view('itensentradas.create');
     }
+
+    public function edit($id){
+        $Itensentrada = Itensentrada::findorFail($id);
+        return view('itensentrada.edit',['Itensentrada'=>$Itensentrada]);
+    }
     //
     public function show(){
         $itensentradas = Itensentrada::all();

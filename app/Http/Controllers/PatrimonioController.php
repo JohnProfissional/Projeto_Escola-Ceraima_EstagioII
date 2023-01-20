@@ -16,6 +16,12 @@ class PatrimonioController extends Controller
     public function create(){
         return view('patrimonios.create');
     }
+
+    public function edit($id){
+        $Patrimonio = Patrimonio::findorFail($id);
+        return view('patrimonio.edit',['Patrimonio'=>$Patrimonio]);
+    }
+    
     //
     public function show(){
         $patrimonios = Patrimonio::all();

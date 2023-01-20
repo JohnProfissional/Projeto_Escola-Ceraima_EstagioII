@@ -17,6 +17,11 @@ class SetorController extends Controller
         return view('setores.create');
     }
 
+    public function edit($id){
+        $Setor = Setor::findorFail($id);
+        return view('setor.edit',['Setor'=>$Setor]);
+    }
+
     public function show(){
         $setores = Setor::all();
         echo $setores;

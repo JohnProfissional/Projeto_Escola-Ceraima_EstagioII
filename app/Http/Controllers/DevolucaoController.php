@@ -16,6 +16,12 @@ class DevolucaoController extends Controller
     public function create(){
         return view('devolucaos.create');
     }
+
+    public function edit($id){
+        $Devolucao = Devolucao::findorFail($id);
+        return view('devolucao.edit',['Devolucao'=>$Devolucao]);
+    }
+
     //
     public function show(){
         $devolucaos = Devolucao::all();

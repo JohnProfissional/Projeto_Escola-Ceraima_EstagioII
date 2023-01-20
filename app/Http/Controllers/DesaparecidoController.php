@@ -16,6 +16,12 @@ class DesaparecidoController extends Controller
     public function create(){
         return view('desaparecidos.create');
     }
+
+    public function edit($id){
+        $Desaparecido = Desaparecido::findorFail($id);
+        return view('desaparecido.edit',['Desaparecido'=>$Desaparecido]);
+    }
+
     //
     public function show(){
         $desaparecidos = Desaparecido::all();

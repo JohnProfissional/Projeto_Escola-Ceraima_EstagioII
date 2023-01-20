@@ -15,7 +15,13 @@ class BemexcedenteController extends Controller
 
     public function create(){
         return view('bensexcedentes.create');
-    }    
+    }   
+    
+    public function edit($id){
+        $Bemexcedente = Bemexcedente::findorFail($id);
+        return view('bemexcedente.edit',['Bemexcedente'=>$Bemexcedente]);
+    }
+
     //
     public function show(){
         $bensexcedentes = Bemexcedente::all();
