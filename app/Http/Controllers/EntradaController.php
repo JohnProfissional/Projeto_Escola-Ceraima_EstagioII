@@ -19,7 +19,7 @@ class EntradaController extends Controller
 
     public function edit($id){
         $Entrada = Entrada::findorFail($id);
-        return view('entrada.edit',['Entrada'=>$Entrada]);
+        return view('entradas.edit',['Entrada'=>$Entrada]);
     }
     //
     public function show(){

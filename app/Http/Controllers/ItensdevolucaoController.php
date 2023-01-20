@@ -18,7 +18,7 @@ class ItensdevolucaoController extends Controller
 
     public function edit($id){
         $Itensdevolucao = Itensdevolucao::findorFail($id);
-        return view('itensdevolucao.edit',['Itensdevolucao'=>$Itensdevolucao]);
+        return view('itensdevolucaos.edit',['Itensdevolucao'=>$Itensdevolucao]);
     }
     //
     public function show(){

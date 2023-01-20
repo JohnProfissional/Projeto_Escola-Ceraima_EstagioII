@@ -20,7 +20,7 @@ class UsuarioController extends Controller
 
     public function edit($id){
         $Usuario = Usuario::findorFail($id);
-        return view('usuario.edit',['Usuario'=>$Usuario]);
+        return view('usuarios.edit',['Usuario'=>$Usuario]);
     }
     
 

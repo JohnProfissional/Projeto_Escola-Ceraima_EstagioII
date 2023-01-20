@@ -19,7 +19,7 @@ class ItenssaidaController extends Controller
 
     public function edit($id){
         $Itenssaida = Itenssaida::findorFail($id);
-        return view('itenssaida.edit',['Itenssaida'=>$Itenssaida]);
+        return view('itenssaidas.edit',['Itenssaida'=>$Itenssaida]);
     }
     //
     public function show(){

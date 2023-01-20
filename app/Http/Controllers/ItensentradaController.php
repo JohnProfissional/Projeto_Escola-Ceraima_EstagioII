@@ -19,7 +19,7 @@ class ItensentradaController extends Controller
 
     public function edit($id){
         $Itensentrada = Itensentrada::findorFail($id);
-        return view('itensentrada.edit',['Itensentrada'=>$Itensentrada]);
+        return view('itensentradas.edit',['Itensentrada'=>$Itensentrada]);
     }
     //
     public function show(){

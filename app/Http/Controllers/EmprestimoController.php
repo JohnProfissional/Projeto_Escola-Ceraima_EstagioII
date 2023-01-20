@@ -19,7 +19,7 @@ class EmprestimoController extends Controller
 
     public function edit($id){
         $Emprestimo = Emprestimo::findorFail($id);
-        return view('emprestimo.edit',['Emprestimo'=>$Emprestimo]);
+        return view('emprestimos.edit',['Emprestimo'=>$Emprestimo]);
     }
     //
     public function show(){

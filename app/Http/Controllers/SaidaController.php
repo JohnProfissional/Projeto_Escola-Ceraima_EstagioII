@@ -19,7 +19,7 @@ class SaidaController extends Controller
 
     public function edit($id){
         $Saida = Saida::findorFail($id);
-        return view('Saida.edit',['Saida'=>$Saida]);
+        return view('saidas.edit',['Saida'=>$Saida]);
     }
     //
     public function show(){

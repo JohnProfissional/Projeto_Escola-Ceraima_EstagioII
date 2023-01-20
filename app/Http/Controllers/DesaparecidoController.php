@@ -19,7 +19,7 @@ class DesaparecidoController extends Controller
 
     public function edit($id){
         $Desaparecido = Desaparecido::findorFail($id);
-        return view('desaparecido.edit',['Desaparecido'=>$Desaparecido]);
+        return view('desaparecidos.edit',['Desaparecido'=>$Desaparecido]);
     }
 
     //

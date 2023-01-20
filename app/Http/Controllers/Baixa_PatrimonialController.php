@@ -19,7 +19,7 @@ class Baixa_PatrimonialController extends Controller
 
     public function edit($id){
         $Baixa_Patrimonial = Baixa_Patrimonial::findorFail($id);
-        return view('Baixa_Patrimonial.edit',['Baixa_Patrimonial'=>$Baixa_Patrimonial]);
+        return view('baixaspatrimoniais.edit',['Baixa_Patrimonial'=>$Baixa_Patrimonial]);
     }
     
     public function show(){

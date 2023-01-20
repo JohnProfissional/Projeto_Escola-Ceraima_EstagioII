@@ -19,7 +19,7 @@ class DevolucaoController extends Controller
 
     public function edit($id){
         $Devolucao = Devolucao::findorFail($id);
-        return view('devolucao.edit',['Devolucao'=>$Devolucao]);
+        return view('devolucaos.edit',['Devolucao'=>$Devolucao]);
     }
 
     //

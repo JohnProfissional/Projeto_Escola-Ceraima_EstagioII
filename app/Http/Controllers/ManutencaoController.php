@@ -19,7 +19,7 @@ class ManutencaoController extends Controller
 
     public function edit($id){
         $Manutencao = Manutencao::findorFail($id);
-        return view('manutencao.edit',['Manutencao'=>$Manutencao]);
+        return view('manutencaos.edit',['Manutencao'=>$Manutencao]);
     }
     //
     public function show(){

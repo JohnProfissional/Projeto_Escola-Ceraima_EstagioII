@@ -19,7 +19,7 @@ class BemexcedenteController extends Controller
     
     public function edit($id){
         $Bemexcedente = Bemexcedente::findorFail($id);
-        return view('bemexcedente.edit',['Bemexcedente'=>$Bemexcedente]);
+        return view('bensexcedentes.edit',['Bemexcedente'=>$Bemexcedente]);
     }
 
     //

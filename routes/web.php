@@ -64,6 +64,96 @@ Route::post('/edit/{id}',[UsuarioController::class,'edit'])->middleware(['auth']
 Route::delete('/usuarios/{id}',[UsuarioController::class, 'destroy'])->middleware(['auth'])->name('usuarios.delete');
 });
 
+Route::prefix('entradas')->group(function () {
+Route::get('/index',[EntradaController::class,'index'])->middleware(['auth'])->name('entradas.index');
+Route::post('/create',[EntradaController::class,'create'])->middleware(['auth'])->name('entradas.create');
+Route::get('/create/entradas',[EntradaController::class,'create'])->middleware(['auth'])->name('entradas.create');
+Route::post('/store',[EntradaController::class,'store'])->middleware(['auth'])->name('entradas.store');
+Route::get('/entradas', [EntradaController::class, 'show']);
+Route::post('/edit/{id}',[EntradaController::class,'edit'])->middleware(['auth'])->name('entradas.edit');
+Route::delete('/entradas/{id}',[EntradaController::class, 'destroy'])->middleware(['auth'])->name('entradas.delete');
+});
+
+Route::prefix('itensentradas')->group(function () {
+Route::get('/index',[ItensentradaController::class,'index'])->middleware(['auth'])->name('itensentradas.index');
+Route::post('/create',[ItensentradaController::class,'create'])->middleware(['auth'])->name('itensentradas.create');
+Route::get('/create/itensentradas',[ItensentradaController::class,'create'])->middleware(['auth'])->name('itensentradas.create');
+Route::post('/store',[ItensentradaController::class,'store'])->middleware(['auth'])->name('itensentradas.store');
+Route::get('/itensentradas', [ItensentradaController::class, 'show']);
+Route::post('/edit/{id}',[ItensentradaController::class,'edit'])->middleware(['auth'])->name('itensentradas.edit');
+Route::delete('/itensentradas/{id}',[ItensentradaController::class, 'destroy'])->middleware(['auth'])->name('itensentradas.delete');
+});
+
+Route::prefix('setores')->group(function () {
+Route::get('/index',[SetorController::class,'index'])->middleware(['auth'])->name('setores.index');
+Route::post('/create',[SetorController::class,'create'])->middleware(['auth'])->name('setores.create');
+Route::get('/create/setores',[SetorController::class,'create'])->middleware(['auth'])->name('setores.create');
+Route::post('/store',[SetorController::class,'store'])->middleware(['auth'])->name('setores.store');
+Route::get('/setores', [SetorController::class, 'show']);
+Route::post('/edit/{id}',[SetorController::class,'edit'])->middleware(['auth'])->name('setores.edit');
+Route::delete('/setores/{id}',[SetorController::class, 'destroy'])->middleware(['auth'])->name('setores.delete');
+});
+
+Route::prefix('saidas')->group(function () {
+Route::get('/index',[SaidaController::class,'index'])->middleware(['auth'])->name('saidas.index');
+Route::post('/create',[SaidaController::class,'create'])->middleware(['auth'])->name('saidas.create');
+Route::get('/create/saidas',[SaidaController::class,'create'])->middleware(['auth'])->name('saidas.create');
+Route::post('/store',[SaidaController::class,'store'])->middleware(['auth'])->name('saidas.store');
+Route::get('/saidas', [SaidaController::class, 'show']);
+Route::post('/edit/{id}',[SaidaController::class,'edit'])->middleware(['auth'])->name('saidas.edit');
+Route::delete('/saidas/{id}',[SaidaController::class, 'destroy'])->middleware(['auth'])->name('saidas.delete');
+});
+
+Route::prefix('itenssaidas')->group(function () {
+Route::get('/index',[ItenssaidaController::class,'index'])->middleware(['auth'])->name('itenssaidas.index');
+Route::post('/create',[ItenssaidaController::class,'create'])->middleware(['auth'])->name('itenssaidas.create');
+Route::get('/create/itenssaidas',[ItenssaidaController::class,'create'])->middleware(['auth'])->name('itenssaidas.create');
+Route::post('/store',[ItenssaidaController::class,'store'])->middleware(['auth'])->name('itenssaidas.store');
+Route::get('/itenssaidas', [ItenssaidaController::class, 'show']);
+Route::post('/edit/{id}',[ItenssaidaController::class,'edit'])->middleware(['auth'])->name('itenssaidas.edit');
+Route::delete('/itenssaidas/{id}',[ItenssaidaController::class, 'destroy'])->middleware(['auth'])->name('itenssaidas.delete');
+});
+  
+Route::prefix('reservas')->group(function () {
+Route::get('/index',[ReservaController::class,'index'])->middleware(['auth'])->name('reservas.index');
+Route::post('/create',[ReservaController::class,'create'])->middleware(['auth'])->name('reservas.create');
+Route::get('/create/reservas',[ReservaController::class,'create'])->middleware(['auth'])->name('reservas.create');
+Route::post('/store',[ReservaController::class,'store'])->middleware(['auth'])->name('reservas.store');
+Route::get('/reservas', [ReservaController::class, 'show']);
+Route::post('/edit/{id}',[ReservaController::class,'edit'])->middleware(['auth'])->name('reservas.edit');
+Route::delete('/reservas/{id}',[ReservaController::class, 'destroy'])->middleware(['auth'])->name('reservas.delete');
+});
+
+Route::prefix('patrimonios')->group(function () {
+Route::get('/index',[PatrimonioController::class,'index'])->middleware(['auth'])->name('patrimonios.index');
+Route::post('/create',[PatrimonioController::class,'create'])->middleware(['auth'])->name('patrimonios.create');
+Route::get('/create/patrimonios',[PatrimonioController::class,'create'])->middleware(['auth'])->name('patrimonios.create');
+Route::post('/store',[PatrimonioController::class,'store'])->middleware(['auth'])->name('patrimonios.store');
+Route::get('/patrimonios', [PatrimonioController::class, 'show']);
+Route::post('/edit/{id}',[PatrimonioController::class,'edit'])->middleware(['auth'])->name('patrimonios.edit');
+Route::delete('/patrimonios/{id}',[PatrimonioController::class, 'destroy'])->middleware(['auth'])->name('patrimonios.delete');
+});
+
+Route::prefix('patrimoniosinserviveis')->group(function () {
+Route::get('/index',[Patrimonio_InservivelController::class,'index'])->middleware(['auth'])->name('patrimoniosinserviveis.index');
+Route::post('/create',[Patrimonio_InservivelController::class,'create'])->middleware(['auth'])->name('patrimoniosinserviveis.create');
+Route::get('/create/patrimoniosinserviveis',[Patrimonio_InservivelController::class,'create'])->middleware(['auth'])->name('patrimoniosinserviveis.create');
+Route::post('/store',[Patrimonio_InservivelController::class,'store'])->middleware(['auth'])->name('patrimoniosinserviveis.store');
+Route::get('/patrimoniosinserviveis', [Patrimonio_InservivelController::class, 'show']);
+Route::post('/edit/{id}',[Patrimonio_InservivelController::class,'edit'])->middleware(['auth'])->name('patrimoniosinserviveis.edit');
+Route::delete('/patrimoniosinserviveis/{id}',[Patrimonio_InservivelController::class, 'destroy'])->middleware(['auth'])->name('patrimoniosinserviveis.delete');
+});
+
+Route::prefix('manutencaos')->group(function () {
+Route::get('/index',[ManutencaoController::class,'index'])->middleware(['auth'])->name('manutencaos.index');
+Route::post('/create',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencaos.create');
+Route::get('/create/manutencaos',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencaos.create');
+Route::post('/store',[ManutencaoController::class,'store'])->middleware(['auth'])->name('manutencaos.store');
+Route::get('/manutencaos', [ManutencaoController::class, 'show']);
+Route::post('/edit/{id}',[ManutencaoController::class,'edit'])->middleware(['auth'])->name('manutencaos.edit');
+Route::delete('/manutencaos/{id}',[ManutencaoController::class, 'destroy'])->middleware(['auth'])->name('manutencaos.delete');
+});
+
 
 
 Route::get('/index/sala',[SalaController::class,'index'])->middleware(['auth'])->name('sala.index');
