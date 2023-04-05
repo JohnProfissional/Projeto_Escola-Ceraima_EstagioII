@@ -10,5 +10,8 @@ class Patrimonio extends Model
     use HasFactory;
     protected $table = "patrimonios ";
 
-    protected $fillable = ['orgao', 'unidorcamentaria', 'centrodecusto', 'nomedopatrimonio', 'codigo', 'descricao', 'numeropatrimonio', 'valor', 'historico', 'numeronotafiscal', 'datanotafiscal', 'valortotaldosbens', 'totaldebens', 'dataaquisicao', 'setor_id'];
+    protected $fillable = ['orgao', 'unidorcamentaria', 'centrodecusto', 'nomedopatrimonio', 'codigo', 'descricao', 
+    'numeropatrimonio', 'valor', 'historico', 'numeronotafiscal', 'datanotafiscal', 'valortotaldosbens', 'totaldebens',
+     'dataaquisicao', 'setor_id'];
 }
+
