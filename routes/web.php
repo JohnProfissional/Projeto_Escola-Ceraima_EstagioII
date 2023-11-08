@@ -144,14 +144,14 @@ Route::post('/edit/{id}',[Patrimonio_InservivelController::class,'edit'])->middl
 Route::delete('/patrimoniosinserviveis/{id}',[Patrimonio_InservivelController::class, 'destroy'])->middleware(['auth'])->name('patrimoniosinserviveis.delete');
 });
 
-Route::prefix('manutencaos')->group(function () {
-Route::get('/index',[ManutencaoController::class,'index'])->middleware(['auth'])->name('manutencaos.index');
-Route::post('/create',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencaos.create');
-Route::get('/create/manutencaos',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencaos.create');
-Route::post('/store',[ManutencaoController::class,'store'])->middleware(['auth'])->name('manutencaos.store');
-Route::get('/manutencaos', [ManutencaoController::class, 'show']);
-Route::post('/edit/{id}',[ManutencaoController::class,'edit'])->middleware(['auth'])->name('manutencaos.edit');
-Route::delete('/manutencaos/{id}',[ManutencaoController::class, 'destroy'])->middleware(['auth'])->name('manutencaos.delete');
+Route::prefix('manutencoes')->group(function () {
+Route::get('/index',[ManutencaoController::class,'index'])->middleware(['auth'])->name('manutencoes.index');
+Route::post('/create',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencoes.create');
+Route::get('/create/manutencoes',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencoes.create');
+Route::post('/store',[ManutencaoController::class,'store'])->middleware(['auth'])->name('manutencoes.store');
+Route::get('/manutencoes', [ManutencaoController::class, 'show']);
+Route::post('/edit/{id}',[ManutencaoController::class,'edit'])->middleware(['auth'])->name('manutencoes.edit');
+Route::delete('/manutencoes/{id}',[ManutencaoController::class, 'destroy'])->middleware(['auth'])->name('manutencoes.delete');
 });
 
 
