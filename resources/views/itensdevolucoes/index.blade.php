@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/styles.css'); }}">
+	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/styles.css') }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=2.0">
 	<title>Document</title>
@@ -44,28 +44,32 @@
                         </ul>   
                     </div>        
                 @endif
-@section('titulo','Lista de devoluções')
+@section('titulo','Lista de Itens devoluções')
 
   <table class="table table-sm">
  
    
-      @foreach ($Devolucao as $devolucaos)
+      @foreach ($Itensdevolucao as $itensdevolucaos)
       <thead>
         <tr>
           <th scope="col">id</th>
-          <th>datadadevolucao</th><br>
-          <th>descricaodadevolucao</th>
-          <th>saida_id</th>
+          <th>nomedobem</th><br>
+          <th>codigoidentificacaodobem</th>
+          <th>quantidadedevolvida</th>
+          <th>devolvedor</th>
+          <th>recebedor</th>
+          <th>devolucao_id</th>
+          <th>patrimonio_id</th>
                     
         </tr>
       </thead>
        
-            <td scope="row">{{$devolucaos->id}}</td>
+            <td scope="row">{{$itensdevolucaos->id}}</td>
 
-          <td>{{$devolucaos->nome}}</td>
+          <td>{{$itensdevolucaos->nome}}</td>
           
              <td>
-                   <form action="{{route('devolucaos.delete', ['id' => $devolucaos->id])}}" method="post">
+                   <form action="{{route('itensdevolucaos.delete', ['id' => $itensdevolucaos->id])}}" method="post">
                     @csrf
                     @method('DELETE')   
                     <input type="submit" class="btn btn-primary" value="deletar">
@@ -75,7 +79,7 @@
                    
                 </td>
                 <td>
-                    <form action="{{route('devolucaos.edit', ['id' => $devolucaos->id])}}" method="post">
+                    <form action="{{route('itensdevolucaos.edit', ['id' => $itensdevolucaos->id])}}" method="post">
                         @csrf
                         <input type="submit" class="btn btn-primary" name="formulario" value="alterar">
                     </form>
@@ -87,9 +91,9 @@
     </table><br>
 
 
-     <form action="{{route('devolucaos.create')}}" method="post">
+     <form action="{{route('itensdevolucaos.create')}}" method="post">
                         @csrf
-                        <input type="submit" class="btn btn-primary" name="formulario" value="cadastrar nova devolucao">
+                        <input type="submit" class="btn btn-primary" name="formulario" value="cadastrar novo item devolvido">
                     </form>
 
 
