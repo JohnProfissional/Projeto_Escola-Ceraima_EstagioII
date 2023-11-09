@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController; 
-use App\Http\Controllers\EventoController;
-use App\Http\Controllers\PrevisaoEntregarController;
-use App\Http\Controllers\SalaController;
-use App\Http\Controllers\TesteController;
 
 use App\Http\Controllers\Baixa_PatrimonialController;
 use App\Http\Controllers\BemexcedenteController;
