@@ -1,4 +1,4 @@
-#header{
+#header {
 	background: #E9967A;
 	color: #000000;
 	font-family: Avantgarde;
@@ -6,10 +6,9 @@
 	text-align: center;
 	width: auto;
 	height: auto;
-
 }
 
-#nav{
+#nav {
 	background: #FFC0CB;
 	height: 50px;
 	text-decoration: #ffffff;
@@ -20,24 +19,22 @@
 	height: auto;
 }
 
-#menu-h{
+#menu-h {
 	list-style: none;
 	padding: 0;
 	background: #ffffff;
 	width: auto;
-	text-align:center;
+	text-align: center;
 	height: auto;
-
 }
 
-
-#menu-h li{
+#menu-h li {
 	/*colocar em linha*/
 	display: inline-block;
 	height: auto;
 }
 
-#menu-h li a{
+#menu-h li a {
 	/*retira o sublinhado do menu*/
 	text-decoration: none;
 	color: black;
@@ -45,20 +42,20 @@
 	padding: 10px;
 	height: auto;
 }
+
 /*para quando passa o mouse mudar de cor*/
-#menu-h li a:hover{
+#menu-h li a:hover {
 	background: blue;
 	height: auto;
 }
 
-#tabela{
-	margin:auto;
+#tabela {
+	margin: auto;
 }
 
-
-#footer{
+#footer {
 	background: #E9967A;
-	height:20px;
+	height: 20px;
 	color: #000000;
 	margin-top: 0px;
 	padding: 0px;
@@ -67,58 +64,52 @@
 
 	/*para o rodapé no final da pagina */
 	position: fixed;
-    bottom:0;
-    left:0;
-    text-align: center;
+	bottom: 0;
+	left: 0;
+	text-align: center;
 }
 
-#container{
+#container {
 	width: auto;
-	height:auto;
-  left:50%;
-  top:70%;
-  margin-left:50px;
-  margin-right:50px;
-  margin-top:10px;
-  display: grid;
-  background: #f8f9fd;
-  padding: 40px;
-  padding-top:10px;
-  padding-right: 15px;
-  font-family: Avantgarde;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   height: 370px;
+	height: auto;
+	left: 50%;
+	top: 70%;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-top: 10px;
+	display: grid;
+	background: #f8f9fd;
+	padding: 40px;
+	padding-top: 10px;
+	padding-right: 15px;
+	font-family: Avantgarde;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 370px;
 }
 
-
-
-.table-sm{
+.table-sm {
 	background: #ffffff;
 	border-top: 20px;
-	border-top-color:#fff ;
+	border-top-color: #fff;
 
 }
 
-.table-sm th{
+.table-sm th {
 	background: #3d89f8;
 	color: #ffffff;
 }
 
 
-.btn-primary{
-	background:#3d89f8;
+.btn-primary {
+	background: #3d89f8;
 	color: #ffffff;
 }
 
-body{
+body {
 	background: #f8f9fd;
-	width:auto;
+	width: auto;
 	height: auto;
 	font-family: Avantgarde;
-
 }
-
-
-

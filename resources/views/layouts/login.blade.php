@@ -19,10 +19,6 @@
 				<div id="nav">
 				<ul id="menu-h">
 
-
-
-				
-
 	 	<h4>@yield('subtitulo')</h4>
   		<table class="col" id="row">
 

@@ -36,6 +36,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Teste autenticação
+
+Route::get('/teste', [App\Http\Controllers\UsuarioController::class, 'teste']);
+Route::get('/teste/admin', [App\Http\Controllers\UsuarioController::class, 'testeAdmin'])->middleware('can:access');
+
 
 Route::get('dashboard', [CustomAuthController::class, 'dashboard']); 
 Route::get('login', [CustomAuthController::class, 'index'])->name('login');
@@ -157,7 +162,6 @@ Route::post('/sala/edit/{id}',[SalaController::class,'edit'])->middleware(['auth
 Route::put('/sala/edit/{id}',[SalaController::class,'edit'])->middleware(['auth'])->name('sala.edit');
 Route::delete('/sala/{id}',[SalaController::class, 'destroy'])->middleware(['auth'])->name('sala.delete');
 
-
 Route::get('/index/testes',[TesteController::class,'index'])->middleware(['auth'])->name('testes.index');
 Route::post('/create/testes',[TesteController::class,'create'])->middleware(['auth'])->name('testes.create');
 Route::get('/create/testes',[TesteController::class,'create'])->middleware(['auth'])->name('testes.create');
@@ -165,14 +169,12 @@ Route::post('/storetestes',[TesteController::class,'store'])->middleware(['auth'
 Route::post('/testes/edit/{id}',[TesteController::class,'edit'])->middleware(['auth'])->name('testes.edit');
 Route::delete('/testes/{id}',[TesteController::class, 'destroy'])->middleware(['auth'])->name('teste.delete');
 
-
 Route::get('/index/reservas',[ReservaController::class,'index'])->middleware(['auth'])->name('reservas.index');
 Route::post('/create/reservas',[ReservaController::class,'create'])->middleware(['auth'])->name('testes.reservas');
 Route::get('/create/reservas',[ReservaController::class,'create'])->middleware(['auth'])->name('reservas.create');
 Route::post('/storereservas',[ReservaController::class,'store'])->middleware(['auth'])->name('reservas.store');
 Route::post('/reservas/edit/{id}',[ReservaController::class,'edit'])->middleware(['auth'])->name('reservas.edit');
 Route::delete('/reservas/{id}',[ReservaController::class, 'destroy'])->middleware(['auth'])->name('reserva.delete');
-
 
 Route::get('/index/previsaoentregar',[PrevisaoEntregarController::class,'index'])->middleware(['auth'])->name('previsaoentregar.index');
 Route::post('/create/previsaoentregar',[PrevisaoEntregarController::class,'create'])->middleware(['auth'])->name('previsaoentregar.reservas');
@@ -192,14 +194,12 @@ Route::put('/patrimonio/edit/{id}',[PatrimonioController::class,'edit'])->middle
 Route::put('/patrimonio/update/{id}',[PatrimonioController::class, 'update'])->name('patrimonio.update');
 Route::delete('/patrimonio/{id}',[PatrimonioController::class, 'destroy'])->middleware(['auth'])->name('patrimonio.delete');
 
-
 Route::get('/index/manutencao',[ManutencaoController::class,'index'])->middleware(['auth'])->name('manutencao.index');
 Route::post('/create/manutencao',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencao.reservas');
 Route::get('/create/manutencao',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencao.create');
 Route::post('/storemanutencao',[ManutencaoController::class,'store'])->middleware(['auth'])->name('manutencao.store');
 Route::post('/manutencao/edit/{id}',[ManutencaoController::class,'edit'])->middleware(['auth'])->name('manutencao.edit');
 Route::delete('/manutencao/{id}',[ManutencaoController::class, 'destroy'])->middleware(['auth'])->name('manutencao.delete');
-
 
 Route::get('/index/evento',[EventoController::class,'index'])->middleware(['auth'])->name('evento.index');
 Route::post('/create/evento',[EventoController::class,'create'])->middleware(['auth'])->name('evento.create');
@@ -209,3 +209,10 @@ Route::get('/storeevento',[EventoController::class,'store'])->middleware(['auth'
 Route::post('/evento/edit/{id}',[EventoController::class,'edit'])->middleware(['auth'])->name('evento.edit');
 Route::put('/evento/edit/{id}',[EventoController::class,'edit'])->middleware(['auth'])->name('evento.edit');
 Route::delete('/evento/{id}',[EventoController::class, 'destroy'])->middleware(['auth'])->name('evento.delete');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';

@@ -30,8 +30,6 @@
         </div>
     </div>
 
-
-
     <div id="container">
 
         <div class="container">
@@ -101,18 +99,14 @@
                                 </ul>
                             </div>
 
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
         <h4>@yield('subtitulo')</h4>
         <table class="col" id="row">
-
-
 
             <div class="row g-3">
                 <div class=col>
@@ -120,7 +114,6 @@
                 </div>
 
             </div>
-
 
         </table>
         <footer>
@@ -132,14 +125,8 @@
         </footer>
     </div>
 
-
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-
-
 
 </body>
 
