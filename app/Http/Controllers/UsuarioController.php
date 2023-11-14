@@ -51,4 +51,13 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index')->with('msg','Usuário apagado');
     }
 
+    //Teste
+    public function testeAdmin(){
+        return view('teste.teste');
+    }
+
+    public function teste(){
+        return view('teste.teste2');
+    }
+
 }
