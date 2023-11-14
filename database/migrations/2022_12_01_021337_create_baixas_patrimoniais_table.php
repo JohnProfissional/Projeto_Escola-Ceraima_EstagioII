@@ -23,7 +23,7 @@ class CreateBaixasPatrimoniaisTable extends Migration
             $table->string('itemretirado', 60);
             $table->string('numerodoitemretirado',60);
 
-        });
+        }); 
     }
 
     /**
