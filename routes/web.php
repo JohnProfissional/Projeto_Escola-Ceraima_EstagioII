@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomAuthController;
 
 use App\Http\Controllers\Baixa_PatrimonialController;
 use App\Http\Controllers\BemexcedenteController;
+use App\Http\Controllers\CedidoController;
 use App\Http\Controllers\ComodoController;
 use App\Http\Controllers\DesaparecidoController;
 use App\Http\Controllers\DevolucaoController;
