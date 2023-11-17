@@ -22,7 +22,6 @@ class CreateBaixasPatrimoniaisTable extends Migration
             $table->integer('quantidaderetirada');
             $table->string('itemretirado', 60);
             $table->string('numerodoitemretirado',60);
-
         }); 
     }
 

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/styles.css') }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=2.0">
-	<title>Lista de Setores</title>
+	<title>Lista de Cedidos</title>
 </head>
 <body>
 	<div id="header">
@@ -41,29 +41,33 @@
                         </ul>   
                     </div>        
                 @endif
-    @section('titulo','Lista de Setores')
+    @section('titulo','Lista de Cedidos')
 
-    <h1>Setores</h1>
+    <h1>Patrimônios Doados</h1>
 
     <table class="table table-sm">   
 
-        @foreach ($setores as $setor)
+        @foreach ($cedidos as $cedido)
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th>Descrição do Espaço</th>
-                    <th>Quantidade de Cômodos</th>                                        
+                    <th>Descrição</th>
+                    <th>Número de Identificação</th>                                        
+                    <th>Instituição Receptora</th>
+                    <th>Quantidade Patrimônio</th>
                 </tr>
             </thead>       
-                    <td scope="row">{{$setor->id}}</td>
-                    <td>{{$setor->descricaodosetor}}</td>                                             
-                    <td>{{$setor->quantidadedecomodos}}</td> 
-                    <td><form action="{{route('setores.edit', ['id' => $setor->id])}}" method="get">
+                    <td scope="row">{{$cedido->id}}</td>
+                    <td>{{$cedido->descrpatrimonio}}</td>                                             
+                    <td>{{$cedido->tombopatri}}</td> 
+                    <td>{{$cedido->instituicaoreceptora}}</td>  
+                    <td>{{$cedido->qtd}}</td>  
+                    <td><form action="{{route('cedidos.edit', ['id' => $cedido->id])}}" method="get">
                         @csrf
                         <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
                         </form></td>
 
-                    <td><form action="{{route ('setores.delete', ['id' => $setor->id])}}" method="POST">
+                    <td><form action="{{route ('cedidos.delete', ['id' => $cedido->id])}}" method="POST">
                         @csrf
                         @method('DELETE')   
                         <input type="submit" value="Deletar"><br><br>
@@ -71,7 +75,7 @@
         @endforeach 
     </table><br>
 
-    <form action="{{route('setores.create')}}" method="get">
+    <form action="{{route('cedidos.create')}}" method="get">
         @csrf        
         <input type="submit" class="btn btn-primary" value="Novo+">
     </form>

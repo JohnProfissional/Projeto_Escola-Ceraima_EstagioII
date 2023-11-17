@@ -6,36 +6,33 @@
 	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/styles.css') }}">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=2.0">
-	<title>Document</title>
+	<title>Lista de Baixas Patrimoniais</title>
 </head>
 <body>
-@include('layouts.app')
-
 	<div id="header">
-			<h1>@yield('titulo')</h1>
+		<h1>@yield('titulo')</h1>
 			<div id="nav">
-				<ul id="menu-h">
-                    <li><a href="{{route('home')}}">Home</a> </li>
-                    <li><a href="{{route('usuarios.index')}}">Usuarios</a> </li>
-                    <li><a href="{{route('setores.index')}}">Setores</a> </li>					
-					<li><a href="{{route('reservas.index')}}">Reservas</a> </li>					
-					<li><a href="{{route('patrimonios.index')}}">Patrimonios</a> </li>
-					<li><a href="{{route('patrimoniosinserviveis.index')}}">Patrimonios Inserviveis</a> </li>
-					<li><a href="{{route('manutencaos.index')}}">Manutenção</a> </li>
-                    <li><a href="{{route('desaparecidos.index')}}">Desaparecidos</a> </li>
-                    <li><a href="{{route('bensexcedentes.index')}}">Bens Excedentes</a> </li>
-					<li><a href="{{route('emprestimos.index')}}">Emprestimos </a> </li>
-				</ul>
-                
-               
-                
-                
-                
-                
-			</div>
+				<ul id="menu-h" align="center">
+                    <br>
+                    <td><a href="{{route('home')}}">Home</a> </td>
+                    <td><a href="{{route('usuarios.index')}}">Usuarios</a> </td>
+                    <td><a href="{{route('patrimonios.index')}}">Patrimonios</a> </td>
+                    <td><a href="{{route('setores.index')}}">Setores</a> </td>					
+                    <td><a href="{{route('comodos.index')}}">Cômodos</a> </td>
+                    <td><a href="{{route('bensexcedentes.index')}}">Bens Excedentes</a> </td>
+                    <td><a href="{{route('desaparecidos.index')}}">Desaparecidos</a> </td>                    
+					<td><a href="{{route('reservas.index')}}">Reservas</a> </td>					
+					<td><a href="{{route('baixaspatrimoniais.index')}}">Bens Excedentes</a> </td>
+					<td><a href="{{route('patrimoniosinserviveis.index')}}">Patrimonios Inserviveis</a> </td>
+					<td><a href="{{route('manutencaos.index')}}">Manutenção</a> </td>                    
+					<td><a href="{{route('emprestimos.index')}}">Empréstimos </a> </td>
+                    <td><a href="{{route('cedidos.index')}}">Cedidos</a> </td>					                    
+				</ul>                                                 
+			</div>            
 	</div>
-     <div class="card-body">
-                  @if($errors->any())
+
+    <div class="card-body">
+                @if($errors->any())
                     <div class="alert alert-danger"> 
                         <ul>
                             @foreach($errors->all() as $error)
@@ -44,92 +41,69 @@
                         </ul>   
                     </div>        
                 @endif
-@section('titulo','Lista de Baixas Patrimoniais')
+    @section('titulo','Lista de Baixas Patrimoniais')
 
-  <table class="table table-sm">
- 
-   
-      @foreach ($Baixa_Patrimonial as $baixas_patrimoniais)
-      <thead>
-        <tr>
-          <th scope="col">id</th>
-          <th>responsavelentregar</th><br>
-          <th>datadabaixa</th>
-          <th>encarregadodaretirada</th>
-          <th>quantidaderetirada</th>
-          <th>itemretirado</th>
-          <th>numerodoitemretirado</th>
+    <h1>Patrimônios Retirados do Espaço Escolar</h1>
 
-        </tr>
-      </thead>
+    <table class="table table-sm">   
+
+        @foreach ($baixas_patrimoniais as $baixa_patrimonial)
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th>Código do item</th>
+                    <th>Item Retirado</th>
+                    <th>Quantidade de Item</th>                    
+                    <th>Encarregado da retirada</th>
+                    <th>Data da Retirada</th>
+                    <th>Responsável</th>                                  
+                </tr>
+            </thead>
        
-            <td scope="row">{{$baixas_patrimoniais->id}}</td>
-
-          <td>{{$baixas_patrimoniais->nome}}</td>
-          
-             <td>
-                   <form action="{{route('baixas_patrimoniais.delete', ['id' => $baixas_patrimoniais->id])}}" method="post">
-                    @csrf
-                    @method('DELETE')   
-                    <input type="submit" class="btn btn-primary" value="deletar">
-                    </form> 
-                </td>
-                <td>
-                   
-                </td>
-                <td>
-                    <form action="{{route('baixas_patrimoniais.edit', ['id' => $baixas_patrimoniais->id])}}" method="post">
+                    <td scope="row">{{$baixa_patrimonial->id}}</td>
+                    <td>{{$baixa_patrimonial->numerodoitemretirado}}</td> 
+                    <td>{{$baixa_patrimonial->itemretirado}}</td>   
+                    <td>{{$baixa_patrimonial->quantidaderetirada}}</td>                         
+                    <td>{{$baixa_patrimonial->encarregadodaretirada}}</td>
+                    <td>{{$baixa_patrimonial->datadabaixa}}</td> 
+                    <td>{{$baixa_patrimonial->responsavelentregar}}</td>                                                              
+                    <td><form action="{{route('baixas_patrimoniais.edit', ['id' => $baixa_patrimonial->id])}}" method="get">
                         @csrf
-                        <input type="submit" class="btn btn-primary" name="formulario" value="alterar">
-                    </form>
-                </td>
-          
-          @endforeach
-     
-     
+                        <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
+                        </form></td>
+
+                    <td><form action="{{route ('baixas_patrimoniais.delete', ['id' => $baixa_patrimonial->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')   
+                        <input type="submit" value="deletar"><br><br>
+                        </form></td>                
+        @endforeach 
     </table><br>
 
+    <form action="{{route('baixas_patrimoniais.create')}}" method="get">
+        @csrf        
+        <input type="submit" class="btn btn-primary" value="Nova+">
+    </form>
 
-     <form action="{{route('baixas_patrimoniais.create')}}" method="post">
-                        @csrf
-                        <input type="submit" class="btn btn-primary" name="formulario" value="cadastrar nova baixa patrimonial">
-                    </form>
+    </div>
 
-
- </div>
-
-
-
-	 <h4>@yield('subtitulo')</h4>
-  <table class="col" id="row">
-
-  	 
-
-       <div class="row g-3">
-        <div class=col>
-
-        </div>
-
-       </div>
-
-
-  </table>
-<footer>
-			<br>
-			<br><br>
-            <div id="footer" align="center">
-			copyrigth @Sistema desenvolvido por Robério Fagundes dos Santos, John Junqueira
+	<h4>@yield('subtitulo')</h4>
+    <table class="col" id="row">
+        <div class="row g-3">
+            <div class=col>
             </div>
-</footer>
-</div>
+       </div>
+    </table>
 
-
-
-	</div>
+    <footer>
+		<br>
+		<br><br>
+            <div id="footer" align="center">
+			Copyrigth @Sistema desenvolvido por ....
+            </div>
+    </footer>
+    
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-
 
 
 </body>
