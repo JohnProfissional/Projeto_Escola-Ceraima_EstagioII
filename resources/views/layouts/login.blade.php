@@ -1,43 +1,66 @@
+@extends('layouts.main')
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="{{ URL::asset('css/styles.css') }}">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=2.0">
-	<title>Document</title>
-</head>
-<body>
-	<div class="flex-container">
-		<div class="flex-item">
-			<div id="header">
+@section('title', 'Login')
 
-				<h1>@yield('titulo')</h1>
+@section('cabecalho')
+<!--Na tela de login e de cadastro o cabeçalho deve ter só o nome do sistema q é definido no layout main-->
 
-				<div id="nav">
-				<ul id="menu-h">
+@endsection('cabecalho')
 
-	 	<h4>@yield('subtitulo')</h4>
-  		<table class="col" id="row">
+@section('content')
 
-  	 		@yield('conteudo')<br>
-  		</table>
-		  <div id="footer" align="center">
-		@yield('footer')
-			<br>
-			<br><br>
-			copyrigth @Robério Fagundes dos Santos
+<div class="container mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-10 mx-auto col-lg-5">
 
-		</div>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+            <form class="p-4 p-md-5 cardLoginCadastro bg-light" action="" method="">
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <p class="sinalBemVindo pt-3 pb-3 ps-5 pe-5" style="font-size: 20px;">Bem vindo/a ao CadPatri</p>
+                    </div>
 
-	    </div>
+                    <div class="d-flex justify-content-center">
+                        <p style="color: var(--azul-cabecalho);">Efetue login para entrar</p>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <label for="inputCPF" class="m-2 textoAzul3">CPF</label>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="inputCPF" placeholder="000.000.000-00">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="inputSenha" class="m-2 textoAzul3">Senha</label>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="inputSenha" placeholder="******">
+                    </div>
+                </div>
+
+                <div class="checkbox textoAzul3 m-3">
+                    <label>
+                        <input type="checkbox" value="guardarLogin"> Guardar login?
+                    </label>
+                </div>
+
+                <div class="row">
+                    <div class="d-flex justify-content-center m-1" style="text-align:right">
+                        <button class="btn btn-lg botoes" type="submit">
+                            <a href="{{ route('sistema.home')}}" style="color: #fff; text-decoration: none;"> ENTRAR</a>
+                        </button>
+                    </div>
+
+                    <p class="d-flex justify-content-center m-1 textoAzul3">ou</p>
+
+                    <div class="d-flex justify-content-center m-1">
+                        <a class="btn btn-lg botoes" href="{{ route('user.cadastro')}}">CADASTRAR</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
 </div>
-</body>
-</html>
 
+@endsection

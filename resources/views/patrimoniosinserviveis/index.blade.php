@@ -14,7 +14,7 @@
 			<div id="nav">
 				<ul id="menu-h" align="center">
                     <br>
-                    <td><a href="{{route('home')}}">Home</a> </td>
+                    <td><a href="{{route('dashboard')}}">Home</a> </td>
                     <td><a href="{{route('usuarios.index')}}">Usuarios</a> </td>
                     <td><a href="{{route('patrimonios.index')}}">Patrimonios</a> </td>
                     <td><a href="{{route('setores.index')}}">Setores</a> </td>					
@@ -22,9 +22,9 @@
                     <td><a href="{{route('bensexcedentes.index')}}">Bens Excedentes</a> </td>
                     <td><a href="{{route('desaparecidos.index')}}">Desaparecidos</a> </td>                    
 					<td><a href="{{route('reservas.index')}}">Reservas</a> </td>					
-					<td><a href="{{route('baixaspatrimoniais.index')}}">Bens Excedentes</a> </td>
+					<td><a href="{{route('baixas_patrimoniais.index')}}">Baixas Patrimoniais</a> </td>
 					<td><a href="{{route('patrimoniosinserviveis.index')}}">Patrimonios Inserviveis</a> </td>
-					<td><a href="{{route('manutencaos.index')}}">Manutenção</a> </td>                    
+					<td><a href="{{route('manutencoes.index')}}">Manutenção</a> </td>                    
 					<td><a href="{{route('emprestimos.index')}}">Empréstimos </a> </td>
                     <td><a href="{{route('cedidos.index')}}">Cedidos</a> </td>					                    
 				</ul>                                                 
@@ -47,7 +47,7 @@
 
     <table class="table table-sm">   
 
-        @foreach ($patrimonios_inserviveis as $patrimonio_inservivel)
+        @foreach ($patrimoniosinserviveis as $patrimonio_inservivel)
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -60,12 +60,12 @@
                     <td>{{$patrimonio->iteminservivel}}</td>                                             
                     <td>{{$patrimonio->codigodediscricao}}</td>                                             
                     <td>{{$patrimonio->quantidadetotaldeinserviveis}}</td>                                                                                                                                 
-                    <td><form action="{{route('patrimonios_inserviveis.edit', ['id' => $patrimonio_inservivel->id])}}" method="get">
+                    <td><form action="{{route('patrimoniosinserviveis.edit', ['id' => $patrimonio_inservivel->id])}}" method="get">
                         @csrf
                         <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
                         </form></td>
 
-                    <td><form action="{{route ('patrimonios_inserviveis.delete', ['id' => $patrimonio_inservivel->id])}}" method="POST">
+                    <td><form action="{{route ('patrimoniosinserviveis.delete', ['id' => $patrimonio_inservivel->id])}}" method="POST">
                         @csrf
                         @method('DELETE')   
                         <input type="submit" value="Deletar"><br><br>
@@ -73,7 +73,7 @@
         @endforeach 
     </table><br>
 
-    <form action="{{route('patrimonios_inserviveis.create')}}" method="get">
+    <form action="{{route('patrimoniosinserviveis.create')}}" method="get">
         @csrf        
         <input type="submit" class="btn btn-primary" value="Novo+">
     </form>

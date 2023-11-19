@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bemexcedente extends Model
 {
     use HasFactory;
-    protected $table = "bensexcedentes ";
+    protected $table = "bensexcedentes";
 
     protected $fillable = ['descricaodoexcedente', 'observacoes', 'quantidadeexcedente', 'usuario_id'];  
 }

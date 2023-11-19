@@ -32,6 +32,18 @@
 
     <div class="card-body">
         @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        @section('titulo','cadastro de manutenção')
+
+        @if($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach($errors->all() as $error)
@@ -41,35 +53,31 @@
             </div>
         @endif
 
-        @section('titulo','edição de usuario')
-
-        <body>
+        <form action="{{route('manutencao.store')}}" method="post">
+            @csrf
             <div class="row g-3">
+                @section('titulo','cadastro de manutenção')
                 <div class="col">
-                    <form action="{{route('usuario.edit', ['id' => $Usuario->id])}}" method="post">
-                        <h4>Estagiario</h4><br>
-                        @csrf
-                        @method('PUT')
-
-                        <label for="nome">nome do estagiario</label>
-                        {{-- Form Section 1 --}}
-                        <input type="text" name="nome" class="form-control" value="{{$Usuario->nome}}"><br>
-
-                        <input type="submit" class="btn btn-primary" value="editar">
-                    </form>
+                    <label for="data_manutencao">data da manutencao</label>
+                    <input type="date" class="form-control" name="data_manutencao" id="data_manutencao">
+                    <label>patrimonio</label>
+                    <select name="cliente_id" id="cliente_id" class="form-control">
+                        @foreach($Patrimonio as $patrimonio)
+                        <option value="{{old($patrimonio->patrimonio_id)}}">
+                            {{$patrimonio->nome}}
+                        </option>
+                        @endforeach
+                    </select>
+                    <input type="submit" class="btn btn-primary" value="cadastrar">
                 </div>
             </div>
-        </body>
+        </form>
     </div>
 
-    <h4>@yield('subtitulo')</h4>
-
-    <table class="col" id="row">
-        <div class="row g-3">
-            <div class=col>
-            </div>
+    <div class="row g-3">
+        <div class=col>
         </div>
-    </table>
+    </div>
 
     <footer>
         <br><br><br>
