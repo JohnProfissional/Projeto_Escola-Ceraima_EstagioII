@@ -232,11 +232,11 @@ Route::prefix('cedidos')->group(function () {
 Route::prefix('categorias')->group(function () {
     Route::get('/', function () {return view('categorias.index');})->middleware(['auth'])->name('categorias.index');
     Route::get('/show/{id}', function () {return view('categorias.show'); })->middleware(['auth'])->name('categorias.show');
-    // Route::get('/create',[UsuarioController::class,'create'])->middleware(['auth'])->name('categorias.create');
-    // Route::post('/store',[UsuarioController::class,'store'])->middleware(['auth'])->name('categorias.store');
-    // Route::get('/edit/{id}',[UsuarioController::class,'edit'])->middleware(['auth'])->name('categorias.edit');
-    // Route::post('/update/{id}',[UsuarioController::class,'update'])->middleware(['auth'])->name('categorias.update');
-    // Route::delete('/delete/{id}',[UsuarioController::class,'destroy'])->middleware(['auth'])->name('categorias.detroy');
+    // Route::get('/create', function () {return view('categorias.show'); })->name('categorias.create');
+    // Route::post('/store', function () {return view('categorias.store'); })->middleware(['auth'])->name('categorias.store');
+    // Route::get('/edit/{id}', function () {return view('categorias.edit'); })->middleware(['auth'])->name('categorias.edit');
+    // Route::post('/update/{id}', function () {return view('categorias.update'); })->middleware(['auth'])->name('categorias.update');
+    // Route::delete('/delete/{id}', function () {return view('categorias.destroy'); })->middleware(['auth'])->name('categorias.detroy');
 });
 
 require __DIR__.'/auth.php';

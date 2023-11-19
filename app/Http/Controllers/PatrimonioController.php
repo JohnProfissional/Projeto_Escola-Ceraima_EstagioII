@@ -38,8 +38,8 @@ class PatrimonioController extends Controller
         $patrimonio->historico = $request->historico;
         $patrimonio->numeronotafiscal = $request->numeronotafiscal;        
         $patrimonio->datanotafiscal = $request->datanotafiscal;
-        $patrimonio->valortotaldosbens = $request->valortotaldosbens;
-        $patrimonio->totaldebens = $request->totaldebens;
+        $patrimonio->valortotaldosbens = $request->valortotaldosbens;//aa
+        $patrimonio->totaldebens = $request->totaldebens;//aa
         $patrimonio->dataaquisicao = $request->dataaquisicao;
         $patrimonio->setor_id = $request->setor_id;
         $patrimonio->save();
