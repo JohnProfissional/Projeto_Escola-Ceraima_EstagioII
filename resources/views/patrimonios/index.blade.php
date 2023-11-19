@@ -43,7 +43,7 @@
                 @endif
     @section('titulo','Lista de Patrimônios')
 
-    <h1>Saídas</h1>
+    <h1>Patrimônioss</h1>
 
     <table class="table table-sm">   
 
