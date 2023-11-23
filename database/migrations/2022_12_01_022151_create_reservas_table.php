@@ -15,19 +15,13 @@ class CreateReservasTable extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('solicitante',60);
-            $table->string('cargo',60);
-            $table->string('patrimonio',60);
-            $table->string('codigodopatrimonio',60);
-            $table->date('datainicioreserva');
-            $table->date('datafimreserva');
+            $table->timestamps();            
+            $table->date('datareserva');
             $table->integer('quantidadeitensreservados');            
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');                     
             $table->unsignedBigInteger('patrimonio_id');
-            $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
-            $table->unsignedBigInteger('emprestimo_id');
-            $table->foreign('emprestimo_id')->references('id')->on('emprestimos');
-            
+            $table->foreign('patrimonio_id')->references('id')->on('patrimonios');                     
         });
     }
 

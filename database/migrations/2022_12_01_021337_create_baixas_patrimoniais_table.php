@@ -19,9 +19,9 @@ class CreateBaixasPatrimoniaisTable extends Migration
             $table->string('responsavelentregar',60);
             $table->date('datadabaixa');
             $table->string('encarregadodaretirada',60);
-            $table->integer('quantidaderetirada');
-            $table->string('itemretirado', 60);
-            $table->string('numerodoitemretirado',60);
+            $table->integer('quantidaderetirada');            
+            $table->unsignedBigInteger('patrimonio_id');
+            $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
         }); 
     }
 
