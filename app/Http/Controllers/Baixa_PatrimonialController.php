@@ -34,7 +34,7 @@ class Baixa_PatrimonialController extends Controller
         $baixa_patrimonial->itemretirado = $request->itemretirado;
         $baixa_patrimonial->numerodoitemretirado = $request->numerodoitemretirado;
         $baixa_patrimonial->save();
-        return redirect()-> route('baixaspatrimoniais.index');
+        return redirect()-> route('baixas_patrimoniais.index');
     }
 
     public function edit($id){
@@ -44,12 +44,12 @@ class Baixa_PatrimonialController extends Controller
 
     public function update(Request $request){
         Baixa_Patrimonial::find($request->id)->update($request->except('_token_'));
-        return redirect()->route('baixaspatrimoniais.index')->with('msg', 'Alteração realizada com sucesso');
+        return redirect()->route('baixas_patrimoniais.index')->with('msg', 'Alteração realizada com sucesso');
     }
 
     public function destroy($id){
         Baixa_Patrimonial::findorfail($id)->delete();
-        return redirect()->route('baixaspatrimoniais.index')->with('msg', 'Baixa patrimonial apagada');
+        return redirect()->route('baixas_patrimoniais.index')->with('msg', 'Baixa patrimonial apagada');
     }
 
 }
