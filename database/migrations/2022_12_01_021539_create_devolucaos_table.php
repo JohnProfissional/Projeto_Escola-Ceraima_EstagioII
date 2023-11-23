@@ -18,9 +18,13 @@ class CreateDevolucaosTable extends Migration
             $table->timestamps();
             $table->date('datadadevolucao');
             $table->string('descricaodadevolucao',60);
-            $table->unsignedBigInteger('saida_id');
-            $table->foreign('saida_id')->references('id')->on('saidas');
-
+            $table->integer('quantidadedevolvida');
+            $table->unsignedBigInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->unsignedBigInteger('patrimonio_id');
+            $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
+            $table->unsignedBigInteger('emprestimo_id');
+            $table->foreign('emprestimo_id')->references('id')->on('emprestimos');
         });
     }
 
