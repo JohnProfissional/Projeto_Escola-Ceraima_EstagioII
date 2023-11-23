@@ -21,9 +21,13 @@ class CreateEntradasTable extends Migration
             $table->string('centrodecustoanterior',80);
             $table->string('novaunidade',80);
             $table->string('centrodecustodestino',80);
-            $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
-
+            $table->decimal('valortotaldosbens', 6,2);
+            $table->decimal('numerodanotafiscal', 6,2);
+            $table->date('datadanotafiscal'); 
+            $table->integer('quantidadetotal');
+            $table->string('orgao', 80); 
+            $table->string('unidadeorcamentaria', 80);
+            $table->integer('totaldebens');
         });
     }
 

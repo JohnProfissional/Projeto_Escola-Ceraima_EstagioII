@@ -17,7 +17,7 @@ class CreateSetoresTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('descricaodosetor',60);
-            $table->string('quantidadedecomodos',60);    
+            $table->integer('quantidadedecomodos');    
         });
     }
 
