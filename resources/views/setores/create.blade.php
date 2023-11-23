@@ -133,48 +133,27 @@
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row d-flex justify-content-around ">
-            <div class="w-auto d-flex justify-content-center m-5">
+            <form action="/setores/store" method="POST" class="col-12 m-0 p-0 formulario">
+                @csrf
 
-                <form action="/setor/store" method="POST" class="col-12 m-0 p-0 formulario">
-                    @csrf
-
-                    <div class="row m-2">
-                        <!-- <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputNomeBem" class="m-2 textoAzul3">Nome:</label>
-                            <input type="text" id="inputNomeBem" class="w-auto form-control w-sm-auto" placeholder="Mesa, cadeira, pincel, etc" name="nomedopatrimonio">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputDescricao" class="m-2 textoAzul3">Descrição:</label>
-                            <textarea id="inputDescricao" class="w-auto form-control w-sm-auto" placeholder="." name="descricaodosetor"></textarea>
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputNumeroBem" class="m-2 textoAzul3">Número do bem:</label>
-                            <input name="numeropatrimonio" type="number" id="inputNumeroBem" class="w-auto form-control w-sm-auto" placeholder="1">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputDataNotaFiscal" class="m-2 textoAzul3">Data da nota fiscal:</label>
-                            <input name="datanotafiscal" type="date" id="inputDataNotaFiscal" class="w-auto form-control w-sm-auto" placeholder="01/01/2023">
-                        </div>
-                        <div class="col col-lg-9 m-4">
-                            <label for="selectSituacao" class="w-2 textoAzul3">Situação:</label>
-                            <br><select name="selectSituacao" required="required" class="p-2 rounded form-control">
-                                <option value="servivel">Servível</option>
-                                <option value="inservivel">Inservível</option>
-                                <option value="reservado">Reservado</option>
-                                <option value="excedente">Excedente</option>
-                                <option value="desaparecido">Desaparecido</option>
-                            </select>
-                        </div> -->
+                <div class="row m-2">
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="descricaodosetor" class="m-2 textoAzul3">Descrição do setor:</label>
+                        <input type="text" id="descricaodosetor" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodosetor" required>
                     </div>
-
-                    <div class="col-lg-12" style="text-align:right">
-                        <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
-                            Cadastrar
-                        </button>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="quantidadedecomodos" class="m-2 textoAzul3">Quantidade de cômodos:</label>
+                        <input name="quantidadedecomodos" type="number" id="quantidadedecomodos" class="w-auto form-control w-sm-auto" placeholder="" required>
                     </div>
-                </form>
+                </div>
 
-            </div>
+                <div class="col-lg-12" style="text-align:right">
+                    <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
+                        Cadastrar
+                    </button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>

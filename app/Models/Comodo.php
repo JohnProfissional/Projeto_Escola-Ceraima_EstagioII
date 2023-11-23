@@ -11,9 +11,9 @@ class Comodo extends Model
 
     protected $table = "comodos";
 
-    protected $fillable = ['identificacaodocomodo', 'identificacaodobem', 'numerodobem', 'quantidadedobem', 'setor_id'];
+    protected $fillable = ['descricaodocomodo', 'quantidadedebens', 'setor_id'];
 
-    public function setor(){
+    public function acessarSetor(){
         return $this->belongsTo(Setor::class, 'setor_id');
     }
 }

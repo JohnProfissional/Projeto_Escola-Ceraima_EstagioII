@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comodo;
+use App\Models\Setor;
 
 class ComodoController extends Controller
 {
@@ -23,15 +24,14 @@ class ComodoController extends Controller
     }
 
     public function create(){
-        return view('comodos.create');
+        $setores = Setor::all();
+        return view('comodos.create', ['setores' => $setores]);
     }
 
     public function store(Request $request){
         $comodo = new Comodo();
-        $comodo->identificacaodocomodo = $request->identificacaodocomodo;
-        $comodo->identificacaodobem = $request->identificacaodobem;
-        $comodo->numerodobem = $request->numerodobem;
-        $comodo->quantidadedobem = $request->quantidadedobem;
+        $comodo->descricaodocomodo = $request->descricaodocomodo;
+        $comodo->quantidadedebens = $request->quantidadedebens; //Acho q pode até tirar esse campo
         $comodo->setor_id = $request->setor_id;
         $comodo->save();
         return redirect()->route('comodos.index');
@@ -39,7 +39,8 @@ class ComodoController extends Controller
 
     public function edit($id){
         $Comodo = Comodo::findorFail($id);
-        return view('comodos.edit',['Comodo'=>$Comodo]);
+        $setores = Setor::all();
+        return view('comodos.edit',['Comodo'=>$Comodo, 'setores' => $setores]);
     }
 
     public function update(Request $request, $id){

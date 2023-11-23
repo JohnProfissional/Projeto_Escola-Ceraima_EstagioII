@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Cadastrar Item')
+@section('title', 'Editar Item')
 
 @section('cabecalho')
 <!--Cabecalho das telas (fora login e cadastro)-->
