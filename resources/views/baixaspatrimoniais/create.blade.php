@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Cadastrar Item')
+@section('title', 'Cadastrar Baixa Patrimonial')
 
 @section('cabecalho')
 <!--Cabecalho das telas (fora login e cadastro)-->
@@ -128,62 +128,32 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
             <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2Zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672Z" />
             <path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5Z" />
-        </svg> Cadastrar Baixa Patrimonial
+        </svg> Cadastrar Setor
     </div>
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row d-flex justify-content-around ">
-            <div class="w-auto d-flex justify-content-center m-5">
+            <form action="/setores/store" method="POST" class="col-12 m-0 p-0 formulario">
+                @csrf
 
-                <form action="/baixas_patrimoniais/store" method="POST" class="col-12 m-0 p-0 formulario">
-                    @csrf
-                    <div class="row m-2">
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="responsavelentregar" class="m-2 textoAzul3">Responsável pela entrega:</label>
-                            <input type="text" id="responsavelentregar" class="w-auto form-control w-sm-auto" placeholder="" name="responsavelentregar">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="datadabaixa" class="m-2 textoAzul3">Data da baixa:</label>
-                            <input name="datadabaixa" type="date" id="datadabaixa" class="w-auto form-control w-sm-auto" placeholder="">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="encarregadodaretirada" class="m-2 textoAzul3">Encarregado da retirada:</label>
-                            <input name="encarregadodaretirada" type="text" id="encarregadodaretirada" class="w-auto form-control w-sm-auto" placeholder="">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="quantidaderetirada" class="m-2 textoAzul3">Quantidade retirada:</label>
-                            <input name="quantidaderetirada" type="number" id="quantidaderetirada" class="w-auto form-control w-sm-auto" placeholder="">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="itemretirado" class="m-2 textoAzul3">Item retirado:</label>
-                            <input type="text" id="itemretirado" class="w-auto form-control w-sm-auto" placeholder="" name="itemretirado">
-                        </div>
-                        <!-- <div class="col col-lg-9 m-4">
-                            <label for="itemretirado" class="w-2 textoAzul3">Item retirado:</label>
-                            <br><select name="itemretirado" required="required" class="p-2 rounded form-control">
-                                <option value="servivel">Servível</option>
-                                <option value="inservivel">Inservível</option>
-                                <option value="reservado">Reservado</option>
-                                <option value="excedente">Excedente</option>
-                                <option value="desaparecido">Desaparecido</option>
-                            </select>
-                        </div> -->
-                        <!-- Esse campo tem q aumentar de acordo com a quantidade de itens retirados -> cada item tem um numero diferentes, temos q armazenar td -->
-                        <!-- Esse deve completar automaticamente apos o suuário selecionar o item no input anterior, ficando readonly -->
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="numerodoitemretirado" class="m-2 textoAzul3">Número do item retirado:</label>
-                            <input type="number" id="numerodoitemretirado" class="w-auto form-control w-sm-auto" placeholder="" name="numerodoitemretirado">
-                        </div>
+                <div class="row m-2">
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="descricaodosetor" class="m-2 textoAzul3">Descrição do setor:</label>
+                        <input type="text" id="descricaodosetor" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodosetor">
                     </div>
-
-                    <div class="col-lg-12" style="text-align:right">
-                        <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
-                            Cadastrar
-                        </button>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="quantidadedecomodos" class="m-2 textoAzul3">Quantidade de cômodos:</label>
+                        <input name="quantidadedecomodos" type="number" id="quantidadedecomodos" class="w-auto form-control w-sm-auto" placeholder="">
                     </div>
-                </form>
+                </div>
 
-            </div>
+                <div class="col-lg-12" style="text-align:right">
+                    <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
+                        Cadastrar
+                    </button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>

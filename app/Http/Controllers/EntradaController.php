@@ -32,7 +32,13 @@ class EntradaController extends Controller
         $entrada->centrodecustoanterior = $request->centrodecustoanterior;
         $entrada->novaunidade = $request->novaunidade;
         $entrada->centrodecustodestino = $request->centrodecustodestino;
-        $entrada->usuario_id = $request->usuario_id;
+        $entrada->valortotaldosbens = $request->valortotaldosbens;
+        $entrada->numerodanotafiscal = $request->numerodanotafiscal;
+        $entrada->datadanotafiscal = $request->datadanotafiscal;
+        $entrada->quantidadetotal = $request->quantidadetotal;
+        $entrada->orgao = $request->orgao;
+        $entrada->unidadeorcamentaria = $request->unidadeorcamentaria;
+        $entrada->totaldebens = $request->totaldebens;
         $entrada->save();
         return redirect()->route('entradas.index');
     }

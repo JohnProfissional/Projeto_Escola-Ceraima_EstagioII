@@ -210,7 +210,7 @@ Route::prefix('devolucoes')->group(function () {
 });
 
 Route::prefix('comodos')->group(Function () {
-    Route::get('/index',[ComodoController::class,'index'])->middleware(['auth'])->name('comodos.index');
+    Route::get('/',[ComodoController::class,'index'])->middleware(['auth'])->name('comodos.index');
     Route::get('/create',[ComodoController::class,'create'])->middleware(['auth'])->name('comodos.create');
     Route::post('/store',[ComodoController::class,'store'])->middleware(['auth'])->name('comodos.store');
     Route::get('/show/{id}',[ComodoController::class,'show'])->middleware(['auth'])->name('comodos.show');

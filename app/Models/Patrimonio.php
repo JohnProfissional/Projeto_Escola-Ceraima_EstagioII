@@ -10,6 +10,14 @@ class Patrimonio extends Model
     use HasFactory;
     protected $table = "patrimonios";
 
-    protected $fillable = ['orgao', 'unidorcamentaria', 'centrodecusto', 'nomedopatrimonio', 'codigo', 'descricao', 'numeropatrimonio', 'valor', 'historico', 'numeronotafiscal', 'datanotafiscal', 'valortotaldosbens', 'totaldebens', 'dataaquisicao', 'setor_id'];
+    protected $fillable = ['entrada_id', 'comodo_id', 'descricaodopatrimonio', 'tombo', 'valordobem', 'historicodatransferencia', 'dataaquisicao', 'status'];
+
+    public function acessarEntrada(){
+        return $this->belongsTo(Entrada::class, 'entrada_id');
+    }
+
+    public function acessarComodo(){
+        return $this->belongsTo(Comodo::class, 'comodo_id');
+    }
 }
 

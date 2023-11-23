@@ -1,126 +1,6 @@
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/styles.css') }}">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <title>Lista de Baixas Patrimoniais</title>
-</head>
-
-<body>
-    <div id="header">
-        <h1>@yield('titulo')</h1>
-        <div id="nav">
-            <ul id="menu-h" align="center">
-                <br>
-                <td><a href="{{route('dashboard')}}">Home</a> </td>
-                <td><a href="{{route('usuarios.index')}}">Usuarios</a> </td>
-                <td><a href="{{route('patrimonios.index')}}">Patrimonios</a> </td>
-                <td><a href="{{route('setores.index')}}">Setores</a> </td>
-                <td><a href="{{route('comodos.index')}}">Cômodos</a> </td>
-                <td><a href="{{route('bensexcedentes.index')}}">Bens Excedentes</a> </td>
-                <td><a href="{{route('desaparecidos.index')}}">Desaparecidos</a> </td>
-                <td><a href="{{route('reservas.index')}}">Reservas</a> </td>
-                <td><a href="{{route('baixas_patrimoniais.index')}}">Baixas Patrimoniais</a> </td>
-                <td><a href="{{route('patrimoniosinserviveis.index')}}">Patrimonios Inserviveis</a> </td>
-                <td><a href="{{route('manutencoes.index')}}">Manutenção</a> </td>
-                <td><a href="{{route('emprestimos.index')}}">Empréstimos </a> </td>
-                <td><a href="{{route('cedidos.index')}}">Cedidos</a> </td>
-            </ul>
-        </div>
-    </div>
-
-    <div class="card-body">
-        @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
-        @section('titulo','Lista de Baixas Patrimoniais')
-
-        <h1>Patrimônios Retirados do Espaço Escolar</h1>
-
-        <table class="table table-sm">
-
-            @foreach ($baixaspatrimoniais as $baixa_patrimonial)
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th>Código do item</th>
-                    <th>Item Retirado</th>
-                    <th>Quantidade de Item</th>
-                    <th>Encarregado da retirada</th>
-                    <th>Data da Retirada</th>
-                    <th>Responsável</th>
-                </tr>
-            </thead>
-
-            <td scope="row">{{$baixa_patrimonial->id}}</td>
-            <td>{{$baixa_patrimonial->numerodoitemretirado}}</td>
-            <td>{{$baixa_patrimonial->itemretirado}}</td>
-            <td>{{$baixa_patrimonial->quantidaderetirada}}</td>
-            <td>{{$baixa_patrimonial->encarregadodaretirada}}</td>
-            <td>{{$baixa_patrimonial->datadabaixa}}</td>
-            <td>{{$baixa_patrimonial->responsavelentregar}}</td>
-            <td>
-                <form action="{{route('baixas_patrimoniais.edit', ['id' => $baixa_patrimonial->id])}}" method="get">
-                    @csrf
-                    <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
-                </form>
-            </td>
-
-            <td>
-                <form id="formExcluir" action="{{ route('baixas_patrimoniais.delete', ['id' => $baixa_patrimonial->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" value="Deletar" onclick="return confirmarExclusao();"><br><br>
-                    </form>
-
-                    @endforeach
-        </table><br>
-
-        <form action="{{route('baixas_patrimoniais.create')}}" method="get">
-            @csrf
-            <input type="submit" class="btn btn-primary" value="Nova+">
-        </form>
-
-    </div>
-
-    <h4>@yield('subtitulo')</h4>
-    <table class="col" id="row">
-        <div class="row g-3">
-            <div class=col>
-            </div>
-        </div>
-    </table>
-
-    <footer>
-        <br>
-        <br><br>
-        <div id="footer" align="center">
-            Copyrigth @Sistema desenvolvido por ....
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
-
-</body>
-
-</html> -->
-
-
 @extends('layouts.main')
 
-@section('title', 'Bens Cadastrados')
+@section('title', 'Baixas Patrimoniais')
 
 @section('cabecalho')
 <!--Cabecalho das telas (fora login e cadastro)-->
@@ -272,7 +152,7 @@
                     <option value="quantidades">Busca por quantidade</option>
                 </select>
 
-                <input type="text" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Mesa, cadeira, pincel...">
+                <input type="text" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquise aqui...">
                 <input type="submit" class="btn btn-success m-2" value="Buscar">
             </form>
         </div>
@@ -308,9 +188,9 @@
                             <div class="col" id="meio">
                                 <form action="{{route('baixas_patrimoniais.edit', ['id' => $baixa_patrimonial->id])}}" method="get">
                                     @csrf
-                                    <svg style="color: rgb(251, 255, 0);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <!-- <svg style="color: rgb(251, 255, 0);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                                    </svg>
+                                    </svg> -->
                                     <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
                                 </form>
                             </div>
@@ -321,11 +201,11 @@
                                 <form id="formExcluir" action="{{ route('baixas_patrimoniais.delete', ['id' => $baixa_patrimonial->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                    <!-- <svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
                                         <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-                                    </svg>
-                                    <input type="submit" value="Deletar" onclick="return confirmarExclusao();"><br><br>
+                                    </svg> -->
+                                    <input type="submit" class="btn btn-primary" value="Deletar" onclick="return confirmarExclusao();"><br><br>
                                 </form>
                             </div>
                         </td>

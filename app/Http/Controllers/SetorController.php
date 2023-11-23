@@ -28,10 +28,7 @@ class SetorController extends Controller
     public function store(Request $request){
         $setor = new Setor();
         $setor->descricaodosetor = $request->descricaodosetor;
-        $setor->nomebem = $request->nomebem;
-        $setor->numerodebem = $request->numerodebem;
-        $setor->quantidadedebem = $request->naquantidadedebemme;
-        $setor->saida_id = $request->saida_id; //-> Faz mais sentido colocar o setor em saida e n o contrario
+        $setor->quantidadedecomodos = $request->quantidadedecomodos;
         $setor->save();
         return redirect()->route('setores.index');
     }

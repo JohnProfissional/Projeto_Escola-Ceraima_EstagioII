@@ -27,21 +27,14 @@ class PatrimonioController extends Controller
 
     public function store(Request $request){
         $patrimonio = new Patrimonio();
-        $patrimonio->orgao = $request->orgao;
-        $patrimonio->unidorcamentaria = $request->unidorcamentaria;
-        $patrimonio->centrodecusto = $request->centrodecusto;
-        $patrimonio->nomedopatrimonio = $request->nomedopatrimonio;
-        $patrimonio->codigo = $request->codigo;
-        $patrimonio->descricao = $request->descricao;
-        $patrimonio->numeropatrimonio = $request->numeropatrimonio;
-        $patrimonio->valor = $request->valor;
-        $patrimonio->historico = $request->historico;
-        $patrimonio->numeronotafiscal = $request->numeronotafiscal;        
-        $patrimonio->datanotafiscal = $request->datanotafiscal;
-        $patrimonio->valortotaldosbens = $request->valortotaldosbens;//aa
-        $patrimonio->totaldebens = $request->totaldebens;//aa
+        $patrimonio->entrada_id = $request->entrada_id;
+        $patrimonio->comodo_id = $request->comodo_id;
+        $patrimonio->descricaodopatrimonio = $request->descricaodopatrimonio;
+        $patrimonio->tombo = $request->tombo;
+        $patrimonio->valordobem = $request->valordobem;
+        $patrimonio->historicodatransferencia = $request->historicodatransferencia;
         $patrimonio->dataaquisicao = $request->dataaquisicao;
-        $patrimonio->setor_id = $request->setor_id;
+        $patrimonio->status = $request->status;
         $patrimonio->save();
         return redirect()->route('patrimonios.index');
     }

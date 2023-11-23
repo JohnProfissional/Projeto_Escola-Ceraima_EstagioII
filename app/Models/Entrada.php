@@ -10,5 +10,5 @@ class Entrada extends Model
     use HasFactory;
     protected $table = "entradas";
 
-    protected $fillable = ['datadatransferencia', 'unidadeanterior', 'centrodecustoanterior', 'novaunidade', 'centrodecustodestino', 'usuario_id'];
+    protected $fillable = ['datadatransferencia', 'unidadeanterior', 'centrodecustoanterior', 'novaunidade', 'centrodecustodestino', 'valortotaldosbens', 'numerodanotafiscal', 'datadanotafiscal', 'quantidadetotal', 'orgao', 'unidadeorcamentaria', 'totaldebens'];
 }
