@@ -27,14 +27,12 @@ class CedidoController extends Controller
     }
 
     public function store(Request $request){
-        $cedido = new Cedido();
-        $cedido->descrpatrimonio = $request->descrpatrimonio;
-        $cedido->tombopatri = $request->tombopatri;
+        $cedido = new Cedido();        
         $cedido->instituicaoreceptora = $request->instituicaoreceptora;
         $cedido->qtd = $request->qtd;
-        $cedido->saida_id = $request->saida_id;
+        $cedido->patrimonio_id = $request->patrimonio_id;
         $cedido->save();
-        return redirect()->route('cedidos.index');
+        return redirect()->route('cedidos.index'); 
     }
 
     public function edit($id){

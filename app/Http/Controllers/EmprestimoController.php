@@ -27,13 +27,13 @@ class EmprestimoController extends Controller
 
     public function store(Request $request){
         $emprestimo = new Emprestimo();
-        $emprestimo->nomedobememprestado = $request->nomedobememprestado;
-        $emprestimo->coddobem = $request->coddobem;
-        $emprestimo->nomedoprofissional = $request->nomedoprofissional;
         $emprestimo->quantidadeemprestada = $request->quantidadeemprestada;
-        $emprestimo->saida_id = $request->saida_id;
+        $emprestimo->dataemprestimoo = $request->dataemprestimo;
+        $emprestimo->usuario_id = $request->usuario_id;
+        $emprestimo->reserva_id = $request->reserva_id;
+        $emprestimo->patrimonio_id = $request->patrimonio_id;       
         $emprestimo->save();
-        return redirect()->route('emprestimos.index');
+        return redirect()->route('emprestimos.index'); 
     }
 
     public function edit($id){

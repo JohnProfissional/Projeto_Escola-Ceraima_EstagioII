@@ -30,9 +30,11 @@ class ManutencaoController extends Controller
         $manutencao->empresa = $request->empresa;
         $manutencao->dataprevistadeentrega = $request->dataprevistadeentrega;
         $manutencao->totaldasaidadebens = $request->totaldasaidadebens;
-        $manutencao->saida_id = $request->saida_id;
+        $manutencao->dataentrada = $request->dataentrada;
+        $manutencao->datasaida = $request->datasaida;
+        $manutencao->patrimonio_id = $request->patrimonio_id;
         $manutencao->save();
-        return redirect()->route('manutencoes.index');
+        return redirect()->route('manutencoes.index'); 
     }
 
     public function edit($id){

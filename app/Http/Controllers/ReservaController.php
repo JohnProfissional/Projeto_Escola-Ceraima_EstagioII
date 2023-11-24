@@ -26,18 +26,13 @@ class ReservaController extends Controller
     }
 
     public function store(Request $request){
-        $reserva = new Reserva();
-        $reserva->solicitante = $request->solicitante;
-        $reserva->cargo = $request->cargo;
-        $reserva->patrimonio = $request->patrimonio;
-        $reserva->codigodopatrimonio = $request->codigodopatrimonio;
-        $reserva->datainicioreserva = $request->datainicioreserva;
-        $reserva->datafimreserva = $request->datafimreserva;
+        $reserva = new Reserva();        
+        $reserva->datareserva = $request->datareserva;        
         $reserva->quantidadeitensreservados = $request->quantidadeitensreservados;
-        $reserva->patrimonio_id = $request->patrimonio_id;
-        $reserva->emprestimo_id = $request->emprestimo_id;
+        $reserva->usuario_id = $request->usuario_id;
+        $reserva->patrimonio_id = $request->patrimonio_id;        
         $reserva->save();
-        return redirect()->route('reservas.index');
+        return redirect()->route('reservas.index'); 
     }
 
     public function edit($id){

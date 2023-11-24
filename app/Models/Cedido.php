@@ -11,9 +11,9 @@ class Cedido extends Model
 
     protected $table = "cedidos";
 
-    protected $fillable = ['descrpatrimonio', 'tombopatri', 'instituicaoreceptora', 'qtd', 'saida_id'];
+    protected $fillable = ['instituicaoreceptora', 'qtd', 'patrimonio_id'];
 
-    public function saida(){
-        return $this->belongsTo(Saida::class, 'saida_id');
-    }
+    public function acessarPatrimonio(){
+        return $this->belongsTo(Patrimonio::class, 'patrimonio_id');
+    } 
 }

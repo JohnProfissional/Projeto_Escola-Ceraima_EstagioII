@@ -29,9 +29,12 @@ class DevolucaoController extends Controller
         $devolucao = new Devolucao();
         $devolucao->datadadevolucao = $request->datadadevolucao;
         $devolucao->descricaodadevolucao = $request->descricaodadevolucao;
-        $devolucao->saida_id = $request->saida_id;
+        $devolucao->quantidadedevolvida = $request->quantidadedevolvida;
+        $devolucao->usuario_id = $request->usuario_id;
+        $devolucao->patrimonio_id = $request->patrimonio_id;
+        $devolucao->emprestimo_id = $request->emprestimo_id;
         $devolucao->save();
-        return redirect()->route('devolucoes.index');
+        return redirect()->route('devolucoes.index'); 
     }
 
     public function edit($id){

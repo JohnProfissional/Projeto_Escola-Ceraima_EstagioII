@@ -11,5 +11,10 @@ class Baixa_Patrimonial extends Model
     
     protected $table = "baixas_patrimoniais";
 
-    protected $fillable = ['responsavelentregar', 'datadabaixa', 'encarregadodaretirada', 'quantidaderetirada', 'itemretirado', 'numerodoitemretirado'];
+    protected $fillable = ['responsavelentregar', 'datadabaixa', 'encarregadodaretirada', 'quantidaderetirada', 'patrimonio_id'];
+
+    public function acessarPatrimonio(){
+        return $this->belongsTo(Patrimonio::class, 'patrimonio_id');
+    }
 }
+ 

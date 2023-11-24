@@ -10,5 +10,14 @@ class Reserva extends Model
     use HasFactory;
     protected $table = "reservas";
 
-    protected $fillable = ['solicitante', 'cargo', 'patrimonio', 'codigodopatrimonio', 'datainicioreserva', 'datafimreserva', 'quantidadeitensreservados', 'patrimonio_id', 'emprestimo_id'];
+    protected $fillable = ['datareserva', 'quantidadeitensreservados', 'usuario_id', 'patrimonio_id'];
+
+    public function acessarUsuario(){
+        return $this->belongsTo(Usuario::class, 'usuario_id');
+    }
+
+    public function acessarPatrimonio(){
+        return $this->belongsTo(Patrimonio::class, 'patrimonio_id');
+    }
+
 }
