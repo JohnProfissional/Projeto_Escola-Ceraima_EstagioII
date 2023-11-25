@@ -55,8 +55,8 @@ Route::prefix('usuarios')->group(function () {
     Route::get('/create',[UsuarioController::class,'create'])->middleware(['auth'])->name('usuarios.create');
     Route::post('/store',[UsuarioController::class,'store'])->middleware(['auth'])->name('usuarios.store');
     Route::get('/edit/{id}',[UsuarioController::class,'edit'])->middleware(['auth'])->name('usuarios.edit');
-    Route::post('/update/{id}',[UsuarioController::class,'update'])->middleware(['auth'])->name('usuarios.update');
-    Route::delete('/delete/{id}',[UsuarioController::class,'destroy'])->middleware(['auth'])->name('usuarios.detroy');
+    Route::put('/update/{id}',[UsuarioController::class,'update'])->middleware(['auth'])->name('usuarios.update');
+    Route::delete('/delete/{id}',[UsuarioController::class,'destroy'])->middleware(['auth'])->name('usuarios.delete');
 });
 
 Route::prefix('patrimonios')->group(function () {
@@ -135,7 +135,7 @@ Route::prefix('manutencoes')->group(function () {
     Route::get('/create',[ManutencaoController::class,'create'])->middleware(['auth'])->name('manutencoes.create');
     Route::post('/store',[ManutencaoController::class,'store'])->middleware(['auth'])->name('manutencoes.store');
     Route::get('/edit/{id}',[ManutencaoController::class,'edit'])->middleware(['auth'])->name('manutencoes.edit');
-    Route::post('/update/{id}',[ManutencaoController::class,'update'])->middleware(['auth'])->name('manutencoes.update');
+    Route::put('/update/{id}',[ManutencaoController::class,'update'])->middleware(['auth'])->name('manutencoes.update');
     Route::delete('/delete/{id}',[ManutencaoController::class,'destroy'])->middleware(['auth'])->name('manutencoes.delete');
 });
 
@@ -145,7 +145,7 @@ Route::prefix('reservas')->group(function () {
     Route::get('/create',[ReservaController::class,'create'])->middleware(['auth'])->name('reservas.create');
     Route::post('/store',[ReservaController::class,'store'])->middleware(['auth'])->name('reservas.store');
     Route::get('/edit/{id}',[ReservaController::class,'edit'])->middleware(['auth'])->name('reservas.edit');
-    Route::post('/update/{id}',[ReservaController::class,'update'])->middleware(['auth'])->name('reservas.update');
+    Route::put('/update/{id}',[ReservaController::class,'update'])->middleware(['auth'])->name('reservas.update');
     Route::delete('/delete/{id}',[ReservaController::class,'destroy'])->middleware(['auth'])->name('reservas.delete');
 });
 
