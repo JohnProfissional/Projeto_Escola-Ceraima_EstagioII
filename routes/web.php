@@ -67,6 +67,9 @@ Route::prefix('patrimonios')->group(function () {
     Route::get('/edit/{id}',[PatrimonioController::class,'edit'])->middleware(['auth'])->name('patrimonios.edit');
     Route::post('/update/{id}',[PatrimonioController::class,'update'])->middleware(['auth'])->name('patrimonios.update');
     Route::delete('/delete/{id}',[PatrimonioController::class,'destroy'])->middleware(['auth'])->name('patrimonios.delete');
+
+    Route::get('/createpatrientrada/{id}',[PatrimonioController::class,'createpatrientrada'])->middleware(['auth'])->name('patrimonios.createpatrientrada');
+    Route::post('/storepatrientrada',[PatrimonioController::class,'storepatrientrada'])->middleware(['auth'])->name('patrimonios.storepatrientrada');
 });
 
 Route::prefix('entradas')->group(function () {
@@ -77,16 +80,6 @@ Route::prefix('entradas')->group(function () {
     Route::get('/edit/{id}',[EntradaController::class,'edit'])->middleware(['auth'])->name('entradas.edit');
     Route::post('/update/{id}',[EntradaController::class,'update'])->middleware(['auth'])->name('entradas.update');
     Route::delete('/delete/{id}',[EntradaController::class,'destroy'])->middleware(['auth'])->name('entradas.delete');
-});
-
-Route::prefix('itensentradas')->group(function () {
-    Route::get('/',[ItensentradaController::class,'index'])->middleware(['auth'])->name('itensentradas.index');
-    Route::get('/show/{id}',[ItensentradaController::class,'show'])->middleware(['auth'])->name('itensentradas.show');
-    Route::get('/create',[ItensentradaController::class,'create'])->middleware(['auth'])->name('itensentradas.create');
-    Route::post('/store',[ItensentradaController::class,'store'])->middleware(['auth'])->name('itensentradas.store');
-    Route::get('/edit/{id}',[ItensentradaController::class,'edit'])->middleware(['auth'])->name('itensentradas.edit');
-    Route::post('/update/{id}',[ItensentradaController::class,'update'])->middleware(['auth'])->name('itensentradas.update');
-    Route::delete('/delete/{id}',[ItensentradaController::class,'destroy'])->middleware(['auth'])->name('itensentradas.delete');
 });
 
 Route::prefix('setores')->group(function () {
@@ -107,16 +100,6 @@ Route::prefix('saidas')->group(function () {
     Route::get('/edit/{id}',[SaidaController::class,'edit'])->middleware(['auth'])->name('saidas.edit');
     Route::post('/update/{id}',[SaidaController::class,'update'])->middleware(['auth'])->name('saidas.update');
     Route::delete('/delete/{id}',[SaidaController::class,'destroy'])->middleware(['auth'])->name('saidas.delete');
-});
-
-Route::prefix('itenssaidas')->group(function () {
-    Route::get('/',[ItenssaidaController::class,'index'])->middleware(['auth'])->name('itenssaidas.index');
-    Route::get('/show/{id}',[ItenssaidaController::class,'show'])->middleware(['auth'])->name('itenssaidas.show');
-    Route::get('/create',[ItenssaidaController::class,'create'])->middleware(['auth'])->name('itenssaidas.create');
-    Route::post('/store',[ItenssaidaController::class,'store'])->middleware(['auth'])->name('itenssaidas.store');
-    Route::get('/edit/{id}',[ItenssaidaController::class,'edit'])->middleware(['auth'])->name('itenssaidas.edit');
-    Route::post('/update/{id}',[ItenssaidaController::class,'update'])->middleware(['auth'])->name('itenssaidas.update');
-    Route::delete('/delete/{id}',[ItenssaidaController::class,'destroy'])->middleware(['auth'])->name('saidas.delete');
 });
 
 Route::prefix('patrimoniosinserviveis')->group(function () {
@@ -187,16 +170,6 @@ Route::prefix('emprestimos')->group(function () {
     Route::get('/edit/{id}',[EmprestimoController::class,'edit'])->middleware(['auth'])->name('emprestimos.edit');
     Route::post('/update/{id}',[EmprestimoController::class,'update'])->middleware(['auth'])->name('emprestimos.update');
     Route::delete('/delete/{id}',[EmprestimoController::class,'destroy'])->middleware(['auth'])->name('emprestimos.delete');
-});
-
-Route::prefix('itensdevolucoes')->group(function () {
-    Route::get('/',[ItensdevolucaoController::class,'index'])->middleware(['auth'])->name('itensdevolucoes.index');
-    Route::get('/show/{id}',[ItensdevolucaoController::class,'show'])->middleware(['auth'])->name('itensdevolucoes.show');
-    Route::get('/create',[ItensdevolucaoController::class,'create'])->middleware(['auth'])->name('itensdevolucoes.create');
-    Route::post('/store',[ItensdevolucaoController::class,'store'])->middleware(['auth'])->name('itensdevolucoes.store');
-    Route::get('/edit/{id}',[ItensdevolucaoController::class,'edit'])->middleware(['auth'])->name('itensdevolucoes.edit');
-    Route::post('/update/{id}',[ItensdevolucaoController::class,'update'])->middleware(['auth'])->name('itensdevolucoes.update');
-    Route::delete('/delete/{id}',[ItensdevolucaoController::class,'destroy'])->middleware(['auth'])->name('itensdevolucoes.delete');
 });
 
 Route::prefix('devolucoes')->group(function () {

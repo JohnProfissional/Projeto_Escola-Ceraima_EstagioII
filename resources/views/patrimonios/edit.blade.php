@@ -79,22 +79,22 @@
                         Tela inicial
                     </a>
 
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="">
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.create') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
                             <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2Zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672Z" />
                             <path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5Z" />
                         </svg>
-                        Cadastrar item
+                        Cadastrar Patrimônio
                     </a>
 
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="">
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                         </svg>
-                        Ver itens cadastrados
+                        Ver patrimônios cadastrados
                     </a>
 
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="">
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('reservas.create') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-journal-check" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M10.854 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 8.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
                             <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
@@ -103,7 +103,7 @@
                         Reservar
                     </a>
 
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="">
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('reservas.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z" />
                             <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
@@ -135,83 +135,65 @@
         <div class="row d-flex justify-content-around ">
             <div class="w-auto d-flex justify-content-center m-5">
 
-                <form action="" method="POST" class="col-12 m-0 p-0 formulario">
-                    <!-- <input type="hidden" value="{{ csrf_token()}}" name="_token"> -->
+                <form action="/patrimonios/update/{{$Patrimonio->id}}" method="POST" class="col-12 m-0 p-0 formulario">
                     @csrf()
                     <div class="row m-2">
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputNomeBem" class="m-2 textoAzul3">Nome:</label>
-                            <input type="text" id="inputNomeBem" class="w-auto form-control w-sm-auto" placeholder="Mesa, cadeira, pincel, etc" name="nomePatrimonio">
+                            <label for="descricaodopatrimonio" class="m-2 textoAzul3">Descrição do Patrimônio:</label>
+                            <textarea id="descricaodopatrimonio" class="w-auto form-control w-sm-auto" name="descricaodopatrimonio" required>{{$Patrimonio->descricaodopatrimonio}}</textarea>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputQuantidade" class="m-2 textoAzul3">Quantidade:</label>
-                            <input type="number" id="inputQuantidade" class="w-auto form-control w-sm-auto" placeholder="15" name="quantidade">
+                            <label for="tombo" class="m-2 textoAzul3">Tombo:</label>
+                            <input value="{{$Patrimonio->tombo}}" name="tombo" type="number" id="tombo" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputDescricao" class="m-2 textoAzul3">Descrição:</label>
-                            <textarea id="inputDescricao" class="w-auto form-control w-sm-auto" placeholder="60 x 60 x 56 cm, quatro pernas..." name="descricao"></textarea>
+                            <label for="valordobem" class="m-2 textoAzul3">Valor do bem:</label>
+                            <input value="{{$Patrimonio->valordobem}}" name="valordobem" type="text" id="valordobem" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputValorUnitario" class="m-2 textoAzul3">Valor unitário:</label>
-                            <input name="valorUnitario" type="text" id="inputValorUnitario" class="w-auto form-control w-sm-auto" placeholder="300,00">
+                            <label for="historicodatransferencia" class="m-2 textoAzul3">Historico da Transferência:</label>
+                            <textarea value="{{$Patrimonio->historicodatransferencia}}" id="historicodatransferencia" class="w-auto form-control w-sm-auto" name="historicodatransferencia" required>{{$Patrimonio->historicodatransferencia}}</textarea>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputValorTotal" class="m-2 textoAzul3">Valor total dos bens:</label>
-                            <input name="inputValorTotal" type="text" id="inputValorTotal" class="w-auto form-control w-sm-auto" placeholder="300,00">
+                            <label for="dataaquisicao" class="m-2 textoAzul3">Data de aquisição:</label>
+                            <input value="{{$Patrimonio->dataaquisicao}}" name="dataaquisicao" type="date" id="dataaquisicao" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputNumeroBem" class="m-2 textoAzul3">Número do bem:</label>
-                            <input name="numeroPatrimonio" type="number" id="inputNumeroBem" class="w-auto form-control w-sm-auto" placeholder="1">
+                            <label for="status" class="w-2 textoAzul3">Status:</label><br>
+                            <select name="status" id="status" class="p-2 rounded form-control" required>
+                                <option value="servivel" {{ $Patrimonio->status === 'servivel' ? 'selected' : '' }}>Servível</option>
+                                <option value="inservivel" {{ $Patrimonio->status === 'inservivel' ? 'selected' : '' }}>Inservível</option>
+                                <option value="excedente" {{ $Patrimonio->status === 'excedente' ? 'selected' : '' }}>Excedente</option>
+                                <option value="desaparecido" {{ $Patrimonio->status === 'desaparecido' ? 'selected' : '' }}>Desaparecido</option>
+                            </select>
                         </div>
+                        <!--  -->
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputNumeroNotaFiscal" class="m-2 textoAzul3">Número da nota fiscal:</label>
-                            <input name="numeroNotaFiscal" type="number" id="inputNumeroNotaFiscal" class="w-auto form-control w-sm-auto" placeholder="12">
+                            <label for="entrada_id" class="m-2 textoAzul3">Entrada:</label>
+                            <select name="entrada_id" id="entrada_id" class="w-auto form-control w-sm-auto" required>
+                                <option value="" disabled>Selecione a entrada</option>
+                                @foreach($entradas as $entrada)
+                                <option value="{{ $entrada->id }}" {{ $Patrimonio->entrada_id == $entrada->id ? 'selected' : '' }}>{{$entrada->id}}
+                                </option>
+                                @endforeach
+                            </select>
                         </div>
+
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputDataNotaFiscal" class="m-2 textoAzul3">Data da nota fiscal:</label>
-                            <input name="dataNotaFiscal" type="date" id="inputDataNotaFiscal" class="w-auto form-control w-sm-auto" placeholder="01/01/2023">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputDataAquisicao" class="m-2 textoAzul3">Data de aquisição:</label>
-                            <input name="data" type="date" id="inputDataAquisicao" class="w-auto form-control w-sm-auto" placeholder="01/01/2023">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputSetor" class="w-2 textoAzul3">Setor:</label>
-                            <input name="setor" type="text" id="inputSetor" class="w-auto form-control w-sm-auto" placeholder="Materia escolar">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputOrgao" class="m-2 textoAzul3">Órgão:</label>
-                            <input type="text" id="inputOrgao" class="w-auto form-control w-sm-auto" placeholder="Ministerio da educação, Ministério da saúde..." name="orgao">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputUnidadeOrcamentaria" class="m-2 textoAzul3">Unidade orçamentária:</label>
-                            <input type="text" id="inputUnidadeOrcamentaria" class="w-auto form-control w-sm-auto" placeholder="Tesouraria, secretaria..." name="unidadeOrcamentaria">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputCentroDeCusto" class="m-2 textoAzul3">Centro de custo:</label>
-                            <input type="text" id="inputCentroDeCusto" class="w-auto form-control w-sm-auto" placeholder="Tesouraria, secretaria..." name="centroDeCusto">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputCodigo" class="m-2 textoAzul3">Código:</label>
-                            <input type="number" id="inputCodigo" class="w-auto form-control w-sm-auto" placeholder="09966869008" name="codigo">
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="inputHistorico" class="m-2 textoAzul3">Historico:</label>
-                            <textarea id="inputHistorico" class="w-auto form-control w-sm-auto" placeholder="Escola x, sala y, evento z" name="historico"></textarea>
-                        </div>
-                        <div class="col col-lg-9 m-4">
-                            <label for="selectSituacao" class="w-2 textoAzul3">Situação:</label>
-                            <br><select name="selectSituacao" required="required" class="p-2 rounded form-control">
-                                <option value="servivel">Servível</option>
-                                <option value="inservivel">Inservível</option>
-                                <option value="reservado">Reservado</option>
+                            <label for="comodo_id" class="m-2 textoAzul3">Cômodo:</label>
+                            <select name="comodo_id" id="comodo_id" class="w-auto form-control w-sm-auto" required>
+                                <option value="" disabled>Selecione o cômodo</option>
+                                @foreach($comodos as $comodo)
+                                <option value="{{ $comodo->id }}" {{ $Patrimonio->comodo_id == $comodo->id ? 'selected' : '' }}>{{$comodo->id}}
+                                </option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="col-lg-12" style="text-align:right">
                         <button class="btn btn-success me-5 mb-5" style="color: #fff;">
-                            Cadastrar
+                            Editar
                         </button>
                     </div>
                 </form>

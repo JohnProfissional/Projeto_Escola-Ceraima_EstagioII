@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patrimonio;
+use App\Models\Entrada;
+use App\Models\Comodo;
 use Illuminate\Http\Request;
 
 class PatrimonioController extends Controller
@@ -21,8 +23,16 @@ class PatrimonioController extends Controller
         return view('patrimonios.show', ['patrimonios' => $patrimonio]);
     }
 
-    public function create(){
-        return view('patrimonios.create');
+    public function create($id = null){
+        $comodos = Comodo::all();
+
+        if ($id !== null) {
+            $entradas = Entrada::findOrFail($id);
+            return view('patrimonios.createpatrientrada', ['entradas' => $entradas, 'comodos' => $comodos]);
+        } else {
+            $entradas = Entrada::all();
+            return view('patrimonios.create', ['entradas' => $entradas, 'comodos' => $comodos]);
+        }
     }
 
     public function store(Request $request){
@@ -36,12 +46,16 @@ class PatrimonioController extends Controller
         $patrimonio->dataaquisicao = $request->dataaquisicao;
         $patrimonio->status = $request->status;
         $patrimonio->save();
-        return redirect()->route('patrimonios.index');
+        
+        $entradas = Entrada::all();
+        return redirect()->route('patrimonios.index', ['entradas' => $entradas]);
     }
 
     public function edit($id){
         $Patrimonio = Patrimonio::findorFail($id);
-        return view('patrimonios.edit',['Patrimonio'=>$Patrimonio]);
+        $entradas = Entrada::all();
+        $comodos = Comodo::all();
+        return view('patrimonios.edit',['Patrimonio'=>$Patrimonio, 'entradas' =>$entradas, 'comodos'=>$comodos]);
     }
 
     public function update(Request $request){
@@ -52,6 +66,19 @@ class PatrimonioController extends Controller
     public function destroy($id){
         Patrimonio::findorFail($id)->delete();
         return redirect()->route('patrimonios.index')->with('msg','Patrimônio apagado');
+    }
+
+    public function createpatrientrada($id){
+        $entrada = Entrada::findorFail($id);
+        $comodos = Comodo::all();
+        return view('patrimonios.createpatrientrada', ['entrada'=>$entrada, 'comodos'=>$comodos]);
+    }
+
+    public function storepatrientrada(Request $request){
+        $patrimonio = new Patrimonio();
+        $patrimonio->fill($request->all());
+        $patrimonio->save();
+        return redirect()->route('entradas.show', ['id'=>$patrimonio->entrada_id]);
     }
 
 }

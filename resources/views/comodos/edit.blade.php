@@ -143,16 +143,12 @@
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="setor_id" class="m-2 textoAzul3">Setor:</label>
 						<select name="setor_id" id="setor_id" class="w-auto form-control w-sm-auto" required>
-							@if ($setores->isEmpty())
-							<option value="" disabled>Nenhum setor cadastrado</option>
-							@else
 							<option value="" disabled>Selecione o setor</option>
 							@foreach($setores as $setor)
 							<option value="{{ $setor->id }}" {{ $Comodo->setor_id == $setor->id ? 'selected' : '' }}>
 								{{ $setor->descricaodosetor }}
 							</option>
 							@endforeach
-							@endif
 						</select>
 					</div>
 

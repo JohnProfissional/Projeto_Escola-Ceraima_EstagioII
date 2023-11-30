@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entrada;
+use App\Models\Comodo;
+use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 
 class EntradaController extends Controller
@@ -12,17 +14,33 @@ class EntradaController extends Controller
         return view('entradas.index', ['entradas'=>$entradas]);
     }
 
-    public function show($id){
+    // public function show($id){
+    //     if($id){
+    //         $entrada = Entrada::where('id', $id)->get();
+    //     } else {
+    //         $entrada = Entrada::all();
+    //     }
+    //     return view('entradas.show', ['entradas' => $entrada]);
+    // }
+
+    public function show($id) {
         if($id){
-            $entrada = Entrada::where('id', $id)->get();
+            $entrada = Entrada::find($id);
+            $patrimonios = Patrimonio::where('entrada_id', $entrada->id)->get();
+    
+            if(!$entrada) {
+                return redirect()->route('entradas.index')->with('error', 'Entrada não encontrada');
+            }
         } else {
             $entrada = Entrada::all();
+            $patrimonios = Patrimonio::all();
         }
-        return view('entradas.show', ['entradas' => $entrada]);
+        return view('entradas.show', ['entradas' => $entrada, 'patrimonios' => $patrimonios]);
     }
 
     public function create(){
-        return view('entradas.create');
+        $comodos = Comodo::all();
+        return view('entradas.create', ['comodos' => $comodos]);
     }
 
     public function store(Request $request){
@@ -35,7 +53,6 @@ class EntradaController extends Controller
         $entrada->valortotaldosbens = $request->valortotaldosbens;
         $entrada->numerodanotafiscal = $request->numerodanotafiscal;
         $entrada->datadanotafiscal = $request->datadanotafiscal;
-        $entrada->quantidadetotal = $request->quantidadetotal;
         $entrada->orgao = $request->orgao;
         $entrada->unidadeorcamentaria = $request->unidadeorcamentaria;
         $entrada->totaldebens = $request->totaldebens;
