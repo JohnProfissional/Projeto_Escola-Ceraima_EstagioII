@@ -153,7 +153,7 @@
                             @endforeach
                             @endif
                         </select>
-                    </div>
+                    </div> 
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="quantidadedebens" class="m-2 textoAzul3">Quantidade de bens:</label>
