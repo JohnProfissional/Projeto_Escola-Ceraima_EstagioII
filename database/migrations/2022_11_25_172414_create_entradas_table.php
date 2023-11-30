@@ -23,8 +23,7 @@ class CreateEntradasTable extends Migration
             $table->string('centrodecustodestino',80);
             $table->decimal('valortotaldosbens', 6,2);
             $table->decimal('numerodanotafiscal', 6,2);
-            $table->date('datadanotafiscal'); 
-            $table->integer('quantidadetotal');
+            $table->date('datadanotafiscal');             
             $table->string('orgao', 80); 
             $table->string('unidadeorcamentaria', 80);
             $table->integer('totaldebens');

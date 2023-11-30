@@ -34,8 +34,7 @@ class EntradaController extends Controller
         $entrada->centrodecustodestino = $request->centrodecustodestino;
         $entrada->valortotaldosbens = $request->valortotaldosbens;
         $entrada->numerodanotafiscal = $request->numerodanotafiscal;
-        $entrada->datadanotafiscal = $request->datadanotafiscal;
-        $entrada->quantidadetotal = $request->quantidadetotal;
+        $entrada->datadanotafiscal = $request->datadanotafiscal;        
         $entrada->orgao = $request->orgao;
         $entrada->unidadeorcamentaria = $request->unidadeorcamentaria;
         $entrada->totaldebens = $request->totaldebens;
