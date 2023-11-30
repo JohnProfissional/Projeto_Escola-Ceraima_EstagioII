@@ -145,7 +145,7 @@
                         <label for="quantidadeitensreservados" class="m-2 textoAzul3">Quantidade de Itens Reservados</label>
                         <input name="quantidadeitensreservados" type="number" id="quantidadeitensreservados" class="w-auto form-control w-sm-auto" placeholder="" required>
                     </div>
-                    <!--<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
                         <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
                             @if ($patrimonios->isEmpty())
@@ -170,7 +170,7 @@
                             @endforeach
                             @endif
                         </select>
-                    </div> -->                                      
+                    </div>                              
                 </div>
 
                 <div class="col-lg-12" style="text-align:right">
