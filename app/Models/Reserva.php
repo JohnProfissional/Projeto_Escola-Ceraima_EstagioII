@@ -19,5 +19,4 @@ class Reserva extends Model
     public function acessarPatrimonio(){
         return $this->belongsTo(Patrimonio::class, 'patrimonio_id');
     }
-
 }
