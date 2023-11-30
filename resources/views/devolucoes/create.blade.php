@@ -128,7 +128,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
             <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2Zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672Z" />
             <path d="M13.5 9a.5.5 0 0 1 .5.5V11h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V12h-1.5a.5.5 0 0 1 0-1H13V9.5a.5.5 0 0 1 .5-.5Z" />
-        </svg> Cadastrar Devolução
+        </svg> Nova Devolução
     </div>
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
@@ -139,7 +139,7 @@
                 <div class="row m-2">
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="datadadevolucao" class="m-2 textoAzul3">Data da Devolucao</label>
-                        <input type="text" id="datadadevolucao" class="w-auto form-control w-sm-auto" placeholder="" name="datadadevolucao" required>
+                        <input type="date" id="datadadevolucao" class="w-auto form-control w-sm-auto" placeholder="" name="datadadevolucao" required>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="descricaodadevolucao" class="m-2 textoAzul3">Descrição da Devolução</label>
@@ -157,7 +157,33 @@
                             @endforeach
                             @endif
                         </select>
-                    </div> 
+                    </div>  
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
+                        <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
+                            @if ($patrimonios->isEmpty())
+                            <option value="" disabled>Nenhum Patrimônio Cadastrado</option>
+                            @else
+                            <option value="" disabled selected>Selecione o Patrimônio</option>
+                            @foreach($patrimonios as $patrimonio)
+                            <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                    </div>  
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="emprestimo_id" class="m-2 textoAzul3">Empréstimo</label>
+                        <select name="emprestimo_id" id="emprestimo_id" class="w-auto form-control w-sm-auto" required>
+                            @if ($emprestimos->isEmpty())
+                            <option value="" disabled>Nenhum Empréstimo Cadastrado</option>
+                            @else
+                            <option value="" disabled selected>Selecione o Empréstimoo</option>
+                            @foreach($emprestimos as $emprestimo)
+                            <option value="{{ $emprestimo->id }}">{{ $emprestimo->dataemprestimo }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                    </div>  
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="quantidadedevolvida" class="m-2 textoAzul3">Quantidade Devolvida:</label>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Devolucao;
+use App\Models\Emprestimo;
+use App\Models\Patrimonio;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class DevolucaoController extends Controller
@@ -22,7 +25,10 @@ class DevolucaoController extends Controller
     }
 
     public function create(){
-        return view('devolucoes.create');
+        $usuarios = Usuario::all();
+        $emprestimos = Emprestimo::all();
+        $patrimonios = Patrimonio::all();
+        return view('devolucoes.create', ['patrimonios'=>$patrimonios, 'emprestimos'=>$emprestimos, 'usuarios'=>$usuarios]);        
     }
 
     public function store(Request $request){
@@ -39,7 +45,10 @@ class DevolucaoController extends Controller
 
     public function edit($id){
         $Devolucao = Devolucao::findorFail($id);
-        return view('devolucoes.edit',['Devolucao'=>$Devolucao]);
+        $usuarios = Usuario::all();
+        $emprestimos = Emprestimo::all();
+        $patrimonios = Patrimonio::all();
+        return view('devolucoes.edit',['Devolucao'=>$Devolucao, 'patrimonios'=>$patrimonios, 'emprestimos'=>$emprestimos, 'usuarios'=>$usuarios]);
     }
 
     public function update(Request $request){

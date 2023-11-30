@@ -139,7 +139,7 @@
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
                 <!--CAMPO QUE DEVE SER MODIFICADO CONFORME INFORMAÇÕES DO BANCO-->
-                <h1>Cômodos</h1>
+                <!--<h1>Cômodos</h1>-->
             </div>
         </div>
 

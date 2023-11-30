@@ -181,8 +181,9 @@
                         <td>{{$patrimonio->historicodatransferencia}}</td>
                         <td>{{$patrimonio->dataaquisicao}}</td>
                         <td>{{$patrimonio->status}}</td>
-                        <td>{{$patrimonio->entrada_id}}</td>
-                        <td>{{$patrimonio->comodo_id}}</td>
+                        <td>{{$patrimonio->acessarEntrada->datadatransferencia}}</td>
+                        <td>{{$patrimonio->acessarComodo->descricaodocomodo}}</td> 
+                        
                         <td>
                             <div class="col" id="meio">
                                 <form action="{{route('patrimonios.edit', ['id' => $patrimonio->id])}}" method="get">

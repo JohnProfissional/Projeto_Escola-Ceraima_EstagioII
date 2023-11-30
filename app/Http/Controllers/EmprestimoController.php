@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Emprestimo;
+use App\Models\Patrimonio;
+use App\Models\Reserva;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class EmprestimoController extends Controller
@@ -22,13 +25,16 @@ class EmprestimoController extends Controller
     }
 
     public function create(){
-        return view('emprestimos.create');
+        $usuarios = Usuario::all();
+        $reservas = Reserva::all();
+        $patrimonios = Patrimonio::all();
+        return view('emprestimos.create', ['patrimonios'=>$patrimonios, 'reservas'=>$reservas, 'usuarios'=>$usuarios]);
     }
 
     public function store(Request $request){
         $emprestimo = new Emprestimo();
         $emprestimo->quantidadeemprestada = $request->quantidadeemprestada;
-        $emprestimo->dataemprestimoo = $request->dataemprestimo;
+        $emprestimo->dataemprestimo = $request->dataemprestimo;
         $emprestimo->usuario_id = $request->usuario_id;
         $emprestimo->reserva_id = $request->reserva_id;
         $emprestimo->patrimonio_id = $request->patrimonio_id;       
@@ -38,7 +44,10 @@ class EmprestimoController extends Controller
 
     public function edit($id){
         $Emprestimo = Emprestimo::findorFail($id);
-        return view('emprestimos.edit',['Emprestimo'=>$Emprestimo]);
+        $usuarios = Usuario::all();
+        $reservas = Reserva::all();
+        $patrimonios = Patrimonio::all();
+        return view('emprestimos.edit',['Emprestimo'=>$Emprestimo, 'patrimonios'=>$patrimonios, 'reservas'=>$reservas, 'usuarios'=>$usuarios]);
     }
 
     public function update(Request $request){

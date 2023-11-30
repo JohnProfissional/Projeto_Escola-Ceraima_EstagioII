@@ -163,9 +163,9 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th>Data da Devolução</th>
                         <th>Descrição da Devolução</th>
                         <th>Quantidade Devolvida</th>
+                        <th>Data da Devolução</th>                
                         <th>Empréstimo</th>                        
                         <th>Patrimônio</th>
                         <th>Usuário</th>
@@ -176,9 +176,9 @@
                 <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
                     <tr>
                         <td scope="row">{{$devolucao->id}}</td>
-                        <td>{{$devolucao->datadadevolucao}}</td>
                         <td>{{$devolucao->descricaodadevolucao}}</td>
                         <td>{{$devolucao->quantidadedevolvida}}</td>
+                        <td>{{$devolucao->datadadevolucao}}</td>                        
                         <td>{{$devolucao->acessarEmprestimo->dataemprestimo}}</td>                        
                         <td>{{$devolucao->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$devolucao->acessarUsuario->nome}}</td>                        

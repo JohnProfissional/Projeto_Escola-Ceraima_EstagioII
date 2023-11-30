@@ -140,7 +140,7 @@
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
                 <!--CAMPO QUE DEVE SER MODIFICADO CONFORME INFORMAÇÕES DO BANCO-->
-                <h1>Usuários</h1>
+                <!--<h1>Usuários</h1>-->
             </div>
         </div>
 

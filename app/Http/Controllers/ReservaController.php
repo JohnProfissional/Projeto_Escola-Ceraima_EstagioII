@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patrimonio;
 use App\Models\Reserva;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class ReservaController extends Controller
@@ -22,9 +24,11 @@ class ReservaController extends Controller
     }
     
     public function create(){
-        return view('reservas.create');
+        $usuarios = Usuario::all();
+        $patrimonios = Patrimonio::all();
+        return view('reservas.create', ['patrimonios'=>$patrimonios, 'usuarios'=>$usuarios]); 
     }
-
+    
     public function store(Request $request){
         $reserva = new Reserva();        
         $reserva->datareserva = $request->datareserva;        
@@ -37,7 +41,9 @@ class ReservaController extends Controller
 
     public function edit($id){
         $Reserva = Reserva::findorFail($id);
-        return view('reservas.edit',['Reserva'=>$Reserva]);
+        $usuarios = Usuario::all();
+        $patrimonios = Patrimonio::all();
+        return view('reservas.edit',['Reserva'=>$Reserva, 'usuarios'=>$usuarios, 'patrimonios'=>$patrimonios]);
     }
 
     public function update(Request $request){

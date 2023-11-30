@@ -147,7 +147,7 @@
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="valordobem" class="m-2 textoAzul3">Valor do bem:</label>
-                            <input name="valordobem" type="text" id="valordobem" class="w-auto form-control w-sm-auto" placeholder="" required>
+                            <input name="valordobem" type="number" id="valordobem" class="w-auto form-control w-sm-auto" placeholder="" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="historicodatransferencia" class="m-2 textoAzul3">Historico da Transferência:</label>
@@ -160,10 +160,10 @@
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="status" class="w-2 textoAzul3">Status:</label>
                             <br><select name="status" id="status" class="p-2 rounded form-control" required>
-                                <option value="servivel">Servível</option>
-                                <option value="inservivel">Inservível</option>
-                                <option value="excedente">Excedente</option>
-                                <option value="desaparecido">Desaparecido</option>
+                                <option value="servivel">SERVÍVEL</option>
+                                <option value="inservivel">INSERVÍVEL</option>
+                                <option value="excedente">EXCEDENTE</option>
+                                <option value="desaparecido">DESAPARECIDO</option>
                             </select>
                         </div>
                         
@@ -175,10 +175,10 @@
                                 @else
                                 <option value="" disabled selected>Selecione a entrada</option>
                                 @foreach($entradas as $entrada)
-                                <option value="{{ $entrada->id }}">{{ $entrada->id }}</option>
+                                <option value="{{ $entrada->id }}">{{ $entrada->datadatransferencia }}</option>
                                 @endforeach
                                 @endif
-                            </select>
+                            </select> 
                         </div>
 
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -193,7 +193,7 @@
                                 @endforeach
                                 @endif
                             </select>
-                        </div>
+                        </div> 
                         <!--  -->
 
                     </div>

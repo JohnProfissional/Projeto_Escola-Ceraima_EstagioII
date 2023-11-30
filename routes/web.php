@@ -92,26 +92,6 @@ Route::prefix('setores')->group(function () {
     Route::delete('/delete/{id}',[SetorController::class,'destroy'])->middleware(['auth'])->name('setores.delete');
 });
 
-Route::prefix('saidas')->group(function () {
-    Route::get('/',[SaidaController::class,'index'])->middleware(['auth'])->name('saidas.index');
-    Route::get('/show/{id}',[SaidaController::class,'show'])->middleware(['auth'])->name('saidas.show');
-    Route::get('/create',[SaidaController::class,'create'])->middleware(['auth'])->name('saidas.create');
-    Route::post('/store',[SaidaController::class,'store'])->middleware(['auth'])->name('saidas.store');
-    Route::get('/edit/{id}',[SaidaController::class,'edit'])->middleware(['auth'])->name('saidas.edit');
-    Route::post('/update/{id}',[SaidaController::class,'update'])->middleware(['auth'])->name('saidas.update');
-    Route::delete('/delete/{id}',[SaidaController::class,'destroy'])->middleware(['auth'])->name('saidas.delete');
-});
-
-Route::prefix('patrimoniosinserviveis')->group(function () {
-    Route::get('/',[Patrimonio_InservivelController::class,'index'])->middleware(['auth'])->name('patrimoniosinserviveis.index');
-    Route::get('/show/{id}',[Patrimonio_InservivelController::class,'show'])->middleware(['auth'])->name('patrimoniosinserviveis.show');
-    Route::get('/create',[Patrimonio_InservivelController::class,'create'])->middleware(['auth'])->name('patrimoniosinserviveis.create');
-    Route::post('/store',[Patrimonio_InservivelController::class,'store'])->middleware(['auth'])->name('patrimoniosinserviveis.store');
-    Route::get('/edit/{id}',[Patrimonio_InservivelController::class,'edit'])->middleware(['auth'])->name('patrimoniosinserviveis.edit');
-    Route::post('/update/{id}',[Patrimonio_InservivelController::class,'update'])->middleware(['auth'])->name('patrimoniosinserviveis.update');
-    Route::delete('/delete/{id}',[Patrimonio_InservivelController::class,'destroy'])->middleware(['auth'])->name('patrimoniosinserviveis.delete');
-});
-
 Route::prefix('manutencoes')->group(function () {
     Route::get('/',[ManutencaoController::class,'index'])->middleware(['auth'])->name('manutencoes.index');
     Route::get('/show/{id}',[ManutencaoController::class,'show'])->middleware(['auth'])->name('manutencoes.show');
@@ -142,16 +122,6 @@ Route::prefix('bensexcedentes')->group(function () {
     Route::delete('/delete/{id}',[BemexcedenteController::class,'destroy'])->middleware(['auth'])->name('bensexcedentes.delete');
 });
 
-Route::prefix('desaparecidos')->group(function () {
-    Route::get('/',[DesaparecidoController::class,'index'])->middleware(['auth'])->name('desaparecidos.index');
-    Route::get('/show/{id}',[DesaparecidoController::class,'show'])->middleware(['auth'])->name('desaparecidos.show');
-    Route::get('/create',[DesaparecidoController::class,'create'])->middleware(['auth'])->name('desaparecidos.create');
-    Route::post('/store',[DesaparecidoController::class,'store'])->middleware(['auth'])->name('desaparecidos.store');
-    Route::get('/edit/{id}',[DesaparecidoController::class,'edit'])->middleware(['auth'])->name('desaparecidos.edit');
-    Route::post('/update/{id}',[DesaparecidoController::class,'update'])->middleware(['auth'])->name('desaparecidos.update');
-    Route::delete('/delete/{id}',[DesaparecidoController::class,'destroy'])->middleware(['auth'])->name('desaparecidos.delete');
-});
-
 Route::prefix('baixas_patrimoniais')->group(function () {
     Route::get('/',[Baixa_PatrimonialController::class,'index'])->middleware(['auth'])->name('baixas_patrimoniais.index');
     Route::get('/show/{id}',[Baixa_PatrimonialController::class,'show'])->middleware(['auth'])->name('baixas_patrimoniais.show');
@@ -168,7 +138,7 @@ Route::prefix('emprestimos')->group(function () {
     Route::get('/create',[EmprestimoController::class,'create'])->middleware(['auth'])->name('emprestimos.create');
     Route::post('/store',[EmprestimoController::class,'store'])->middleware(['auth'])->name('emprestimos.store');
     Route::get('/edit/{id}',[EmprestimoController::class,'edit'])->middleware(['auth'])->name('emprestimos.edit');
-    Route::post('/update/{id}',[EmprestimoController::class,'update'])->middleware(['auth'])->name('emprestimos.update');
+    Route::put('/update/{id}',[EmprestimoController::class,'update'])->middleware(['auth'])->name('emprestimos.update');
     Route::delete('/delete/{id}',[EmprestimoController::class,'destroy'])->middleware(['auth'])->name('emprestimos.delete');
 });
 
@@ -178,7 +148,7 @@ Route::prefix('devolucoes')->group(function () {
     Route::get('/create',[DevolucaoController::class,'create'])->middleware(['auth'])->name('devolucoes.create');
     Route::post('/store',[DevolucaoController::class,'store'])->middleware(['auth'])->name('devolucoes.store');
     Route::get('/edit/{id}',[DevolucaoController::class,'edit'])->middleware(['auth'])->name('devolucoes.edit');
-    Route::post('/update/{id}',[DevolucaoController::class,'update'])->middleware(['auth'])->name('devolucoes.update');
+    Route::put('/update/{id}',[DevolucaoController::class,'update'])->middleware(['auth'])->name('devolucoes.update');
     Route::delete('/delete/{id}',[DevolucaoController::class,'destroy'])->middleware(['auth'])->name('devolucoes.delete');
 });
 

@@ -139,7 +139,7 @@
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
                 <!--CAMPO QUE DEVE SER MODIFICADO CONFORME INFORMAÇÕES DO BANCO-->
-                <h1>Reservas</h1>
+                <!--<h1>Reservas</h1>-->
             </div>
         </div>
 
@@ -164,9 +164,9 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th>Data da Reserva</th>
-                        <th>Quantidade de Itens Reservados</th>
-                        <th>Usuário</th>
                         <th>Patrimônio</th>                        
+                        <th>Quantidade de Itens Reservados</th>
+                        <th>Usuário</th>                        
                     </tr>
                 </thead>
                 
@@ -175,10 +175,10 @@
                     <tr>
                         <td scope="row">{{$reserva->id}}</td>
                         <td>{{$reserva->datareserva}}</td>
+                        <td>{{$reserva->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$reserva->quantidadeitensreservados}}</td>
                         <td>{{$reserva->acessarUsuario->nome}}</td>
-                        <td>{{$reserva->acessarPatrimonio->descricaodopatrimonio}}</td>
-
+                        
                         <td>
                             <div class="col" id="meio">
                                 <form action="{{route('reservas.edit', ['id' => $reserva->id])}}" method="get">

@@ -36,15 +36,15 @@ class PatrimonioController extends Controller
     }
 
     public function store(Request $request){
-        $patrimonio = new Patrimonio();
-        $patrimonio->entrada_id = $request->entrada_id;
-        $patrimonio->comodo_id = $request->comodo_id;
+        $patrimonio = new Patrimonio();        
         $patrimonio->descricaodopatrimonio = $request->descricaodopatrimonio;
         $patrimonio->tombo = $request->tombo;
         $patrimonio->valordobem = $request->valordobem;
         $patrimonio->historicodatransferencia = $request->historicodatransferencia;
         $patrimonio->dataaquisicao = $request->dataaquisicao;
         $patrimonio->status = $request->status;
+        $patrimonio->entrada_id = $request->entrada_id;
+        $patrimonio->comodo_id = $request->comodo_id;
         $patrimonio->save();
         
         $entradas = Entrada::all();
