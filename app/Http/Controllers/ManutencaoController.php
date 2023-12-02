@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manutencao;
+use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 
 class ManutencaoController extends Controller
@@ -22,7 +23,8 @@ class ManutencaoController extends Controller
     }
 
     public function create(){
-        return view('manutencoes.create');
+        $patrimonios = Patrimonio::all();
+        return view('manutencoes.create', ['patrimonios'=>$patrimonios]);
     }
 
     public function store(Request $request){
@@ -39,7 +41,8 @@ class ManutencaoController extends Controller
 
     public function edit($id){
         $Manutencao = Manutencao::findorFail($id);
-        return view('manutencoes.edit',['Manutencao'=>$Manutencao]);
+        $patrimonios = Patrimonio::all();
+        return view('manutencoes.edit',['Manutencao'=>$Manutencao, 'patrimonios'=>$patrimonios]);
     }
 
     public function update(Request $request, $id){

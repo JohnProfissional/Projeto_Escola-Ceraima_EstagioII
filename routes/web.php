@@ -163,7 +163,7 @@ Route::prefix('comodos')->group(Function () {
 });
 
 Route::prefix('cedidos')->group(function () {
-    Route::get('/index',[CedidoController::class,'index'])->middleware(['auth'])->name('cedidos.index');
+    Route::get('/',[CedidoController::class,'index'])->middleware(['auth'])->name('cedidos.index');
     Route::get('/create',[CedidoController::class,'create'])->middleware(['auth'])->name('cedidos.create');
     Route::post('/store',[CedidoController::class,'store'])->middleware(['auth'])->name('cedidos.store');
     Route::get('/show/{id}',[CedidoController::class,'show'])->middleware(['auth'])->name('cedidos.show');

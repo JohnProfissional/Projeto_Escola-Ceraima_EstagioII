@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cedido;
+use App\Models\Patrimonio;
 
 class CedidoController extends Controller
 {
@@ -23,7 +24,8 @@ class CedidoController extends Controller
     }
 
     public function create(){
-        return view('cedidos.create');
+        $patrimonios = Patrimonio::all();
+        return view('cedidos.create', ['patrimonios'=>$patrimonios]);
     }
 
     public function store(Request $request){
@@ -37,7 +39,8 @@ class CedidoController extends Controller
 
     public function edit($id){
         $Cedido = Cedido::findorFail($id);
-        return view('cedidos.edit',['Cedido'=>$Cedido]);
+        $patrimonios = Patrimonio::all();
+        return view('cedidos.edit',['Cedido'=>$Cedido, 'patrimonios'=>$patrimonios]);
     }
 
     public function update(Request $request, $id){
