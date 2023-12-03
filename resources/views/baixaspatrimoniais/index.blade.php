@@ -160,30 +160,26 @@
         <div class="row m-3">
 
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
-                @foreach ($baixaspatrimoniais as $baixa_patrimonial)
                 <thead>
                     <tr>
-                        <th scope="col">Id</th>
-                        <th>Código do item</th>
-                        <th>Item Retirado</th>
-                        <th>Quantidade de Item</th>
+                        <th scope="col">ID</th>
+                        <th>Patrimônio Retirado</th>
+                        <th>Quantidade Retirada</th>
                         <th>Encarregado da retirada</th>
                         <th>Data da Retirada</th>
                         <th>Responsável</th>
                     </tr>
                 </thead>
 
+                @foreach ($baixaspatrimoniais as $baixa_patrimonial)
                 <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
                     <tr>
                         <td scope="row">{{$baixa_patrimonial->id}}</td>
-                        <td>{{$baixa_patrimonial->numerodoitemretirado}}</td>
-                        <td>{{$baixa_patrimonial->itemretirado}}</td>
+                        <td>{{$baixa_patrimonial->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$baixa_patrimonial->quantidaderetirada}}</td>
                         <td>{{$baixa_patrimonial->encarregadodaretirada}}</td>
                         <td>{{$baixa_patrimonial->datadabaixa}}</td>
                         <td>{{$baixa_patrimonial->responsavelentregar}}</td>
-
-
                         <td>
                             <div class="col" id="meio">
                                 <form action="{{route('baixas_patrimoniais.edit', ['id' => $baixa_patrimonial->id])}}" method="get">
@@ -209,15 +205,6 @@
                                 </form>
                             </div>
                         </td>
-                        
-                        <!-- <td>
-                            <div class="col" id="meio">
-                                <form id="formShow" action="{{ route('baixas_patrimoniais.show', ['id' => $baixa_patrimonial->id]) }}" method="POST">
-                                    @csrf
-                                    <input type="submit" value="Ver Detalhes"><br><br>
-                                </form>
-                            </div>
-                        </td> -->
 
                     </tr>
                 </tbody>
@@ -227,7 +214,7 @@
         </div>
 
         <div class="col-lg-12 me-3" style="text-align:right">
-            <form action="{{route('baixas_patrimoniais.create')}}" method="get">
+            <form action="{{ route('baixas_patrimoniais.create')}}" method="get">
                 @csrf
                 <input type="submit" class="btn btn-success" value="Nova">
             </form>

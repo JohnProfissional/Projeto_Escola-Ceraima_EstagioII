@@ -160,10 +160,10 @@
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="status" class="w-2 textoAzul3">Status:</label>
                             <br><select name="status" id="status" class="p-2 rounded form-control" required>
-                                <option value="servivel">SERVÍVEL</option>
-                                <option value="inservivel">INSERVÍVEL</option>
-                                <option value="excedente">EXCEDENTE</option>
-                                <option value="desaparecido">DESAPARECIDO</option>
+                                <option value="servivel">Servível</option>
+                                <option value="inservivel">Inservível</option>
+                                <option value="excedente">Excedente</option>
+                                <option value="desaparecido">Desaparecido</option>
                             </select>
                         </div>
                         

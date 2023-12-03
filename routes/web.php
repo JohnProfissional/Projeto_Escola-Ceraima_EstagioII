@@ -126,6 +126,7 @@ Route::prefix('baixas_patrimoniais')->group(function () {
     Route::get('/',[Baixa_PatrimonialController::class,'index'])->middleware(['auth'])->name('baixas_patrimoniais.index');
     Route::get('/show/{id}',[Baixa_PatrimonialController::class,'show'])->middleware(['auth'])->name('baixas_patrimoniais.show');
     Route::get('/create',[Baixa_PatrimonialController::class,'create'])->middleware(['auth'])->name('baixas_patrimoniais.create');
+    // Route::get('/create/{id}',[Baixa_PatrimonialController::class,'create'])->middleware(['auth'])->name('baixas_patrimoniais.create');
     Route::post('/store',[Baixa_PatrimonialController::class,'store'])->middleware(['auth'])->name('baixas_patrimoniais.store');
     Route::get('/edit/{id}',[Baixa_PatrimonialController::class,'edit'])->middleware(['auth'])->name('baixas_patrimoniais.edit');
     Route::post('/update/{id}',[Baixa_PatrimonialController::class,'update'])->middleware(['auth'])->name('baixas_patrimoniais.update');

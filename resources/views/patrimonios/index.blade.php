@@ -144,9 +144,12 @@
             <form action="" class="d-flex justify-content-around w-auto" method="post">
 
                 <select name="selectCampoDeBusca" required="required" class="p-2 m-2 rounded form-control">
-                    <option value="nome">Busca por nome</option>
-                    <option value="categoria">Busca por categoria</option>
-                    <option value="quantidades">Busca por quantidade</option>
+                    <option value="" selected>Todos</option>
+                    <option value="">Patrimônios Servíveis</option>
+                    <option value="">Patrimônios Inservíveis</option>
+                    <option value="">Patrimônios Excedentes</option>
+                    <!-- <option value="">Patrimônios Cedidos</option>
+                    <option value="">Patrimônios Desaparecidos</option> -->
                 </select>
 
                 <input type="text" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquise aqui...">
@@ -209,6 +212,19 @@
                                 </form>
                             </div>
                         </td>
+
+
+                        <td>
+                            @if($patrimonio->status === "inservivel")
+                            <div class="col" id="meio">
+                                <form id="formBaixaPatrimonial" action="{{ route('baixas_patrimoniais.create', ['id' => $patrimonio->id]) }}" method="GET">
+                                    @csrf
+                                    <input type="submit" class="btn btn-primary" value="Baixa Patrimonial"><br><br>
+                                </form>
+                            </div>
+                            @endif
+                        </td>
+
                     </tr>
                 </tbody>
 

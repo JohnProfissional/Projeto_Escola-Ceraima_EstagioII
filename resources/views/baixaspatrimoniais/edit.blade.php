@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Editar Item')
+@section('title', 'Editar Baixa Patrimonial')
 
 @section('cabecalho')
 <!--Cabecalho das telas (fora login e cadastro)-->
@@ -139,41 +139,36 @@
                     @csrf
                     <div class="row m-2">
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                            <label for="id" class="m-2 textoAzul3">ID:</label>
+                            <input value="{{$Baixa_Patrimonial->id}}" type="number" id="id" class="w-auto form-control w-sm-auto" required name="id" readonly>
+                        </div>
+                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="responsavelentregar" class="m-2 textoAzul3">Responsável pela entrega:</label>
-                            <input value="{{$Baixa_Patrimonial->responsavelentregar}}" type="text" id="responsavelentregar" class="w-auto form-control w-sm-auto" placeholder="" name="responsavelentregar">
+                            <input value="{{$Baixa_Patrimonial->responsavelentregar}}" type="text" id="responsavelentregar" class="w-auto form-control w-sm-auto" required name="responsavelentregar">
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="datadabaixa" class="m-2 textoAzul3">Data da baixa:</label>
-                            <input value="{{$Baixa_Patrimonial->datadabaixa}}" name="datadabaixa" type="date" id="datadabaixa" class="w-auto form-control w-sm-auto" placeholder="">
+                            <input value="{{$Baixa_Patrimonial->datadabaixa}}" name="datadabaixa" type="date" id="datadabaixa" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="encarregadodaretirada" class="m-2 textoAzul3">Encarregado da retirada:</label>
-                            <input value="{{$Baixa_Patrimonial->encarregadodaretirada}}" name="encarregadodaretirada" type="text" id="encarregadodaretirada" class="w-auto form-control w-sm-auto" placeholder="">
+                            <input value="{{$Baixa_Patrimonial->encarregadodaretirada}}" name="encarregadodaretirada" type="text" id="encarregadodaretirada" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="quantidaderetirada" class="m-2 textoAzul3">Quantidade retirada:</label>
-                            <input value="{{$Baixa_Patrimonial->quantidaderetirada}}" name="quantidaderetirada" type="number" id="quantidaderetirada" class="w-auto form-control w-sm-auto" placeholder="">
+                            <input value="{{$Baixa_Patrimonial->quantidaderetirada}}" name="quantidaderetirada" type="number" id="quantidaderetirada" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="itemretirado" class="m-2 textoAzul3">Item retirado:</label>
-                            <input value="{{$Baixa_Patrimonial->itemretirado}}" type="text" id="itemretirado" class="w-auto form-control w-sm-auto" placeholder="" name="itemretirado">
-                        </div>
-                        <!-- <div class="col col-lg-9 m-4">
-                            <label for="itemretirado" class="w-2 textoAzul3">Item retirado:</label>
-                            <br><select name="itemretirado" required="required" class="p-2 rounded form-control">
-                                <option value="servivel">Servível</option>
-                                <option value="inservivel">Inservível</option>
-                                <option value="reservado">Reservado</option>
-                                <option value="excedente">Excedente</option>
-                                <option value="desaparecido">Desaparecido</option>
-                            </select>
-                        </div> -->
-                        <!-- Esse campo tem q aumentar de acordo com a quantidade de itens retirados -> cada item tem um numero diferentes, temos q armazenar td -->
-                        <!-- Esse deve completar automaticamente apos o suuário selecionar o item no input anterior, ficando readonly -->
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="numerodoitemretirado" class="m-2 textoAzul3">Número do item retirado:</label>
-                            <input value="{{$Baixa_Patrimonial->numerodoitemretirado}}" type="number" id="numerodoitemretirado" class="w-auto form-control w-sm-auto" placeholder="" name="numerodoitemretirado">
-                        </div>
+						<label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Retirado:</label>
+						<select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
+							<option value="" disabled>Selecione o patrimônio</option>
+							@foreach($patrimonios as $patrimonio)
+							<option value="{{ $patrimonio->id }}" {{ $Baixa_Patrimonial->patrimonio_id == $patrimonio->id ? 'selected' : '' }}>
+								{{ $patrimonio->descricaodopatrimonio }}
+							</option>
+							@endforeach
+						</select>
+					</div>
                     </div>
 
                     <div class="col-lg-12" style="text-align:right">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Baixa_Patrimonial;
+use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 
 class Baixa_PatrimonialController extends Controller
@@ -20,9 +21,10 @@ class Baixa_PatrimonialController extends Controller
         }
         return view('baixaspatrimoniais.show', ['baixaspatrimoniais' => $baixapatrimonial]);
     }
-    
-    public function create(){
-        return view('baixaspatrimoniais.create');
+
+    public function create() {
+        $patrimonios = Patrimonio::where('status', '=', 'inservivel')->get();
+        return view('baixaspatrimoniais.create', ['patrimonios' => $patrimonios]);
     }
 
     public function store(Request $request){
@@ -38,7 +40,8 @@ class Baixa_PatrimonialController extends Controller
 
     public function edit($id){
         $Baixa_Patrimonial = Baixa_Patrimonial::findorFail($id);
-        return view('baixaspatrimoniais.edit',['Baixa_Patrimonial'=>$Baixa_Patrimonial]);
+        $patrimonios = Patrimonio::all();
+        return view('baixaspatrimoniais.edit',['Baixa_Patrimonial'=>$Baixa_Patrimonial, 'patrimonios'=> $patrimonios]);
     }
 
     public function update(Request $request){
