@@ -17,9 +17,9 @@ class CreateEmprestimosTable extends Migration
             $table->id();
             $table->timestamps();            
             $table->decimal('quantidadeemprestada', 6,2);
-            $table->date('dataemprestimo');
+            $table->date('dataemprestimo');  
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->unsignedBigInteger('reserva_id');
             $table->foreign('reserva_id')->references('id')->on('reservas');
             $table->unsignedBigInteger('patrimonio_id');

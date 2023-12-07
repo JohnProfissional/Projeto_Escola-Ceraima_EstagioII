@@ -17,13 +17,14 @@ class CreateReservasTable extends Migration
             $table->id();
             $table->timestamps();            
             $table->date('datareserva');
-            $table->integer('quantidadeitensreservados');            
+            $table->integer('quantidadeitensreservados');                     
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');                     
+            $table->foreign('usuario_id')->references('id')->on('users');    
             $table->unsignedBigInteger('patrimonio_id');
             $table->foreign('patrimonio_id')->references('id')->on('patrimonios');                     
         });
     }
+                
 
     /**
      * Reverse the migrations.

@@ -1,12 +1,13 @@
-html, body{
+html,
+body {
     background-color: #EBEBEB;
     width: 100% !important;
     min-height: 100vh !important;
 }
 
-:root{
+:root {
     /*cores*/
-    --azul-claro-1:#71BBB9;
+    --azul-claro-1: #71BBB9;
     --azul-cabecalho: #6FBCAA;
     --azul-botoes: #40A7A0;
     --azul-botoes-2: #32837d;
@@ -15,10 +16,10 @@ html, body{
     --container-pequeno: #D9D9D9;
 
     /*fontes*/
-    --fonte-estilizada-1: 'IM Fell French Canon SC'; 
+    --fonte-estilizada-1: 'IM Fell French Canon SC';
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -26,18 +27,18 @@ html, body{
 
 
 /*Header*/
-.cabecalho{
+.cabecalho {
     background-color: var(--azul-cabecalho);
     width: 100%;
 }
 
-.titulo-cabecalho{
+.titulo-cabecalho {
     font-family: var(--fonte-estilizada-11);
     color: #fff;
     font-size: 25px;
 }
 
-.cabecalho2{
+.cabecalho2 {
     color: #fff;
     font-size: 20px;
     background-color: transparent;
@@ -47,32 +48,32 @@ html, body{
 
 }
 
-.content{
+.content {
     transition: 1s;
 }
 
 
 
 /*Body*/
-    /*Tela de login*/
-.sinalBemVindo{
+/*Tela de login*/
+.sinalBemVindo {
     background-color: var(--azul-claro-1);
     color: #fff;
     border-radius: 22px;
 }
 
-.cardLoginCadastro{
+.cardLoginCadastro {
     border-top-color: #C3C3C3;
     border-radius: 25px;
     border-top-width: medium;
     border-top-style: solid;
 }
 
-.textoAzul3{
+.textoAzul3 {
     color: var(--texto-3);
 }
 
-.botoes{
+.botoes {
     background-color: var(--azul-botoes);
     color: #fff;
     border: none;
@@ -80,59 +81,59 @@ html, body{
 
 
 
-    /*Home page - meu lateral*/
-.modal{
+/*Home page - meu lateral*/
+.modal {
     width: 300px;
     color: #fff;
-    
+
 }
 
-.modal-content{
+.modal-content {
     width: 300px;
     background-color: var(--azul-cabecalho);
 }
 
-.modal-header{
+.modal-header {
     background-color: var(--azul-botoes);
 }
 
-.modal-body{
+.modal-body {
     background-color: var(--azul-cabecalho);
-    border: none;    
+    border: none;
 }
 
-.itens-menu-lateral:hover{
+.itens-menu-lateral:hover {
     background-color: var(--texto-3);
     padding: auto;
     border-radius: 22px;
 }
 
-.modal-buton{
+.modal-buton {
     background-color: var(--azul-botoes-2);
     color: #fff;
 }
 
-.modal-footer{
+.modal-footer {
     background-color: var(--azul-botoes);
 }
 
 
 /*Home page - conteúdo*/
 
-.container-conteudo{
+.container-conteudo {
     border-top-color: var(--texto-2);
     border-radius: 22px;
     border-top-width: medium;
     border-top-style: solid;
 }
 
-.itens-home-page{
+.itens-home-page {
     color: var(--texto-3);
     text-decoration: none;
     font-size: 25px;
 }
 
-.container-pequeno{
+.container-pequeno {
     background-color: var(--container-pequeno);
     border-radius: 22px;
     font-size: 20px;
@@ -140,64 +141,64 @@ html, body{
     font-weight: bold;
 }
 
-.imagens{
+.imagens {
     max-width: 65%;
     max-height: 65%;
     padding: 0%;
     margin: 3px;
-    border-radius:22px
+    border-radius: 22px
 }
 
 
 /*Cadastrar bens*/
-.sinalizador{
+.sinalizador {
     background-color: var(--azul-cabecalho);
     color: #fff;
     font-size: 20px;
 }
 
-.sinalizador-selecionado{
+.sinalizador-selecionado {
     background-color: var(--texto-3);
     color: #fff;
     font-size: 20px;
 }
 
-.formulario{
+.formulario {
     width: 100%;
     padding: 0%;
     font-size: 20px;
 }
 
-.form-control{
+.form-control {
     color: var(--texto-2);
 }
 
-input{
+input {
     color: var(--texto-2);
 }
 
-select{
+select {
     color: var(--texto-2);
 }
 
 /*Exclusão de patrimônio*/
 
-table{
+table {
     border-radius: 22px;
     overflow: hidden;
 }
 
-.cabecalho-itens{
+.cabecalho-itens {
     background-color: var(--texto-3);
     color: #fff;
     height: 50px;
 }
 
-.conteudo-itens{
+.conteudo-itens {
     background-color: var(--azul-cabecalho);
 }
 
-.botao-personalizado-itens{
+.botao-personalizado-itens {
     background-color: var(--azul-cabecalho);
     border: none;
     color: #fff;
@@ -205,7 +206,7 @@ table{
 
 /*Exclusão de patrimônio - modal*/
 
-.modalExcluir{
+.modalExcluir {
     margin-left: 40%;
     margin-right: 40%;
     padding: auto;
@@ -213,7 +214,7 @@ table{
     border-radius: 22px;
 }
 
-.modal-footer{
+.modal-footer {
     border-radius: 22px;
     border-color: #fff;
 }
@@ -221,18 +222,49 @@ table{
 
 /*IDs*/
 /*Tela - Categorias*/
-#categorias{
+#categorias {
     text-decoration: none;
 }
 
 
 /*ID*/
 /*Detalhes dos itens*/
-#detalhes{
+#detalhes {
     border-style: solid;
     border-color: var(--texto-2);
     border-radius: 22px;
     border-width: 4px;
 }
 
-/*Reservas*/
+/*Welcome*/
+
+.welcome-container {
+    text-align: center;
+    margin-top: 15%;
+}
+
+.welcome-container h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.welcome-container h3 {
+    font-size: 18px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: #6FBCAA;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #5a9c88;
+}

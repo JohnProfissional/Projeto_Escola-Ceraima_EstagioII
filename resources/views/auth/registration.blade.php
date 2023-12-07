@@ -20,6 +20,14 @@
                             </div>
 
                             <div class="form-group mb-3">
+                                <input type="text" placeholder="CPF" id="cpf" class="form-control"
+                                    name="cpf" required autofocus>
+                                @if ($errors->has('cpf'))
+                                <span class="text-danger">{{ $errors->first('cpf') }}</span>
+                                @endif
+                            </div>
+
+                            <div class="form-group mb-3">
                                 <input type="text" placeholder="Email" id="email_address" class="form-control"
                                     name="email" required autofocus>
                                 @if ($errors->has('email'))

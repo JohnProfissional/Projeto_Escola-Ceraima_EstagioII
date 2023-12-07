@@ -20,7 +20,7 @@ class CreateBensexcedentesTable extends Migration
             $table->string('observacoes',80);
             $table->integer('quantidadeexcedente');            
             $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            // $table->foreign('usuario_id')->references('id')->on('usuarios');
             //$table->unsignedBigInteger('comodo_id');
             //$table->foreign('comodo_id')->references('id')->on('comodos');
         });

@@ -176,11 +176,11 @@
                 <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
                     <tr>
                         <td scope="row">{{$usuario->id}}</td>
-                        <td>{{$usuario->nome}}</td>
+                        <td>{{$usuario->name}}</td>
                         <td>{{$usuario->cpf}}</td>
                         <td>{{$usuario->cargo}}</td>
                         <td>{{$usuario->email}}</td>
-                        <td>{{$usuario->senha}}</td>
+                        <td>{{$usuario->password}}</td>
                         
                         <td>
                             <div class="col" id="meio">

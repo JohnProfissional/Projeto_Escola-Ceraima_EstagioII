@@ -19,11 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
             $table->string('access_level')->default('user'); //nivel de acesso
+            $table->string('cpf', 16);
+            $table->string('cargo',60);
             $table->rememberToken();
             $table->timestamps();
         });
     }
+        
 
     /**
      * Reverse the migrations.

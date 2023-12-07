@@ -12,9 +12,9 @@ class CustomAuthController extends Controller
 {
     public function index()
     {
-        // return view('auth.login');
-        return view('login');
+        return view('auth.login');
     }
+
     public function customLogin(Request $request)
     {
         $request->validate(['email' => 'required', 'password' => 'required',]);
@@ -24,12 +24,11 @@ class CustomAuthController extends Controller
         }
         return redirect("login")->withSuccess('Login details are not valid');
     }
+
     public function registration()
     {
-        // return view('auth.registration');
-        return view('cadastro');
+        return view('auth.registration');
     }
-
 
     public function customRegistration(Request $request)
     {
@@ -43,13 +42,10 @@ class CustomAuthController extends Controller
     {
         return User::create(['name' => $data['name'], 'email' => $data['email'], 'password' => Hash::make($data['password'])]);
     }
-
-
     public function dashboard()
     {
         if (Auth::check()) {
-            // return view('dashboard');
-            return view('home');
+            return view('dashboard');
         }
         return redirect("login")->withSuccess('You are not allowed to access');
     }

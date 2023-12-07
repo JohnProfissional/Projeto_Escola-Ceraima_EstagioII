@@ -23,8 +23,13 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    protected $primaryKey = 'cpf';
+
     protected $fillable = [
         'name',
+        'cpf',
+        'cargo',
         'email',
         'password',
         'access_level', //Nível de acesso

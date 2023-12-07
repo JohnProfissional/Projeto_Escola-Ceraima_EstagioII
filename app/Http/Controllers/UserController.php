@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
     
     public function index(){
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return view('usuarios.index', ['usuarios'=>$usuarios]);
     }
 
     public function show($id){
         if($id){
-            $usuario = Usuario::where('id', $id)->get();
+            $usuario = User::where('id', $id)->get();
         } else {
-            $usuario = Usuario::all();
+            $usuario = User::all();
         }
         return view('usuarios.show', ['usuarios' => $usuario]);
     }
@@ -27,7 +27,7 @@ class UsuarioController extends Controller
     }
 
     public function store(Request $request){
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->nome = $request->nome;
         $usuario->cpf = $request->cpf;
         $usuario->cargo = $request->cargo;
@@ -38,17 +38,17 @@ class UsuarioController extends Controller
     }
 
     public function edit($id){
-        $Usuario = Usuario::findorFail($id);
+        $Usuario = User::findorFail($id);
         return view('usuarios.edit',['Usuario'=>$Usuario]);
     }
 
     public function update(Request $request){
-        Usuario::find($request->id)->update($request->except('_token_'));
+        User::find($request->id)->update($request->except('_token_'));
         return redirect()->route('usuarios.index')->with('msg', 'Alteração realizada com sucesso');
     }
 
     public function destroy($id){
-        Usuario::findorfail($id)->delete();
+        User::findorfail($id)->delete();
         return redirect()->route('usuarios.index')->with('msg','Usuário apagado');
     }
 
