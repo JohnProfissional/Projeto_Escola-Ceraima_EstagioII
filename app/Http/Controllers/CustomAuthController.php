@@ -17,7 +17,7 @@ class CustomAuthController extends Controller
 
     public function customLogin(Request $request)
     {
-        $request->validate(['email' => 'required', 'password' => 'required',]);
+        $request->validate(['email' => 'required', 'password' => 'required']);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')->withSuccess('Signed in');
@@ -32,15 +32,16 @@ class CustomAuthController extends Controller
 
     public function customRegistration(Request $request)
     {
-        $request->validate(['name' => 'required', 'email' => 'required|email|unique:users', 'password' => 'required|min:6',]);
+        $request->validate(['name' => 'required', 'email' => 'required|email|unique:users', 'password' => 'required|min:6', 'cpf' => 'required', 'cargo' => 'required']);
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return redirect("login")->withSuccess('Cadastro realizado com sucesso!');
+        // return redirect("dashboard")->withSuccess('You have signed-in');
     }
 
     public function create(array $data)
     {
-        return User::create(['name' => $data['name'], 'email' => $data['email'], 'password' => Hash::make($data['password'])]);
+        return User::create(['name' => $data['name'], 'email' => $data['email'], 'cpf' => $data['cpf'], 'cargo' => $data['cargo'], 'password' => Hash::make($data['password'])]);
     }
     public function dashboard()
     {

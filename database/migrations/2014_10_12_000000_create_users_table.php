@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
 
             $table->string('access_level')->default('user'); //nivel de acesso
-            $table->string('cpf', 16);
+            $table->string('cpf', 16)->unique();
             $table->string('cargo',60);
             $table->rememberToken();
             $table->timestamps();

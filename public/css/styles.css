@@ -254,7 +254,7 @@ table {
     margin-top: 20px;
 }
 
-.btn {
+.btnWelcome {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 20px;
@@ -265,6 +265,18 @@ table {
     transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+.btnWelcome:hover {
     background-color: #5a9c88;
+}
+
+/* MSG */
+
+.msg {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
 }

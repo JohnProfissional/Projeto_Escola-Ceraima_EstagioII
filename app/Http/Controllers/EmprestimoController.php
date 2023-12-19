@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Emprestimo;
 use App\Models\Patrimonio;
 use App\Models\Reserva;
-use App\Models\Usuario;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmprestimoController extends Controller
@@ -25,7 +25,7 @@ class EmprestimoController extends Controller
     }
 
     public function create(){
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         $reservas = Reserva::all();
         $patrimonios = Patrimonio::all();
         return view('emprestimos.create', ['patrimonios'=>$patrimonios, 'reservas'=>$reservas, 'usuarios'=>$usuarios]);
@@ -44,7 +44,7 @@ class EmprestimoController extends Controller
 
     public function edit($id){
         $Emprestimo = Emprestimo::findorFail($id);
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         $reservas = Reserva::all();
         $patrimonios = Patrimonio::all();
         return view('emprestimos.edit',['Emprestimo'=>$Emprestimo, 'patrimonios'=>$patrimonios, 'reservas'=>$reservas, 'usuarios'=>$usuarios]);

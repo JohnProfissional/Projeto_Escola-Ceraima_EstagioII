@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
-                    <h3 class="card-header text-center">Register User</h3>
+                    <h3 class="card-header text-center">Cadastrar usuário</h3>
                     <div class="card-body">
 
                         <form action="{{ route('register.custom') }}" method="POST">
@@ -45,12 +45,12 @@
 
                             <div class="form-group mb-3">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" name="remember"> Remember Me</label>
+                                    <label><input type="checkbox" name="remember">Lembre de mim</label>
                                 </div>
                             </div>
 
                             <div class="d-grid mx-auto">
-                                <button type="submit" class="btn btn-dark btn-block">Sign up</button>
+                                <button type="submit" class="btn btn-dark btn-block">Entrar</button>
                             </div>
                         </form>
 

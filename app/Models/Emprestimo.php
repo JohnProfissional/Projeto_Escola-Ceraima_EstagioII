@@ -13,7 +13,7 @@ class Emprestimo extends Model
     protected $fillable = ['quantidadeemprestada', 'dataemprestimo', 'usuario_id', 'reserva_id', 'patrimonio_id'];
 
     public function acessarUsuario(){
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function acessarPatrimonio(){

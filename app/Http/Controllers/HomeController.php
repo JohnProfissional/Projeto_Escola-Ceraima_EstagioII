@@ -1,9 +1,11 @@
 <?php
-   
+
 namespace App\Http\Controllers;
-  
+
+use App\Models\User;
 use Illuminate\Http\Request;
-   
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -35,9 +37,18 @@ class HomeController extends Controller
     {
         return view('adminHome');
     }
-    
+
     public function perfil()
     {
-        return view('perfil');
+        // Verifica se o usuário está autenticado
+        if (Auth::check()) {
+            // Recupera o usuário autenticado
+            $user = Auth::user();
+
+            return view('perfil', ['user' => $user]);
+        }
+
+        // Caso não esteja autenticado, redireciona para a página de login ou para onde preferir
+        return redirect()->route('login');
     }
 }

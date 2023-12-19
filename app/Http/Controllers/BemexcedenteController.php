@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bemexcedente;
+use App\Models\Comodo;
 use Illuminate\Http\Request;
 
 class BemexcedenteController extends Controller
@@ -22,22 +23,24 @@ class BemexcedenteController extends Controller
     }
 
     public function create(){
-        return view('bensexcedentes.create');
+        $comodos = Comodo::all();
+        return view('bensexcedentes.create', ['comodos'=>$comodos]);
     }   
 
     public function store(Request $request){
         $bemexcedente = new Bemexcedente();
-        $bemexcedente->descricaodoexcedente = $request->descricaodoexcedente;
+        $bemexcedente->descricao = $request->descricao;
         $bemexcedente->observacoes = $request->observacoes;
         $bemexcedente->quantidadeexcedente = $request->quantidadeexcedente;
-        $bemexcedente->usuario_id = $request->usuario_id;
+        $bemexcedente->comodo_id = $request->comodo_id;
         $bemexcedente->save();
         return redirect()-> route('bensexcedentes.index');
     }
     
     public function edit($id){
         $Bemexcedente = Bemexcedente::findorFail($id);
-        return view('bensexcedentes.edit',['Bemexcedente'=>$Bemexcedente]);
+        $comodos = Comodo::all();
+        return view('bensexcedentes.edit',['Bemexcedente'=>$Bemexcedente, 'comodos'=>$comodos]);
     }
 
     public function update(Request $request){

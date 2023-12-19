@@ -61,11 +61,11 @@
                     @endif
                 </div>
 
-                <div class="d-flex justify-content-center">
+                <!-- <div class="d-flex justify-content-center">
                     <a href="{{ route('register') }}" style="text-decoration: none; margin-top: 10px;">
                         <p style="color: var(--azul-cabecalho);">Não tenho uma conta!</p>
                     </a>
-                </div>
+                </div> -->
             </div>
         </form>
     </x-auth-card>

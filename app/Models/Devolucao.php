@@ -13,7 +13,7 @@ class Devolucao extends Model
     protected $fillable = ['datadadevolucao', 'descricaodadevolucao', 'quantidadedevolvida', 'usuario_id', 'patrimonio_id', 'emprestimo_id']; 
 
     public function acessarUsuario(){
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function acessarPatrimonio(){

@@ -10,9 +10,9 @@ class Bemexcedente extends Model
     use HasFactory;
     protected $table = "bensexcedentes";
 
-    protected $fillable = ['descricaodoexcedente', 'observacoes', 'quantidadeexcedente', 'usuario_id'];   
-
-    public function acessarUsuario(){
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+    protected $fillable = ['descricao', 'observacoes', 'quantidadeexcedente', 'comodo_id']; 
+    
+    public function acessarComodo(){
+        return $this->belongsTo(Comodo::class, 'comodo_id');
     }
 }

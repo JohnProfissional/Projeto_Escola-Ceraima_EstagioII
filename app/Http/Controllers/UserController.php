@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class UsuarioController extends Controller
+class UserController extends Controller
 {
     
     public function index(){
@@ -27,13 +29,24 @@ class UsuarioController extends Controller
     }
 
     public function store(Request $request){
-        $usuario = new User();
-        $usuario->nome = $request->nome;
-        $usuario->cpf = $request->cpf;
-        $usuario->cargo = $request->cargo;
-        $usuario->email = $request->email;
-        $usuario->senha = $request->senha;
-        $usuario->save();
+        $request->validate([
+            'name' => 'required',
+            'cpf' => 'required',
+            'cargo' => 'required',
+            'access_level' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+    
+        $usuario = User::create([
+            'name' => $request->name,
+            'cpf' => $request->cpf,
+            'cargo' => $request->cargo,
+            'access_level' => $request->access_level,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), 
+        ]);
+
         return redirect()->route('usuarios.index');
     }
 

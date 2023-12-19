@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var string[]
      */
 
-    protected $primaryKey = 'cpf';
+    // protected $primaryKey = 'cpf';
 
     protected $fillable = [
         'name',

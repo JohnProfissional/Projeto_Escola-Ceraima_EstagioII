@@ -13,7 +13,7 @@ class Reserva extends Model
     protected $fillable = ['datareserva', 'quantidadeitensreservados', 'usuario_id', 'patrimonio_id'];
 
     public function acessarUsuario(){
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function acessarPatrimonio(){
