@@ -86,6 +86,11 @@
                         Usuários
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <i class="bi bi-folder-plus"></i>
                         Patrimônios
@@ -167,25 +172,41 @@
             </div>
         </div>
 
-        <div class="row">
-            <form action="" class="d-flex justify-content-around w-auto" method="post">
+        <div style="display: flex; justify-content: space-around;">
+            <div class="row">
+                <form action="{{ route('patrimonios.index') }}" class="d-flex justify-content-around w-auto" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div style="display: flex;">
+                            <select name="selectCampoDeBusca" required="required" class="p-2 m-2 rounded form-control">
+                                <option value="" selected disabled>Selecione o Filtro</option>
+                                <option value="todos">Todos</option>
+                                <option value="serviveis">Patrimônios Servíveis</option>
+                                <option value="inserviveis">Patrimônios Inservíveis</option>
+                                <option value="desaparecidos">Patrimônios Desaparecidos</option>
+                                <!-- <option value="cedidos">Patrimônios Cedidos</option>
+                        <option value="excedentes">Patrimônios Excedentes</option> -->
+                            </select>
+                            <input type="submit" class="btn btn-success m-2" value="Filtrar">
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-                <select name="selectCampoDeBusca" required="required" class="p-2 m-2 rounded form-control">
-                    <option value="" selected>Todos</option>
-                    <option value="">Patrimônios Servíveis</option>
-                    <option value="">Patrimônios Inservíveis</option>
-                    <option value="">Patrimônios Excedentes</option>
-                    <!-- <option value="">Patrimônios Cedidos</option>
-                    <option value="">Patrimônios Desaparecidos</option> -->
-                </select>
-
-                <input type="text" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquise aqui...">
-                <input type="submit" class="btn btn-success m-2" value="Buscar">
-            </form>
+            <div class="row">
+                <form action="{{ route('patrimonios.indexBuscar') }}" class="d-flex justify-content-around w-auto" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div style="display: flex;">
+                            <input type="text" name="search" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquisar descrição..." required>
+                            <button type="submit" class="btn btn-success m-2">Buscar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="row m-3">
-
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
@@ -240,7 +261,7 @@
                                 </form>
                             </div>
                         </td>
-                        
+
                         <td>
                             @if($patrimonio->status === "inservivel")
                             <div class="col" id="meio">

@@ -89,6 +89,11 @@
                         Usuários
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <i class="bi bi-folder-plus"></i>
                         Patrimônios
@@ -230,7 +235,7 @@
                                 </form>
                             </div>
                         </td>
-                        @end
+                        @endcan
                     </tr>
                 </tbody>
 
@@ -245,7 +250,7 @@
                 <input type="submit" class="btn btn-success" value="Novo">
             </form>
         </div>
-        @end
+        @endcan
 
     </div>
 

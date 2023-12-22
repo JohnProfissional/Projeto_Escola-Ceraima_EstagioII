@@ -94,6 +94,11 @@
                         Patrimônios
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('bensexcedentes.index') }}">
                         <i class="bi bi-box-arrow-up-right"></i>
                         Bens Excedentes
@@ -204,7 +209,7 @@
                         <td>{{$reserva->datareserva}}</td>
                         <td>{{$reserva->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$reserva->quantidadeitensreservados}}</td>
-                        <td>{{$reserva->acessarUsuario->nome}}</td>
+                        <td>{{$reserva->acessarUsuario->name}}</td>
 
                         @can('access')
                         <td>

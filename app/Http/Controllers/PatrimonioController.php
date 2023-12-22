@@ -7,12 +7,39 @@ use App\Models\Entrada;
 use App\Models\Comodo;
 use Illuminate\Http\Request;
 
+
 class PatrimonioController extends Controller
 {
-    public function index(){
-        $patrimonios = Patrimonio::all();
-        return view('patrimonios.index', ['patrimonios'=>$patrimonios]);
-    }    
+    public function index(Request $request){
+        $filtro = $request->input('selectCampoDeBusca');
+        
+        if($filtro === 'serviveis') {
+            $patrimonios = Patrimonio::where('status', 'Servível')->get();
+        } elseif($filtro === 'inserviveis') {
+            $patrimonios = Patrimonio::where('status', 'Inservível')->get();
+        } elseif($filtro === 'desaparecidos') {
+            $patrimonios = Patrimonio::where('status', 'Desaparecido')->get();
+        } else {
+            $patrimonios = Patrimonio::all();
+        }
+    
+        return view('patrimonios.index', ['patrimonios' => $patrimonios]);
+    }
+
+    public function indexBuscar(Request $request){
+        $searchTerm = $request->input('search');
+        
+        $patrimonios = Patrimonio::query();
+    
+        if ($searchTerm) {
+            $patrimonios->where('descricaodopatrimonio', 'like', '%' . $searchTerm . '%');
+        }
+    
+        $patrimonios = $patrimonios->get();
+    
+        return view('patrimonios.index', compact('patrimonios'));
+    }
+    
 
     public function show($id){
         if($id){

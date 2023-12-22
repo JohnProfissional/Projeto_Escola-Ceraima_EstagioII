@@ -32,14 +32,14 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-Route::post('/custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 Route::get('/register', [CustomAuthController::class, 'registration'])->name('register-user')->middleware('can:access');
 Route::post('/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom')->middleware('can:access');
+// Route::post('/custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 
 Route::get('/logout', [CustomAuthController::class, 'signOut'])->middleware(['auth'])->name('logout');
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
-Route::get('/admin/home', [HomeController::class, 'adminHome'])->middleware('is_admin')->name('admin.home');
 Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'perfil'])->middleware(['auth'])->name('perfil');
+// Route::get('/admin/home', [HomeController::class, 'adminHome'])->middleware('is_admin')->name('admin.home');
 
 Route::prefix('usuarios')->group(function () {
     Route::get('/',[UserController::class,'index'])->middleware(['auth'])->name('usuarios.index')->middleware('can:access');
@@ -47,14 +47,14 @@ Route::prefix('usuarios')->group(function () {
     Route::get('/create',[UserController::class,'create'])->middleware(['auth'])->name('usuarios.create')->middleware('can:access');
     Route::post('/store',[UserController::class,'store'])->middleware(['auth'])->name('usuarios.store')->middleware('can:access');
     Route::get('/edit/{id}', [UserController::class, 'edit'])->middleware(['auth'])->name('usuarios.edit')->middleware('can:access');
-
     Route::put('/update/{id}',[UserController::class,'update'])->middleware(['auth'])->name('usuarios.update')->middleware('can:access');
     Route::delete('/delete/{id}',[UserController::class,'destroy'])->middleware(['auth'])->name('usuarios.delete')->middleware('can:access');
 });
 
-
 Route::prefix('patrimonios')->group(function () {
     Route::get('/',[PatrimonioController::class,'index'])->middleware(['auth'])->name('patrimonios.index');
+    Route::get('/buscar', [PatrimonioController::class, 'indexBuscar'])->middleware(['auth'])->name('patrimonios.indexBuscar');
+
     Route::get('/show/{id}',[PatrimonioController::class,'show'])->middleware(['auth'])->name('patrimonios.show');
     Route::get('/create',[PatrimonioController::class,'create'])->middleware(['auth'])->name('patrimonios.create')->middleware('can:access');
     Route::post('/store',[PatrimonioController::class,'store'])->middleware(['auth'])->name('patrimonios.store')->middleware('can:access');

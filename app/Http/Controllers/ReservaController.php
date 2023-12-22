@@ -6,6 +6,7 @@ use App\Models\Patrimonio;
 use App\Models\Reserva;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservaController extends Controller
 {
@@ -24,9 +25,9 @@ class ReservaController extends Controller
     }
     
     public function create(){
-        $usuarios = User::all();
+        $user = Auth::user();
         $patrimonios = Patrimonio::all();
-        return view('reservas.create', ['patrimonios'=>$patrimonios, 'usuarios'=>$usuarios]); 
+        return view('reservas.create', ['patrimonios'=>$patrimonios, 'usuario'=>$user]); 
     }
     
     public function store(Request $request){

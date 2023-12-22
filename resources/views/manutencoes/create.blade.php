@@ -87,6 +87,11 @@
                         Usuários
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <i class="bi bi-folder-plus"></i>
                         Patrimônios
@@ -172,7 +177,7 @@
                         <input type="text" id="empresa" class="w-auto form-control w-sm-auto" placeholder="" name="empresa" required>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
+                        <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível</label>
                         <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
                             @if ($patrimonios->isEmpty())
                             <option value="" disabled>Nenhum Patrimônio Cadastrado</option>
@@ -199,7 +204,7 @@
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="datasaida" class="m-2 textoAzul3">Data Saída</label>
-                        <input name="datasaida" type="date" id="datasaida" class="w-auto form-control w-sm-auto" placeholder="" required>
+                        <input name="datasaida" type="date" id="datasaida" class="w-auto form-control w-sm-auto" placeholder="">
                     </div>
                 </div>
 

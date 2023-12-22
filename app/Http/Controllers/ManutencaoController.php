@@ -23,7 +23,7 @@ class ManutencaoController extends Controller
     }
 
     public function create(){
-        $patrimonios = Patrimonio::all();
+        $patrimonios = Patrimonio::where('status', 'Inservível')->get();
         return view('manutencoes.create', ['patrimonios'=>$patrimonios]);
     }
 

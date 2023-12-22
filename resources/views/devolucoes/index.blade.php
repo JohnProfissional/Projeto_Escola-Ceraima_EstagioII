@@ -89,6 +89,11 @@
                         Usuários
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <i class="bi bi-folder-plus"></i>
                         Patrimônios
@@ -210,6 +215,7 @@
                         <td>{{$devolucao->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$devolucao->acessarUsuario->nome}}</td>
 
+                        @can('access')
                         <td>
                             <div class="col" id="meio">
                                 <form action="{{route('devolucoes.edit', ['id' => $devolucao->id])}}" method="get">
@@ -235,6 +241,7 @@
                                 </form>
                             </div>
                         </td>
+                        @endcan
                     </tr>
                 </tbody>
 
@@ -242,12 +249,14 @@
             </table>
         </div>
 
+        @can('access')
         <div class="col-lg-12 me-3" style="text-align:right">
             <form action="{{route('devolucoes.create')}}" method="get">
                 @csrf
                 <input type="submit" class="btn btn-success" value="Nova">
             </form>
         </div>
+        @endcan
 
     </div>
 

@@ -87,6 +87,11 @@
                         Usuários
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <i class="bi bi-folder-plus"></i>
                         Patrimônios
@@ -191,14 +196,7 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($usuarios->isEmpty())
-                            <option value="" disabled>Nenhum Usuário Cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
-                            @endforeach
-                            @endif
+                            <option value="{{ $usuario->id }}" selected>{{ $usuario->name }}</option>
                         </select>
                     </div>
                 </div>

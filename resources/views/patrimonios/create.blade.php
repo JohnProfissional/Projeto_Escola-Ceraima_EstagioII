@@ -87,6 +87,11 @@
                         Usuários
                     </a>
 
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
+                        <i class="bi bi-folder-plus"></i>
+                        Entrada de Patrimônios
+                    </a>
+
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
                         <i class="bi bi-folder-plus"></i>
                         Patrimônios
@@ -163,78 +168,74 @@
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row d-flex justify-content-around ">
-            <div class="w-auto d-flex justify-content-center m-5">
-                <form action="{{ route('patrimonios.store') }}" method="POST" class="col-12 m-0 p-0 formulario">
-                    @csrf
-                    <div class="row m-2">
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="descricaodopatrimonio" class="m-2 textoAzul3">Descrição do Patrimônio:</label>
-                            <textarea id="descricaodopatrimonio" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodopatrimonio" required></textarea>
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="tombo" class="m-2 textoAzul3">Tombo:</label>
-                            <input name="tombo" type="number" id="tombo" class="w-auto form-control w-sm-auto" placeholder="" required>
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="valordobem" class="m-2 textoAzul3">Valor do bem:</label>
-                            <input name="valordobem" type="number" id="valordobem" class="w-auto form-control w-sm-auto" placeholder="" required>
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="historicodatransferencia" class="m-2 textoAzul3">Historico da Transferência:</label>
-                            <textarea id="historicodatransferencia" class="w-auto form-control w-sm-auto" placeholder="" name="historicodatransferencia" required></textarea>
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="dataaquisicao" class="m-2 textoAzul3">Data de aquisição:</label>
-                            <input name="dataaquisicao" type="date" id="dataaquisicao" class="w-auto form-control w-sm-auto" placeholder="" required>
-                        </div>
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="status" class="w-2 textoAzul3">Status:</label>
-                            <br><select name="status" id="status" class="p-2 rounded form-control" required>
-                                <option value="servivel">Servível</option>
-                                <option value="inservivel">Inservível</option>
-                                <option value="desaparecido">Desaparecido</option>
-                            </select>
-                        </div>
-
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="entrada_id" class="m-2 textoAzul3">Entrada:</label>
-                            <select name="entrada_id" id="entrada_id" class="w-auto form-control w-sm-auto" required>
-                                @if ($entradas->isEmpty())
-                                <option value="" disabled>Nenhuma entrada cadastrada</option>
-                                @else
-                                <option value="" disabled selected>Selecione a entrada</option>
-                                @foreach($entradas as $entrada)
-                                <option value="{{ $entrada->id }}">{{ $entrada->datadatransferencia }}</option>
-                                @endforeach
-                                @endif
-                            </select>
-                        </div>
-
-                        <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="comodo_id" class="m-2 textoAzul3">Cômodo:</label>
-                            <select name="comodo_id" id="comodo_id" class="w-auto form-control w-sm-auto" required>
-                                @if ($comodos->isEmpty())
-                                <option value="" disabled>Nenhum cômodo cadastrado</option>
-                                @else
-                                <option value="" disabled selected>Selecione o cômodo</option>
-                                @foreach($comodos as $comodo)
-                                <option value="{{ $comodo->id }}">{{ $comodo->descricaodocomodo }}</option>
-                                @endforeach
-                                @endif
-                            </select>
-                        </div>
-                        <!--  -->
-
+            <form action="{{ route('patrimonios.store') }}" method="POST" class="col-12 m-0 p-0 formulario">
+                @csrf
+                <div class="row m-2">
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="descricaodopatrimonio" class="m-2 textoAzul3">Descrição do Patrimônio:</label>
+                        <textarea id="descricaodopatrimonio" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodopatrimonio" required></textarea>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="tombo" class="m-2 textoAzul3">Tombo:</label>
+                        <input name="tombo" type="number" id="tombo" class="w-auto form-control w-sm-auto" placeholder="" required>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="valordobem" class="m-2 textoAzul3">Valor do bem:</label>
+                        <input name="valordobem" type="number" id="valordobem" class="w-auto form-control w-sm-auto" placeholder="" required>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="historicodatransferencia" class="m-2 textoAzul3">Historico da Transferência:</label>
+                        <textarea id="historicodatransferencia" class="w-auto form-control w-sm-auto" placeholder="" name="historicodatransferencia" required></textarea>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="dataaquisicao" class="m-2 textoAzul3">Data de aquisição:</label>
+                        <input name="dataaquisicao" type="date" id="dataaquisicao" class="w-auto form-control w-sm-auto" placeholder="" required>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="status" class="w-2 textoAzul3">Status:</label>
+                        <br><select name="status" id="status" class="p-2 rounded form-control" required>
+                            <option value="servivel">Servível</option>
+                            <option value="inservivel">Inservível</option>
+                            <option value="desaparecido">Desaparecido</option>
+                        </select>
                     </div>
 
-                    <div class="col-lg-12" style="text-align:right">
-                        <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
-                            Cadastrar
-                        </button>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="entrada_id" class="m-2 textoAzul3">Entrada:</label>
+                        <select name="entrada_id" id="entrada_id" class="w-auto form-control w-sm-auto" required>
+                            @if ($entradas->isEmpty())
+                            <option value="" disabled>Nenhuma entrada cadastrada</option>
+                            @else
+                            <option value="" disabled selected>Selecione a entrada</option>
+                            @foreach($entradas as $entrada)
+                            <option value="{{ $entrada->id }}">{{ $entrada->datadatransferencia }}</option>
+                            @endforeach
+                            @endif
+                        </select>
                     </div>
-                </form>
 
-            </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="comodo_id" class="m-2 textoAzul3">Cômodo:</label>
+                        <select name="comodo_id" id="comodo_id" class="w-auto form-control w-sm-auto" required>
+                            @if ($comodos->isEmpty())
+                            <option value="" disabled>Nenhum cômodo cadastrado</option>
+                            @else
+                            <option value="" disabled selected>Selecione o cômodo</option>
+                            @foreach($comodos as $comodo)
+                            <option value="{{ $comodo->id }}">{{ $comodo->descricaodocomodo }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-12" style="text-align:right">
+                    <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
+                        Cadastrar
+                    </button>
+                </div>
+                
+            </form>
         </div>
     </div>
 </div>
