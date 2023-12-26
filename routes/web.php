@@ -32,13 +32,17 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-Route::get('/register', [CustomAuthController::class, 'registration'])->name('register-user')->middleware('can:access');
-Route::post('/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom')->middleware('can:access');
+// Route::get('/register', [CustomAuthController::class, 'registration'])->name('register-user')->middleware('can:access');
+
+// Route::post('/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom')->middleware('can:access');
 // Route::post('/custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 
 Route::get('/logout', [CustomAuthController::class, 'signOut'])->middleware(['auth'])->name('logout');
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+
 Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'perfil'])->middleware(['auth'])->name('perfil');
+Route::get('/perfil/edit', [App\Http\Controllers\HomeController::class, 'editPerfil'])->middleware(['auth'])->name('editPerfil');
+Route::put('/perfil/update/{id}',[App\Http\Controllers\HomeController::class, 'updatePerfil'])->middleware(['auth'])->name('updatePerfil');
 // Route::get('/admin/home', [HomeController::class, 'adminHome'])->middleware('is_admin')->name('admin.home');
 
 Route::prefix('usuarios')->group(function () {
@@ -94,6 +98,8 @@ Route::prefix('manutencoes')->group(function () {
     Route::get('/edit/{id}',[ManutencaoController::class,'edit'])->middleware(['auth'])->name('manutencoes.edit')->middleware('can:access');
     Route::put('/update/{id}',[ManutencaoController::class,'update'])->middleware(['auth'])->name('manutencoes.update')->middleware('can:access');
     Route::delete('/delete/{id}',[ManutencaoController::class,'destroy'])->middleware(['auth'])->name('manutencoes.delete')->middleware('can:access');
+
+    Route::post('/manutencao/{id}/recebido', [ManutencaoController::class, 'recebido'])->name('manutencoes.recebido');
 });
 
 Route::prefix('bensexcedentes')->group(function () {
@@ -109,7 +115,7 @@ Route::prefix('bensexcedentes')->group(function () {
 Route::prefix('baixas_patrimoniais')->group(function () {
     Route::get('/',[Baixa_PatrimonialController::class,'index'])->middleware(['auth'])->name('baixas_patrimoniais.index');
     Route::get('/show/{id}',[Baixa_PatrimonialController::class,'show'])->middleware(['auth'])->name('baixas_patrimoniais.show');
-    Route::get('/create',[Baixa_PatrimonialController::class,'create'])->middleware(['auth'])->name('baixas_patrimoniais.create')->middleware('can:access');
+    Route::get('/create/{id}',[Baixa_PatrimonialController::class,'create'])->middleware(['auth'])->name('baixas_patrimoniais.create')->middleware('can:access');
     Route::post('/store',[Baixa_PatrimonialController::class,'store'])->middleware(['auth'])->name('baixas_patrimoniais.store')->middleware('can:access');
     Route::get('/edit/{id}',[Baixa_PatrimonialController::class,'edit'])->middleware(['auth'])->name('baixas_patrimoniais.edit')->middleware('can:access');
     Route::post('/update/{id}',[Baixa_PatrimonialController::class,'update'])->middleware(['auth'])->name('baixas_patrimoniais.update')->middleware('can:access');

@@ -84,10 +84,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -210,7 +212,7 @@
                         <td>{{$baixa_patrimonial->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$baixa_patrimonial->quantidaderetirada}}</td>
                         <td>{{$baixa_patrimonial->encarregadodaretirada}}</td>
-                        <td>{{$baixa_patrimonial->datadabaixa}}</td>
+                        <td>{{ \Carbon\Carbon::parse($baixa_patrimonial->datadabaixa)->format('d/m/Y') }}</td>
                         <td>{{$baixa_patrimonial->responsavelentregar}}</td>
 
                         @can('access')

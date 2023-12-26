@@ -82,10 +82,12 @@
 						Perfil
 					</a>
 
-					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
-						<i class="bi bi-people"></i>
-						Usuários
-					</a>
+                    @can('access')
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
+                        <i class="bi bi-people"></i>
+                        Usuários
+                    </a>
+                    @endcan
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -174,8 +176,9 @@
 				<div class="row m-2">
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="descricaodocomodo" class="m-2 textoAzul3">Descrição do Cômodo:</label>
-						<input value="{{$Comodo->descricaodocomodo}}" type="text" id="descricaodocomodo" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodocomodo">
+						<input value="{{$Comodo->descricaodocomodo}}" type="text" id="descricaodocomodo" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodocomodo" required>
 					</div>
+
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="setor_id" class="m-2 textoAzul3">Setor:</label>
 						<select name="setor_id" id="setor_id" class="w-auto form-control w-sm-auto" required>
@@ -190,7 +193,7 @@
 
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="quantidadedebens" class="m-2 textoAzul3">Quantidade de bens:</label>
-						<input value="{{$Comodo->quantidadedebens}}" name="quantidadedebens" type="number" id="quantidadedebens" class="w-auto form-control w-sm-auto" placeholder="">
+						<input value="{{$Comodo->quantidadedebens}}" name="quantidadedebens" type="number" id="quantidadedebens" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 				</div>
 

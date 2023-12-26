@@ -82,10 +82,12 @@
 						Perfil
 					</a>
 
-					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
-						<i class="bi bi-people"></i>
-						Usuários
-					</a>
+                    @can('access')
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
+                        <i class="bi bi-people"></i>
+                        Usuários
+                    </a>
+                    @endcan
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -174,11 +176,11 @@
 				<div class="row m-2">
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="quantidadeemprestada" class="m-2 textoAzul3">Quantidade Emprestada</label>
-						<input value="{{$Emprestimo->quantidadeemprestada}}" type="number" id="quantidadeemprestada" class="w-auto form-control w-sm-auto" placeholder="" name="quantidadeemprestada">
+						<input value="{{$Emprestimo->quantidadeemprestada}}" type="number" id="quantidadeemprestada" class="w-auto form-control w-sm-auto" placeholder="" name="quantidadeemprestada" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="dataemprestimo" class="m-2 textoAzul3">Data do Empréstimo</label>
-						<input value="{{$Emprestimo->dataemprestimo}}" name="dataemprestimo" type="date" id="dataemprestimo" class="w-auto form-control w-sm-auto" placeholder="">
+						<input value="{{$Emprestimo->dataemprestimo}}" name="dataemprestimo" type="date" id="dataemprestimo" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="usuario_id" class="m-2 textoAzul3">Usuário</label>

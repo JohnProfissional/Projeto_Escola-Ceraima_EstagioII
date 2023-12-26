@@ -20,7 +20,7 @@ class CreateManutencaosTable extends Migration
             $table->date('dataprevistadeentrega');
             $table->integer('totaldasaidadebens');
             $table->date('dataentrada');
-            $table->date('datasaida');
+            $table->date('datasaida')->nullable();
             $table->unsignedBigInteger('patrimonio_id');
             $table->foreign('patrimonio_id')->references('id')->on('patrimonios');
         });

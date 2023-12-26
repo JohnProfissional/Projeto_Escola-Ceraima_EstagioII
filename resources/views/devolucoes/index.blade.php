@@ -84,10 +84,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -209,8 +211,8 @@
                     <tr>
                         <td scope="row">{{$devolucao->id}}</td>
                         <td>{{$devolucao->descricaodadevolucao}}</td>
-                        <td>{{$devolucao->quantidadedevolvida}}</td>
-                        <td>{{$devolucao->datadadevolucao}}</td>
+                        <td>{{$devolucao->quantidadedevolvida}}</td>                        
+                        <td>{{ \Carbon\Carbon::parse($devolucao->datadadevolucao)->format('d/m/Y') }}</td>
                         <td>{{$devolucao->acessarEmprestimo->dataemprestimo}}</td>
                         <td>{{$devolucao->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$devolucao->acessarUsuario->nome}}</td>

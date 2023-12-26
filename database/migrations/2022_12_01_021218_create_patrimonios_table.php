@@ -17,7 +17,7 @@ class CreatePatrimoniosTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('descricaodopatrimonio', 155);
-            $table->string('tombo', 80);
+            $table->string('tombo', 80)->unique();
             $table->decimal('valordobem', 6,2);
             $table->string('historicodatransferencia', 155);
             $table->date('dataaquisicao');

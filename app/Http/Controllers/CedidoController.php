@@ -39,7 +39,7 @@ class CedidoController extends Controller
 
     public function edit($id){
         $Cedido = Cedido::findorFail($id);
-        $patrimonios = Patrimonio::all();
+        $patrimonios = Patrimonio::where('status', 'Servível')->get(); // Bem excedente tbm
         return view('cedidos.edit',['Cedido'=>$Cedido, 'patrimonios'=>$patrimonios]);
     }
 

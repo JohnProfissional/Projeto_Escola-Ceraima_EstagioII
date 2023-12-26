@@ -84,10 +84,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -170,8 +172,6 @@
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
-                <!--CAMPO QUE DEVE SER MODIFICADO CONFORME INFORMAÇÕES DO BANCO-->
-                <!--<h1>Usuários</h1>-->
             </div>
         </div>
 

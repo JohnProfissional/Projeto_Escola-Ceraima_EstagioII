@@ -81,10 +81,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -194,9 +196,11 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="status" class="w-2 textoAzul3">Status:</label><br>
                         <select name="status" id="status" class="p-2 rounded form-control" required>
-                            <option value="servivel" {{ $Patrimonio->status === 'servivel' ? 'selected' : '' }}>Servível</option>
-                            <option value="inservivel" {{ $Patrimonio->status === 'inservivel' ? 'selected' : '' }}>Inservível</option>
-                            <option value="desaparecido" {{ $Patrimonio->status === 'desaparecido' ? 'selected' : '' }}>Desaparecido</option>
+                            <option value="servivel" {{ $Patrimonio->status === 'servivel' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Servível</option>
+                            <option value="inservivel" {{ $Patrimonio->status === 'inservivel' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Inservível</option>
+                            <option value="desaparecido" {{ $Patrimonio->status === 'desaparecido' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Desaparecido</option>
+                            <option value="Em manutenção" {{ $Patrimonio->status === 'Em manutenção' ? 'selected' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Manutenção</option>
+                            <option value="Baixa patrimonial" {{ $Patrimonio->status === 'Baixa patrimonial' ? 'selected' : '' }}>Baixa Patrimonial</option>
                         </select>
                     </div>
                     <!--  -->

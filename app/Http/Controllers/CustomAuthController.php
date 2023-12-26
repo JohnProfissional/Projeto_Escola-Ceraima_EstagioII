@@ -43,6 +43,7 @@ class CustomAuthController extends Controller
     {
         return User::create(['name' => $data['name'], 'email' => $data['email'], 'cpf' => $data['cpf'], 'cargo' => $data['cargo'], 'password' => Hash::make($data['password'])]);
     }
+
     public function dashboard()
     {
         if (Auth::check()) {
@@ -55,6 +56,6 @@ class CustomAuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return Redirect('login');
+        return redirect('/login');
     }
 }

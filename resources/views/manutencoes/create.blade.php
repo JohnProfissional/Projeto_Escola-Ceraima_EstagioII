@@ -82,10 +82,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -180,7 +182,7 @@
                         <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível</label>
                         <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
                             @if ($patrimonios->isEmpty())
-                            <option value="" disabled>Nenhum Patrimônio Cadastrado</option>
+                            <option value="" disabled>Nenhum Patrimônio Inservível Cadastrado</option>
                             @else
                             <option value="" disabled selected>Selecione o Patrimônio</option>
                             @foreach($patrimonios as $patrimonio)

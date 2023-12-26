@@ -82,10 +82,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -204,7 +206,7 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="entrada_id" class="m-2 textoAzul3">Entrada:</label>
                         <select name="entrada_id" id="entrada_id" class="w-auto form-control w-sm-auto" required>
-                            <option value="{{ $entrada->id }}" selected readonly>{{ $entrada->id }}</option>
+                            <option value="{{ $entrada->id }}" selected readonly>{{ \Carbon\Carbon::parse($entrada->datadatransferencia)->format('d/m/Y') }}</option>
                         </select>
                     </div>
 

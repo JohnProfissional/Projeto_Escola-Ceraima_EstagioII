@@ -82,10 +82,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -269,10 +271,10 @@
                             <td>{{$patrimonio->tombo}}</td>
                             <td>{{$patrimonio->valordobem}}</td>
                             <td>{{$patrimonio->historicodatransferencia}}</td>
-                            <td>{{$patrimonio->dataaquisicao}}</td>
+                            <td>{{ \Carbon\Carbon::parse($patrimonio->dataaquisicao)->format('d/m/Y') }}</td>
                             <td>{{$patrimonio->status}}</td>
-                            <td>{{$patrimonio->entrada_id}}</td>
-                            <td>{{$patrimonio->comodo_id}}</td>
+                            <td>{{$patrimonio->acessarEntrada->datadatransferencia}}</td>
+                            <td>{{$patrimonio->acessarComodo->descricaodocomodo}}</td>
 
                             @can('access')
                             <td>
@@ -299,6 +301,28 @@
                                         <input type="submit" class="btn btn-primary" value="Deletar" onclick="return confirmarExclusao();"><br><br>
                                     </form>
                                 </div>
+                            </td>
+                            
+                            <td>
+                                @if($patrimonio->status === "inservivel")
+                                <div class="col" id="meio">
+                                    <form id="formManutencao" action="{{ route('manutencoes.create', ['id' => $patrimonio->id]) }}" method="GET">
+                                        @csrf
+                                        <input type="submit" class="btn btn-primary" value="Manutenção"><br><br>
+                                    </form>
+                                </div>
+                                @endif
+                            </td>
+
+                            <td>
+                                @if($patrimonio->status === "inservivel")
+                                <div class="col" id="meio">
+                                    <form id="formBaixaPatrimonial" action="{{ route('baixas_patrimoniais.create', ['id' => $patrimonio->id]) }}" method="GET">
+                                        @csrf
+                                        <input type="submit" class="btn btn-primary" value="Baixa Patrimonial"><br><br>
+                                    </form>
+                                </div>
+                                @endif
                             </td>
                             @endcan
                         </tr>

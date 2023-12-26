@@ -82,10 +82,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -190,16 +192,9 @@
                             <input name="quantidaderetirada" type="number" id="quantidaderetirada" class="w-auto form-control w-sm-auto" required>
                         </div>
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                            <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível Retirado:</label>
+                            <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível:</label>
                             <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-                                @if ($patrimonios->isEmpty())
-                                <option value="" disabled>Nenhum patrimônio cadastrado</option>
-                                @else
-                                <option value="" disabled selected>Selecione o patrimônio</option>
-                                @foreach($patrimonios as $patrimonio)
-                                <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio}}</option>
-                                @endforeach
-                                @endif
+                                <option value="{{ $patrimonio->id }}" selected>{{ $patrimonio->descricaodopatrimonio}}</option>
                             </select>
                         </div>
                     </div>

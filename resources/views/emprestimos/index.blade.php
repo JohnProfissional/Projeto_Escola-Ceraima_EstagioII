@@ -84,10 +84,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -207,7 +209,7 @@
                 <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
                     <tr>
                         <td scope="row">{{$emprestimo->id}}</td>
-                        <td>{{$emprestimo->dataemprestimo}}</td>
+                        <td>{{ \Carbon\Carbon::parse($emprestimo->dataemprestimo)->format('d/m/Y') }}</td>
                         <td>{{$emprestimo->quantidadeemprestada}}</td>
                         <td>{{$emprestimo->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$emprestimo->acessarReserva->datareserva}}</td>

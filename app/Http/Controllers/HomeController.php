@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -40,15 +41,31 @@ class HomeController extends Controller
 
     public function perfil()
     {
-        // Verifica se o usuário está autenticado
         if (Auth::check()) {
-            // Recupera o usuário autenticado
             $user = Auth::user();
-
             return view('perfil', ['user' => $user]);
         }
-
-        // Caso não esteja autenticado, redireciona para a página de login ou para onde preferir
         return redirect()->route('login');
     }
+
+    public function editPerfil()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            return view('editar-perfil', ['user' => $user]);
+        }
+        return redirect()->route('login');
+    }
+
+    public function updatePerfil(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->fill($request->except('_token', 'password'));
+        if ($request->has('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+        return redirect()->route('perfil')->with('msg', 'Alteração realizada com sucesso');
+    } 
+
 }

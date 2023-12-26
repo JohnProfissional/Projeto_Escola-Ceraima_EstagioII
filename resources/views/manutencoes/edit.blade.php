@@ -82,10 +82,12 @@
 						Perfil
 					</a>
 
-					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
-						<i class="bi bi-people"></i>
-						Usuários
-					</a>
+                    @can('access')
+                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
+                        <i class="bi bi-people"></i>
+                        Usuários
+                    </a>
+                    @endcan
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -174,7 +176,7 @@
 				<div class="row m-2">
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="empresa" class="m-2 textoAzul3">Empresa</label>
-						<input value="{{$Manutencao->empresa}}" type="text" id="empresa" class="w-auto form-control w-sm-auto" placeholder="" name="empresa">
+						<input value="{{$Manutencao->empresa}}" type="text" id="empresa" class="w-auto form-control w-sm-auto" placeholder="" name="empresa" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
@@ -190,15 +192,15 @@
 
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="dataprevistadeentrega" class="m-2 textoAzul3">Data Prevista de Entrega</label>
-						<input value="{{$Manutencao->dataprevistadeentrega}}" name="dataprevistadeentrega" type="date" id="dataprevistadeentrega" class="w-auto form-control w-sm-auto" placeholder="">
+						<input value="{{$Manutencao->dataprevistadeentrega}}" name="dataprevistadeentrega" type="date" id="dataprevistadeentrega" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="totaldasaidadebens" class="m-2 textoAzul3">Total da Saída</label>
-						<input value="{{$Manutencao->totaldasaidadebens}}" name="totaldasaidadebens" type="number" id="totaldasaidadebens" class="w-auto form-control w-sm-auto" placeholder="">
+						<input value="{{$Manutencao->totaldasaidadebens}}" name="totaldasaidadebens" type="number" id="totaldasaidadebens" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="dataentrada" class="m-2 textoAzul3">Data Entrada</label>
-						<input value="{{$Manutencao->dataentrada}}" name="dataentrada" type="date" id="dataentrada" class="w-auto form-control w-sm-auto" placeholder="">
+						<input value="{{$Manutencao->dataentrada}}" name="dataentrada" type="date" id="dataentrada" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="datasaida" class="m-2 textoAzul3">Data Saída</label>

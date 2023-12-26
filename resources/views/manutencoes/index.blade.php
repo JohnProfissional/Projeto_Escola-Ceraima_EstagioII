@@ -83,10 +83,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -169,14 +171,11 @@
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
-                <!--CAMPO QUE DEVE SER MODIFICADO CONFORME INFORMAÇÕES DO BANCO-->
-                <!--<h1>Cômodos</h1>-->
             </div>
         </div>
 
         <div class="row">
             <form action="" class="d-flex justify-content-around w-auto" method="post">
-
                 <select name="selectCampoDeBusca" required="required" class="p-2 m-2 rounded form-control">
                     <option value="nome">Busca por nome</option>
                     <option value="categoria">Busca por categoria</option>
@@ -196,32 +195,40 @@
                         <th scope="col">Id</th>
                         <th>Empresa</th>
                         <th>Patrimônio</th>
-                        <th>Data Prevista de Entrega</th>
                         <th>Total da Saída</th>
                         <th>Data Entrada</th>
+                        <th>Data Prevista de Entrega</th>
                         <th>Data Saída</th>
                     </tr>
                 </thead>
 
                 @foreach ($manutencoes as $manutencao)
-                <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
+                <tbody class="conteudo-itens">
                     <tr>
                         <td scope="row">{{$manutencao->id}}</td>
                         <td>{{$manutencao->empresa}}</td>
                         <td>{{$manutencao->acessarPatrimonio->descricaodopatrimonio}}</td>
-                        <td>{{$manutencao->dataprevistadeentrega}}</td>
-                        <td>{{$manutencao->totaldasaidadebens}}</td>
-                        <td>{{$manutencao->dataentrada}}</td>
-                        <td>{{$manutencao->datasaida}}</td>
+                        <td>{{$manutencao->totaldasaidadebens}}</td>                        
+                        <td>{{ \Carbon\Carbon::parse($manutencao->dataentrada)->format('d/m/Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($manutencao->dataprevistadeentrega)->format('d/m/Y') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($manutencao->datasaida)->format('d/m/Y') }}</td>
 
                         @can('access')
+                        <td>
+                            @if($manutencao->datasaida === null)
+                                <div class="col" id="meio">
+                                    <form action="{{route('manutencoes.recebido', ['id' => $manutencao->id])}}" method="POST">
+                                        @csrf
+                                        <input type="submit" class="btn btn-primary" name="formulario" value="Recebido">
+                                    </form>
+                                </div>
+                            @endif
+                        </td>
+
                         <td>
                             <div class="col" id="meio">
                                 <form action="{{route('manutencoes.edit', ['id' => $manutencao->id])}}" method="get">
                                     @csrf
-                                    <!-- <svg style="color: rgb(251, 255, 0);" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                                    </svg> -->
                                     <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
                                 </form>
                             </div>
@@ -232,10 +239,6 @@
                                 <form id="formExcluir" action="{{route('manutencoes.delete', ['id' => $manutencao->id])}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <!-- <svg style="color: red;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-                                    </svg> -->
                                     <input type="submit" class="btn btn-primary" value="Deletar" onclick="return confirmarExclusao();"><br><br>
                                 </form>
                             </div>

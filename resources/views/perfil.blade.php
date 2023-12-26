@@ -81,10 +81,12 @@
                         Perfil
                     </a>
 
+                    @can('access')
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
                         <i class="bi bi-people"></i>
                         Usuários
                     </a>
+                    @endcan
 
                     <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
                         <i class="bi bi-folder-plus"></i>
@@ -186,5 +188,26 @@
         </div>
     </div>
 </div>
+
+@if(Hash::check('admin2023cadpatri', $user->password))
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <!-- Alerta de caixa vermelha -->
+            <div class="alert alert-danger" role="alert">
+                <strong>Altere seus dados:</strong> Realize a troca da senha temporária por uma nova senha segura e definitiva.
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+<div class="col-lg-12 me-3" style="text-align:right; margin:10px 0px 20px 0px; display:flex; justify-content: center;">
+    <form action="{{route('editPerfil')}}" method="get">
+        @csrf
+        <input type="submit" class="btn btn-success" value="Editar Perfil">
+    </form>
+</div>
+
 
 @endsection('content')
