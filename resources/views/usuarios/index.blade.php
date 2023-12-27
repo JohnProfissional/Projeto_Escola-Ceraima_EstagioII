@@ -175,22 +175,39 @@
             </div>
         </div>
 
-        <div class="row">
-            <form action="" class="d-flex justify-content-around w-auto" method="post">
+        <div style="display: flex; justify-content: space-around;">
+            <div class="row">
+                <form action="{{ route('usuarios.index') }}" class="d-flex justify-content-around w-auto" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div style="display: flex;">
+                            <select name="selectCampoDeBusca" required="required" class="p-2 m-2 rounded form-control">
+                                <option value="" selected disabled>Selecione o Filtro</option>
+                                <option value="todos">Todos</option>
+                                <option value="user">Usuários padrões</option>
+                                <option value="admin">Usuários Administradores</option>
+                            </select>
+                            <input type="submit" class="btn btn-success m-2" value="Filtrar">
+                        </div>
+                    </div>
+                </form>
+            </div>
 
-                <select name="selectCampoDeBusca" required="required" class="p-2 m-2 rounded form-control">
-                    <option value="nome">Busca por nome</option>
-                    <option value="categoria">Busca por categoria</option>
-                    <option value="quantidades">Busca por quantidade</option>
-                </select>
-
-                <input type="text" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquise aqui...">
-                <input type="submit" class="btn btn-success m-2" value="Buscar">
-            </form>
+            <div class="row">
+                <form action="{{ route('usuarios.indexBuscar') }}" class="d-flex justify-content-around w-auto" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div style="display: flex;">
+                            <input type="text" name="search" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquisar nome..." required>
+                            <button type="submit" class="btn btn-success m-2">Buscar</button>
+                            <a href="{{ route('usuarios.index') }}" class="btn btn-success m-2">Limpar Filtro</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <div class="row m-3">
-
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>

@@ -180,6 +180,9 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="tombo" class="m-2 textoAzul3">Tombo:</label>
                         <input value="{{$Patrimonio->tombo}}" name="tombo" type="number" id="tombo" class="w-auto form-control w-sm-auto" required>
+                        @if ($errors->has('tombo'))
+                        <span class="text-danger" style="font-size: 17px;">{{ $errors->first('tombo') }}</span>
+                        @endif
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="valordobem" class="m-2 textoAzul3">Valor do bem:</label>
@@ -196,11 +199,13 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="status" class="w-2 textoAzul3">Status:</label><br>
                         <select name="status" id="status" class="p-2 rounded form-control" required>
-                            <option value="servivel" {{ $Patrimonio->status === 'servivel' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Servível</option>
-                            <option value="inservivel" {{ $Patrimonio->status === 'inservivel' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Inservível</option>
-                            <option value="desaparecido" {{ $Patrimonio->status === 'desaparecido' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Desaparecido</option>
-                            <option value="Em manutenção" {{ $Patrimonio->status === 'Em manutenção' ? 'selected' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }}>Manutenção</option>
-                            <option value="Baixa patrimonial" {{ $Patrimonio->status === 'Baixa patrimonial' ? 'selected' : '' }}>Baixa Patrimonial</option>
+                            <option value="Servivel" {{ $Patrimonio->status === 'servivel' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Cedido' ? 'disabled' : '' }}>Servível</option>
+                            <option value="Inservivel" {{ $Patrimonio->status === 'inservivel' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Cedido' ? 'disabled' : '' }}>Inservível</option>
+                            <option value="Desaparecido" {{ $Patrimonio->status === 'desaparecido' ? 'selected' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Cedido' ? 'disabled' : '' }}>Desaparecido</option>
+                            
+                            <option value="Em manutenção" {{ $Patrimonio->status === 'Em manutenção' ? 'selected' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Cedido' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Servivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Inservivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Desaparecido' ? 'disabled' : '' }}>Manutenção</option>
+                            <option value="Cedido" {{ $Patrimonio->status === 'Cedido' ? 'selected' : '' }} {{ $Patrimonio->status === 'Baixa patrimonial' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Servivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Inservivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Desaparecido' ? 'disabled' : '' }}>Cedido</option>
+                            <option value="Baixa patrimonial" {{ $Patrimonio->status === 'Baixa patrimonial' ? 'selected' : '' }} {{ $Patrimonio->status === 'Cedido' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Servivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Inservivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Desaparecido' ? 'disabled' : '' }}>Baixa Patrimonial</option>
                         </select>
                     </div>
                     <!--  -->

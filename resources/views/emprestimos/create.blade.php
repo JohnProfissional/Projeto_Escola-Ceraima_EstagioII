@@ -185,14 +185,7 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($usuarios->isEmpty())
-                            <option value="" disabled>Nenhum Usuário Cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
-                            @endforeach
-                            @endif
+                            <option value="{{ $usuarios->id }}" selected>{{ $usuarios->name }}</option>
                         </select>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
@@ -203,7 +196,7 @@
                             @else
                             <option value="" disabled selected>Selecione a Reserva</option>
                             @foreach($reservas as $reserva)
-                            <option value="{{ $reserva->id }}">{{ $reserva->datareserva }}</option>
+                            <option value="{{ $reserva->id }}">{{  \Carbon\Carbon::parse($reserva->datareserva)->format('d/m/Y') }}</option>
                             @endforeach
                             @endif
                         </select>

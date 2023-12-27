@@ -7,12 +7,31 @@ use App\Models\Emprestimo;
 use App\Models\Patrimonio;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DevolucaoController extends Controller
 {
     public function index(){
         $devolucoes = Devolucao::all();
         return view('devolucoes.index', ['devolucoes'=>$devolucoes]);
+    }
+
+    public function indexBuscar(Request $request)
+    {
+        $searchTerm1 = $request->input('searchUser');
+        $searchTerm2 = $request->input('searchDate');
+
+        $devolucoes = Devolucao::query();
+
+        if ($searchTerm1) {
+            $devolucoes->join('users', 'devolucaos.usuario_id', '=', 'users.id')->where('users.name', 'like', '%' . $searchTerm1 . '%');
+        } elseif ($searchTerm2) {
+            $devolucoes->whereDate('datadadevolucao', $searchTerm2);
+        }
+
+        $devolucoes = $devolucoes->get();
+
+        return view('devolucoes.index', compact('devolucoes'));
     }
 
     public function show($id){
@@ -25,9 +44,9 @@ class DevolucaoController extends Controller
     }
 
     public function create(){
-        $usuarios = User::all();
+        $usuarios = Auth::user();
         $emprestimos = Emprestimo::all();
-        $patrimonios = Patrimonio::all();
+        $patrimonios = Patrimonio::where('status', 'Servivel')->get();
         return view('devolucoes.create', ['patrimonios'=>$patrimonios, 'emprestimos'=>$emprestimos, 'usuarios'=>$usuarios]);        
     }
 

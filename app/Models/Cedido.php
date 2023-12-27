@@ -11,7 +11,7 @@ class Cedido extends Model
 
     protected $table = "cedidos";
 
-    protected $fillable = ['instituicaoreceptora', 'qtd', 'patrimonio_id'];
+    protected $fillable = ['instituicaoreceptora', 'datacedido', 'qtd', 'patrimonio_id'];
 
     public function acessarPatrimonio(){
         return $this->belongsTo(Patrimonio::class, 'patrimonio_id');
