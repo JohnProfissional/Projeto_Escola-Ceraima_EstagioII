@@ -195,9 +195,9 @@
                             @else
                             <option value="" disabled selected>Selecione o Usuário</option>
                             @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
+                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
                             @endforeach
-                            @endif
+                            @endif 
                         </select>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">

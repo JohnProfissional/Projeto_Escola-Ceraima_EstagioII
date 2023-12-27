@@ -47,7 +47,8 @@ class ReservaController extends Controller
 
     public function create()
     {
-        $user = Auth::user();
+        //$user = Auth::user();
+        $user = User::all();
         $patrimonios = Patrimonio::where('status', 'Servivel')->get();
         return view('reservas.create', ['patrimonios' => $patrimonios, 'usuario' => $user]);
     }
