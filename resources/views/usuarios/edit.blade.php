@@ -186,6 +186,9 @@
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="cpf" class="m-2 textoAzul3">CPF</label>
 						<input value="{{$Usuario->cpf}}" name="cpf" type="text" id="cpf" class="w-auto form-control w-sm-auto" required>
+						@if ($errors->has('cpf'))
+                        <span class="text-danger" style="font-size: 17px;">{{ $errors->first('cpf') }}</span>
+                        @endif
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="cargo" class="m-2 textoAzul3">Cargo</label>
@@ -194,6 +197,9 @@
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="email" class="m-2 textoAzul3">Email</label>
 						<input value="{{$Usuario->email}}" name="email" type="text" id="email" class="w-auto form-control w-sm-auto" required>
+						@if ($errors->has('email'))
+                        <span class="text-danger" style="font-size: 17px;">{{ $errors->first('email') }}</span>
+                        @endif
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="senha" class="m-2 textoAzul3">Senha</label>

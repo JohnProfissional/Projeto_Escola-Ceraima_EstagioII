@@ -191,8 +191,9 @@
                                 <option value="serviveis">Patrimônios Servíveis</option>
                                 <option value="inserviveis">Patrimônios Inservíveis</option>
                                 <option value="desaparecidos">Patrimônios Desaparecidos</option>
-                                <!-- <option value="cedidos">Patrimônios Cedidos</option>
-                        <option value="excedentes">Patrimônios Excedentes</option> -->
+                                <option value="cedidos">Patrimônios Cedidos</option>
+                                <option value="manutencoes">Patrimônios em Manutenção</option>
+                                <option value="baixas">Baixas Patrimoniais</option>
                             </select>
                             <input type="submit" class="btn btn-success m-2" value="Filtrar">
                         </div>
@@ -205,8 +206,10 @@
                     @csrf
                     <div class="row">
                         <div style="display: flex;">
-                            <input type="text" name="search" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquisar descrição..." required>
+                            <input type="text" name="searchDescri" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquisar descrição...">
+                            <input type="text" name="searchTombo" class="w-auto m-2 form-control" id="campoDeBusca" placeholder="Pesquisar tombo...">
                             <button type="submit" class="btn btn-success m-2">Buscar</button>
+                            <a href="{{ route('patrimonios.index') }}" class="btn btn-success m-2">Limpar Filtro</a>
                         </div>
                     </div>
                 </form>
@@ -270,7 +273,7 @@
                         </td>
 
                         <td>
-                            @if($patrimonio->status === "inservivel")
+                            @if($patrimonio->status === "Inservivel")
                             <div class="col" id="meio">
                                 <form id="formManutencao" action="{{ route('manutencoes.create', ['id' => $patrimonio->id]) }}" method="GET">
                                     @csrf
@@ -281,7 +284,7 @@
                         </td>
                         
                         <td>
-                            @if($patrimonio->status === "inservivel")
+                            @if($patrimonio->status === "Inservivel")
                             <div class="col" id="meio">
                                 <form id="formBaixaPatrimonial" action="{{ route('baixas_patrimoniais.create', ['id' => $patrimonio->id]) }}" method="GET">
                                     @csrf

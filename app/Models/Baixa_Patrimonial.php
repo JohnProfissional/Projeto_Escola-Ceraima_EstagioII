@@ -17,4 +17,3 @@ class Baixa_Patrimonial extends Model
         return $this->belongsTo(Patrimonio::class, 'patrimonio_id');
     }
 }
- 

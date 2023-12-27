@@ -175,36 +175,39 @@
 
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row d-flex justify-content-around">
-            <form action="{{ route('patrimonios.storepatrientrada') }}" method="POST" class="col-12 m-0 p-0 formulario">
+            <form action="{{ route('patrientrada.store', ['id1' => $entrada->id]) }}" method="POST" class="col-12 m-0 p-0 formulario">
                 @csrf
 
                 <div class="row m-2">
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="descricaodopatrimonio" class="m-2 textoAzul3">Descrição do Patrimônio:</label>
-                        <textarea id="descricaodopatrimonio" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodopatrimonio" required></textarea>
+                        <textarea id="descricaodopatrimonio" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodopatrimonio" required>{{ old('descricaodopatrimonio') }}</textarea>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="tombo" class="m-2 textoAzul3">Tombo:</label>
-                        <input name="tombo" type="number" id="tombo" class="w-auto form-control w-sm-auto" placeholder="" required>
+                        <input name="tombo" type="number" id="tombo" class="w-auto form-control w-sm-auto" placeholder="" required value="{{ old('tombo') }}">
+                        @if ($errors->has('tombo'))
+                        <span class="text-danger" style="font-size: 17px;">{{ $errors->first('tombo') }}</span>
+                        @endif
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="valordobem" class="m-2 textoAzul3">Valor do bem:</label>
-                        <input name="valordobem" type="text" id="valordobem" class="w-auto form-control w-sm-auto" placeholder="" required>
+                        <input name="valordobem" type="text" id="valordobem" class="w-auto form-control w-sm-auto" placeholder="" required value="{{ old('tombo') }}">
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="historicodatransferencia" class="m-2 textoAzul3">Historico da Transferência:</label>
-                        <textarea id="historicodatransferencia" class="w-auto form-control w-sm-auto" placeholder="" name="historicodatransferencia" required></textarea>
+                        <textarea id="historicodatransferencia" class="w-auto form-control w-sm-auto" placeholder="" name="historicodatransferencia" required>{{ old('historicodatransferencia') }}</textarea>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="dataaquisicao" class="m-2 textoAzul3">Data de aquisição:</label>
-                        <input name="dataaquisicao" type="date" id="dataaquisicao" class="w-auto form-control w-sm-auto" placeholder="" required>
+                        <input name="dataaquisicao" type="date" id="dataaquisicao" class="w-auto form-control w-sm-auto" placeholder="" required value="{{ old('dataaquisicao') }}">
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="status" class="w-2 textoAzul3">Status:</label>
                         <br><select name="status" id="status" class="p-2 rounded form-control" required>
-                            <option value="servivel">Servível</option>
-                            <option value="inservivel">Inservível</option>
-                            <option value="desaparecido">Desaparecido</option>
+                            <option value="Servivel">Servível</option>
+                            <option value="Inservivel">Inservível</option>
+                            <option value="Desaparecido">Desaparecido</option>
                         </select>
                     </div>
 

@@ -209,7 +209,7 @@
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="numerodanotafiscal" class="m-2 textoAzul3">Número da Nota Fiscal:</label>
-                        <input type="text" id="numerodanotafiscal" class="w-auto form-control w-sm-auto" placeholder="" name="numerodanotafiscal" required>
+                        <input type="number" id="numerodanotafiscal" class="w-auto form-control w-sm-auto" placeholder="" name="numerodanotafiscal" required>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="datadanotafiscal" class="m-2 textoAzul3">Data da Nota Fiscal:</label>

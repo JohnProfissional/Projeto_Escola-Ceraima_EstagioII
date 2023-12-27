@@ -183,6 +183,12 @@
                         <label for="instituicaoreceptora" class="m-2 textoAzul3">Instituição Receptora</label>
                         <input type="text" id="instituicaoreceptora" class="w-auto form-control w-sm-auto" placeholder="" name="instituicaoreceptora" required>
                     </div>
+
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="datacedido" class="m-2 textoAzul3">Data Cedido</label>
+                        <input name="datacedido" type="date" id="datacedido" class="w-auto form-control w-sm-auto" required>
+                    </div>
+
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
                         <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>

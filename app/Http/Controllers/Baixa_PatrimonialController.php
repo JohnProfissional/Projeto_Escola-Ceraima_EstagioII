@@ -14,6 +14,22 @@ class Baixa_PatrimonialController extends Controller
         return view('baixaspatrimoniais.index', ['baixaspatrimoniais' => $baixaspatrimoniais]);
     }
 
+    public function indexBuscar(Request $request)
+    {
+        $searchTerm = $request->input('search');
+    
+        $baixaspatrimoniais = Baixa_Patrimonial::query();
+    
+        if ($searchTerm) {
+            $baixaspatrimoniais->whereDate('datadabaixa', $searchTerm);
+        }
+    
+        $baixaspatrimoniais = $baixaspatrimoniais->get();
+    
+        return view('baixaspatrimoniais.index', compact('baixaspatrimoniais'));
+    }
+    
+
     public function show($id)
     {
         if ($id) {

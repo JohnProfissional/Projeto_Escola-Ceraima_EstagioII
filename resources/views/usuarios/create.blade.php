@@ -181,23 +181,29 @@
                 <div class="row m-2">
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="name" class="m-2 textoAzul3">Nome</label>
-                        <input type="text" id="name" class="w-auto form-control w-sm-auto" name="name" required>
+                        <input type="text" id="name" class="w-auto form-control w-sm-auto" name="name" required value="{{ old('name') }}">
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="cpf" class="m-2 textoAzul3">CPF</label>
-                        <input type="text" id="cpf" class="w-auto form-control w-sm-auto" name="cpf" required>
+                        <input type="text" id="cpf" class="w-auto form-control w-sm-auto" name="cpf" required value="{{ old('cpf') }}">
+                        @if ($errors->has('cpf'))
+                        <span class="text-danger" style="font-size: 17px;">{{ $errors->first('cpf') }}</span>
+                        @endif
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="cargo" class="m-2 textoAzul3">Cargo</label>
-                        <input type="text" id="cargo" class="w-auto form-control w-sm-auto" name="cargo" required>
+                        <input type="text" id="cargo" class="w-auto form-control w-sm-auto" name="cargo" required value="{{ old('cargo') }}">
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="email" class="m-2 textoAzul3">Email</label>
-                        <input type="text" id="email" class="w-auto form-control w-sm-auto" name="email" required>
+                        <input type="text" id="email" class="w-auto form-control w-sm-auto" name="email" required value="{{ old('email') }}">
+                        @if ($errors->has('email'))
+                        <span class="text-danger" style="font-size: 17px;">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="password" class="m-2 textoAzul3">Senha</label>
-                        <input type="password" id="password" class="w-auto form-control w-sm-auto" name="password" required>
+                        <input type="password" id="password" class="w-auto form-control w-sm-auto" name="password" required value="{{ old('password') }}">
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="access_level" class="m-2 textoAzul3">Tipo:</label>

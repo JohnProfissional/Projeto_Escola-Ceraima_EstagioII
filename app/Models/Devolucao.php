@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Devolucao extends Model
 {
     use HasFactory;
-    protected $table = "devolucaos";
+    protected $table = "devolucoes";
 
     protected $fillable = ['datadadevolucao', 'descricaodadevolucao', 'quantidadedevolvida', 'usuario_id', 'patrimonio_id', 'emprestimo_id']; 
 

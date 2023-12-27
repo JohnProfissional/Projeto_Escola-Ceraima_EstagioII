@@ -16,7 +16,8 @@ class CreateCedidosTable extends Migration
         Schema::create('cedidos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('instituicaoreceptora',80);
+            $table->string('instituicaoreceptora',80);   
+            $table->date('datacedido');
             $table->integer('qtd');
             $table->unsignedBigInteger('patrimonio_id');
             $table->foreign('patrimonio_id')->references('id')->on('patrimonios');

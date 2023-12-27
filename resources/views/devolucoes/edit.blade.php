@@ -181,7 +181,7 @@
 				<div class="row m-2">
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="datadadevolucao" class="m-2 textoAzul3">Data da Devolução</label>
-						<input value="{{$Devolucao->datadadevolucao}}" type="text" id="datadadevolucao" class="w-auto form-control w-sm-auto" placeholder="" name="datadadevolucao" required>
+						<input value="{{$Devolucao->datadadevolucao}}" type="date" id="datadadevolucao" class="w-auto form-control w-sm-auto" placeholder="" name="datadadevolucao" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="descricaodadevolucao" class="m-2 textoAzul3">Descrição da Devolução</label>
@@ -215,7 +215,7 @@
 							<option value="" disabled>Selecione o Empréstimo</option>
 							@foreach($emprestimos as $emprestimo)
 							<option value="{{ $emprestimo->id }}" {{ $Devolucao->emprestimo_id == $emprestimo->id ? 'selected' : '' }}>
-								{{ $emprestimo->dataemprestimo }}
+							{{ \Carbon\Carbon::parse($emprestimo->dataemprestimo)->format('d/m/Y')}}
 							</option>
 							@endforeach
 						</select>

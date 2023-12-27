@@ -195,7 +195,7 @@
                             @else
                             <option value="" disabled selected>Selecione o Usuário</option>
                             @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                            <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
                             @endforeach
                             @endif
                         </select>
@@ -219,9 +219,9 @@
                             @if ($emprestimos->isEmpty())
                             <option value="" disabled>Nenhum Empréstimo Cadastrado</option>
                             @else
-                            <option value="" disabled selected>Selecione o Empréstimoo</option>
+                            <option value="" disabled selected>Selecione o Empréstimo</option>
                             @foreach($emprestimos as $emprestimo)
-                            <option value="{{ $emprestimo->id }}">{{ $emprestimo->dataemprestimo }}</option>
+                            <option value="{{ $emprestimo->id }}">{{  \Carbon\Carbon::parse($emprestimo->dataemprestimo)->format('d/m/Y') }}</option>
                             @endforeach
                             @endif
                         </select>
