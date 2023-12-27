@@ -183,19 +183,24 @@
                         <label for="empresa" class="m-2 textoAzul3">Empresa</label>
                         <input type="text" id="empresa" class="w-auto form-control w-sm-auto" placeholder="" name="empresa" required>
                     </div>
+                    
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível</label>
-                        <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($patrimonios->isEmpty())
-                            <option value="" disabled>Nenhum Patrimônio Inservível Cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Patrimônio</option>
-                            @foreach($patrimonios as $patrimonio)
-                            <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio }}</option>
-                            @endforeach
-                            @endif
-                        </select>
-                    </div>
+                            <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível:</label>
+                            <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
+                                @if(isset($patrimonio))
+                                <option value="{{ $patrimonio->id }}" selected>{{ $patrimonio->descricaodopatrimonio }}</option>
+                                @else
+                                @if ($patrimonios->isEmpty())
+                                <option value="" disabled>Nenhum Patrimônio Inservível Cadastrado</option>
+                                @else
+                                <option value="" disabled selected>Selecione o Patrimônio</option>
+                                @foreach($patrimonios as $patrimonio)
+                                <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio }}</option>
+                                @endforeach
+                                @endif
+                                @endif
+                            </select>
+                        </div>
 
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="dataprevistadeentrega" class="m-2 textoAzul3">Data Prevista de Entrega</label>

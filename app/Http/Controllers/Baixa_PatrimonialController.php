@@ -17,18 +17,17 @@ class Baixa_PatrimonialController extends Controller
     public function indexBuscar(Request $request)
     {
         $searchTerm = $request->input('search');
-    
+
         $baixaspatrimoniais = Baixa_Patrimonial::query();
-    
+
         if ($searchTerm) {
             $baixaspatrimoniais->whereDate('datadabaixa', $searchTerm);
         }
-    
+
         $baixaspatrimoniais = $baixaspatrimoniais->get();
-    
+
         return view('baixaspatrimoniais.index', compact('baixaspatrimoniais'));
     }
-    
 
     public function show($id)
     {
@@ -40,10 +39,16 @@ class Baixa_PatrimonialController extends Controller
         return view('baixaspatrimoniais.show', ['baixaspatrimoniais' => $baixapatrimonial]);
     }
 
-    public function create($id)
+    public function create($id = null)
     {
-        $patrimonio = Patrimonio::findorFail($id);
-        return view('baixaspatrimoniais.create', ['patrimonio' => $patrimonio]);
+        $patrimonio = null;
+    
+        if ($id !== null) {
+            $patrimonio = Patrimonio::find($id);
+        }
+        $patrimonios = Patrimonio::where('status', 'Inservivel')->get();
+    
+        return view('baixaspatrimoniais.create', ['patrimonio' => $patrimonio,'patrimonios' => $patrimonios]);
     }
 
     public function store(Request $request)
@@ -56,7 +61,6 @@ class Baixa_PatrimonialController extends Controller
         $baixa_patrimonial->patrimonio_id = $request->patrimonio_id;
         $baixa_patrimonial->save();
 
-        // Atualiza o status do patrimônio para "baixa patrimonial"
         $patrimonio = Patrimonio::find($request->patrimonio_id);
         if ($patrimonio) {
             $patrimonio->status = 'Baixa patrimonial';

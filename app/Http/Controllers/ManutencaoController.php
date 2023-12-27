@@ -12,7 +12,7 @@ class ManutencaoController extends Controller
     public function index(Request $request)
     {
         $filtro = $request->input('selectCampoDeBusca');
-    
+
         if ($filtro === 'andamento') {
             $manutencoes = Manutencao::whereNull('datasaida')->get();
         } elseif ($filtro === 'concluido') {
@@ -20,7 +20,7 @@ class ManutencaoController extends Controller
         } else {
             $manutencoes = Manutencao::all();
         }
-    
+
         return view('manutencoes.index', ['manutencoes' => $manutencoes]);
     }
 
@@ -49,10 +49,17 @@ class ManutencaoController extends Controller
         return view('manutencoes.show', ['manutencoes' => $manutencao]);
     }
 
-    public function create()
+    public function create($id = null)
     {
-        $patrimonios = Patrimonio::where('status', 'Inservível')->get();
-        return view('manutencoes.create', ['patrimonios' => $patrimonios]);
+        $patrimonio = null;
+
+        if ($id !== null) {
+            $patrimonio = Patrimonio::find($id);
+        }
+
+        $patrimonios = Patrimonio::where('status', 'Inservivel')->get();
+
+        return view('manutencoes.create', ['patrimonio' => $patrimonio, 'patrimonios' => $patrimonios]);
     }
 
     public function store(Request $request)
@@ -64,7 +71,6 @@ class ManutencaoController extends Controller
         $manutencao->dataentrada = $request->dataentrada;
         $manutencao->patrimonio_id = $request->patrimonio_id;
 
-        // Se a data de saída não for fornecida, seta para null
         if (!$request->has('datasaida')) {
             $manutencao->datasaida = null;
         } else {
@@ -73,7 +79,6 @@ class ManutencaoController extends Controller
 
         $manutencao->save();
 
-        // Atualiza o status do patrimônio para "em manutenção"
         $patrimonio = Patrimonio::find($request->patrimonio_id);
         if ($patrimonio) {
             $patrimonio->status = 'Em manutenção';
@@ -104,12 +109,10 @@ class ManutencaoController extends Controller
 
     public function recebido($id)
     {
-        // Define a data de saída como a data atual
         $manutencao = Manutencao::findOrFail($id);
         $manutencao->datasaida = Carbon::now()->toDateString();
         $manutencao->save();
 
-        // Atualiza o status do patrimônio para "Servível"
         $patrimonio = Patrimonio::findOrFail($manutencao->patrimonio_id);
         $patrimonio->status = 'servivel';
         $patrimonio->save();

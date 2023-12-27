@@ -203,16 +203,26 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            <!--<option value="{{ $usuario->id }}" selected>{{ $usuario->name }}</option>-->
                             @if ($usuarios->isEmpty())
                             <option value="" disabled>Nenhum Usuário Cadastrado</option>
                             @else
+                            @if (Auth::user()->access_level === 'admin')
                             <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                            @foreach($usuarios as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            @endforeach
+                            @else
+                            @if ($usuarios->count() === 1)
+                            <option value="{{ $usuarios->first()->id }}" selected>{{ $usuarios->first()->name }}</option>
+                            @else
+                            <option value="" disabled selected>Selecione o Usuário</option>
+                            @foreach($usuarios as $user)
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
                             @endforeach
                             @endif
-                        </select> 
+                            @endif
+                            @endif
+                        </select>
                     </div>
                 </div>
 
@@ -226,6 +236,7 @@
         </div>
     </div>
 </div>
+
 <!--Função para impedir que o usuário selecione uma data retroativa no calendário de empréstimo-->
 <script>
     $(function() {

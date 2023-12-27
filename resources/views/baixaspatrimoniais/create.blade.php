@@ -191,7 +191,6 @@
                             <label for="encarregadodaretirada" class="m-2 textoAzul3">Encarregado da retirada:</label>
                             <input name="encarregadodaretirada" type="text" id="encarregadodaretirada" class="w-auto form-control w-sm-auto" required>
                         </div>
-                        <!-- Remover a quantidade -->
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="quantidaderetirada" class="m-2 textoAzul3">Quantidade retirada:</label>
                             <input name="quantidaderetirada" type="number" id="quantidaderetirada" class="w-auto form-control w-sm-auto" required>
@@ -199,7 +198,18 @@
                         <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                             <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio Inservível:</label>
                             <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-                                <option value="{{ $patrimonio->id }}" selected>{{ $patrimonio->descricaodopatrimonio}}</option>
+                                @if(isset($patrimonio))
+                                <option value="{{ $patrimonio->id }}" selected>{{ $patrimonio->descricaodopatrimonio }}</option>
+                                @else
+                                @if ($patrimonios->isEmpty())
+                                <option value="" disabled>Nenhum Patrimônio Inservível Cadastrado</option>
+                                @else
+                                <option value="" disabled selected>Selecione o Patrimônio</option>
+                                @foreach($patrimonios as $patrimonio)
+                                <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio }}</option>
+                                @endforeach
+                                @endif
+                                @endif
                             </select>
                         </div>
                     </div>

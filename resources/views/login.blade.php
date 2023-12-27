@@ -56,11 +56,11 @@
                         </button>
                     </div>
                     
-                    <div class="d-flex justify-content-center">
+                    <!-- <div class="d-flex justify-content-center">
                         <a href="{{ route('register-user') }}" style="text-decoration: none; margin-top: 25px;">
                             <p style="color: var(--azul-cabecalho);">Não tenho uma conta!</p>
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="d-flex justify-content-center">
                         @if (Route::has('password.request'))

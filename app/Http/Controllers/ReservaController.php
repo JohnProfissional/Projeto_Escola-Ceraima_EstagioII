@@ -47,11 +47,18 @@ class ReservaController extends Controller
 
     public function create()
     {
-        //$user = Auth::user();
-        $user = User::all();
+        $loggedUser = Auth::user();
+
+        if ($loggedUser->access_level === 'admin') {
+            $usuarios = User::all();
+        } else {
+            $usuarios = User::where('id', $loggedUser->id)->get();
+        }
+
         $patrimonios = Patrimonio::where('status', 'Servivel')->get();
-        return view('reservas.create', ['patrimonios' => $patrimonios, 'usuario' => $user]);
+        return view('reservas.create', ['patrimonios' => $patrimonios, 'usuarios' => $usuarios]);
     }
+
 
     public function store(Request $request)
     {
