@@ -3,7 +3,6 @@
 @section('title', 'Perfil')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -198,7 +197,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <!-- Alerta de caixa vermelha -->
             <div class="alert alert-danger" role="alert">
                 <strong>Altere seus dados:</strong> Realize a troca da senha temporária por uma nova senha segura e definitiva.
             </div>

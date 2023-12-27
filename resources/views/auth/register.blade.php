@@ -3,7 +3,7 @@
 @section('title', 'Cadastro')
 
 @section('cabecalho')
-<!--Na tela de login e de cadastro o cabeçalho deve ter só o nome do sistema q é definido no layout main-->
+
 @endsection('cabecalho')
 
 @section('content')

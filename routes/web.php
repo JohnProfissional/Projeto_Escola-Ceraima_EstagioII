@@ -31,17 +31,12 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-// Route::get('/register', [CustomAuthController::class, 'registration'])->name('register-user')->middleware('can:access');
-// Route::post('/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom')->middleware('can:access');
-// Route::post('/custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
-
 Route::get('/logout', [CustomAuthController::class, 'signOut'])->middleware(['auth'])->name('logout');
 Route::get('/dashboard', [CustomAuthController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/perfil', [App\Http\Controllers\HomeController::class, 'perfil'])->middleware(['auth'])->name('perfil');
 Route::get('/perfil/edit', [App\Http\Controllers\HomeController::class, 'editPerfil'])->middleware(['auth'])->name('editPerfil');
 Route::put('/perfil/update/{id}', [App\Http\Controllers\HomeController::class, 'updatePerfil'])->middleware(['auth'])->name('updatePerfil');
-// Route::get('/admin/home', [HomeController::class, 'adminHome'])->middleware('is_admin')->name('admin.home');
 
 Route::prefix('usuarios')->group(function () {
     Route::get('/', [UserController::class, 'index'])->middleware(['auth'])->name('usuarios.index');
@@ -129,9 +124,7 @@ Route::prefix('baixas_patrimoniais')->group(function () {
     Route::delete('/delete/{id}', [Baixa_PatrimonialController::class, 'destroy'])->middleware(['auth'])->name('baixas_patrimoniais.delete')->middleware('can:access');
 });
 
-// -------------------------------------------------------
-// OS USUÁRIOS COMUNS PODERÃO REALIZAR O CRUD DE RESERVAS, EMPRESTIMO E DEVOLUÇÕES, DESDE QUE SEJA OS SEUS ITENS.
-
+// OS USUÁRIOS COMUNS PODERÃO REALIZAR O CRUD DE RESERVA, EMPRESTIMO E DEVOLUÇÃO, DESDE QUE SEJAM DE SEUS ITENS.
 Route::prefix('reservas')->group(function () {
     Route::get('/buscar', [ReservaController::class, 'indexBuscar'])->middleware(['auth'])->name('reservas.indexBuscar');
     Route::get('/', [ReservaController::class, 'index'])->middleware(['auth'])->name('reservas.index');
@@ -164,8 +157,6 @@ Route::prefix('devolucoes')->group(function () {
     Route::put('/update/{id}', [DevolucaoController::class, 'update'])->middleware(['auth'])->name('devolucoes.update');
     Route::delete('/delete/{id}', [DevolucaoController::class, 'destroy'])->middleware(['auth'])->name('devolucoes.delete');
 });
-
-//-------------------------------------------------------
 
 Route::prefix('comodos')->group(function () {
     Route::get('/buscar', [ComodoController::class, 'indexBuscar'])->middleware(['auth'])->name('comodos.indexBuscar');

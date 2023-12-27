@@ -8,7 +8,6 @@ use App\Models\Patrimonio;
 
 class CedidoController extends Controller
 {
-
     public function index()
     {
         $cedidos = Cedido::all();
@@ -59,7 +58,6 @@ class CedidoController extends Controller
 
         $cedido->save();
 
-        // Atualiza o status do patrimônio para "cedido"
         $patrimonio = Patrimonio::find($request->patrimonio_id);
         if ($patrimonio) {
             $patrimonio->status = 'Cedido';
@@ -72,7 +70,7 @@ class CedidoController extends Controller
     public function edit($id)
     {
         $Cedido = Cedido::findorFail($id);
-        $patrimonios = Patrimonio::where('status', 'Servível')->get(); // Bem excedente tbm
+        $patrimonios = Patrimonio::where('status', 'Servível')->get();
         return view('cedidos.edit', ['Cedido' => $Cedido, 'patrimonios' => $patrimonios]);
     }
 

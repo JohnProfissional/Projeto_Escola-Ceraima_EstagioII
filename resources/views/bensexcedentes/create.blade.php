@@ -3,7 +3,6 @@
 @section('title', 'Cadastrar Bem Excedente')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">

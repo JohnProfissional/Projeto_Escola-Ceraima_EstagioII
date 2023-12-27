@@ -79,7 +79,7 @@ class PatrimonioController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tombo' => 'required|unique:patrimonios', // Verifica se o tombo é único na tabela 'patrimonios'
+            'tombo' => 'required|unique:patrimonios',
         ]);
 
         if ($validator->fails()) {
@@ -154,7 +154,7 @@ class PatrimonioController extends Controller
     public function storepatrientrada(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'tombo' => 'required|unique:patrimonios', // Verifica se o tombo é único na tabela 'patrimonios'
+            'tombo' => 'required|unique:patrimonios',
         ]);
 
         if ($validator->fails()) {

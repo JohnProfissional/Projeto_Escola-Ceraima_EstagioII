@@ -3,7 +3,6 @@
 @section('title', 'Cadastrar Empréstimo')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -181,7 +180,7 @@
                 <div class="row m-2">
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="quantidadeemprestada'" class="m-2 textoAzul3">Quantidade Emprestada</label>
-                        <input type="number" id="quantidadeemprestada'" class="w-auto form-control w-sm-auto" placeholder="" name="quantidadeemprestada" required>
+                        <input type="number" id="quantidadeemprestada" class="w-auto form-control w-sm-auto" placeholder="" name="quantidadeemprestada" required>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="dataemprestimo" class="m-2 textoAzul3">Data do Empréstimo</label>

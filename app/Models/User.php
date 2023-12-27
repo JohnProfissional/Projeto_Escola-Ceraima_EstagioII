@@ -32,7 +32,7 @@ class User extends Authenticatable
         'cargo',
         'email',
         'password',
-        'access_level', //Nível de acesso
+        'access_level',
     ];
 
     /**

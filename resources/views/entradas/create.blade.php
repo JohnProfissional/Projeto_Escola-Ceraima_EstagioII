@@ -3,7 +3,6 @@
 @section('title', 'Cadastrar Entrada')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -226,7 +225,7 @@
                 </div>
 
                 <div class="col-lg-12" style="text-align:right">
-                    <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;"> <!-- data-bs-toggle="modal" data-bs-target="#confirmationModal"-->
+                    <button type="submit" class="btn btn-success me-5 mb-5" style="color: #fff;">
                         Cadastrar Entrada
                     </button>
                 </div>
@@ -236,72 +235,4 @@
     </div>
 </div>
 
-
 @endsection('content')
-
-<!-- // Modal -->
-<!-- <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmationModalLabel">Adicionar Patrimônios</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Você deseja adicionar patrimônios a essa entrada?</p>
-            </div>
-            <div class="modal-footer">
-                <form id="formShow" action="" method="POST">
-                    @csrf
-                    <input type="submit" class="btn btn-primary" value="Sim">
-                </form>
-
-                <form id="formShow" action="{{ route('entradas.index') }}" method="POST">
-                    @csrf
-                    <input type="submit" class="btn btn-primary" value="Não">
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.getElementById('formEntrada');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            // Aqui, você pode adicionar verificações para validar se os campos estão preenchidos
-            const inputs = form.querySelectorAll('input, select, textarea');
-            let allFieldsFilled = true;
-
-            inputs.forEach(input => {
-                if (input.value.trim() === '') {
-                    allFieldsFilled = false;
-                    return;
-                }
-            });
-
-            if (!allFieldsFilled) {
-                alert('Por favor, preencha todos os campos antes de enviar o formulário.');
-                return;
-            }
-
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form)
-            })
-            .then(response => {
-                if (response.ok) {
-                    var myModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
-                    myModal.show();
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao enviar formulário:', error);
-            });
-        });
-    });
-</script> -->

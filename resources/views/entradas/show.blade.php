@@ -3,7 +3,6 @@
 @section('title', 'Visualizar Entrada')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -267,7 +266,7 @@
                     </thead>
 
                     @foreach ($patrimonios as $patrimonio)
-                    <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
+                    <tbody class="conteudo-itens">
                         <tr>
                             <td scope="row">{{$patrimonio->id}}</td>
                             <td>{{$patrimonio->descricaodopatrimonio}}</td>

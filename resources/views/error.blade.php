@@ -3,7 +3,6 @@
 @section('title', 'CadPatri - Error')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 @endsection('cabecalho')
 

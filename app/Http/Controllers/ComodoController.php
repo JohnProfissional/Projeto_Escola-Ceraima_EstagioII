@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Comodo;
 use App\Models\Setor;
 use Illuminate\Database\QueryException;
+use App\Models\Patrimonio;
 
 class ComodoController extends Controller
 {
@@ -34,11 +35,17 @@ class ComodoController extends Controller
     public function show($id)
     {
         if ($id) {
-            $comodo = Comodo::where('id', $id)->get();
+            $comodos = Comodo::find($id);
+            $patrimonios = Patrimonio::where('comodo_id', $comodos->id)->get();
+
+            if (!$comodos) {
+                return redirect()->route('comodos.index')->with('error', 'Cômodo não encontrado');
+            }
         } else {
-            $comodo = Comodo::all();
+            $comodos = Comodo::all();
+            $patrimonios = Patrimonio::all();
         }
-        return view('comodos.show', ['comodos' => $comodo]);
+        return view('comodos.show', ['comodos' => $comodos, 'patrimonios' => $patrimonios]);
     }
 
     public function create()
@@ -51,7 +58,7 @@ class ComodoController extends Controller
     {
         $comodo = new Comodo();
         $comodo->descricaodocomodo = $request->descricaodocomodo;
-        $comodo->quantidadedebens = $request->quantidadedebens; //Acho q pode até tirar esse campo
+        $comodo->quantidadedebens = $request->quantidadedebens;
         $comodo->setor_id = $request->setor_id;
         $comodo->save();
         return redirect()->route('comodos.index');

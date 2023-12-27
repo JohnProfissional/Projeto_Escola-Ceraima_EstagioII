@@ -3,7 +3,6 @@
 @section('title', 'Editar Patrimônio')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -213,7 +212,7 @@
                             <option value="Baixa patrimonial" {{ $Patrimonio->status === 'Baixa patrimonial' ? 'selected' : '' }} {{ $Patrimonio->status === 'Cedido' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Em manutenção' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Servivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Inservivel' ? 'disabled' : '' }} {{ $Patrimonio->status === 'Desaparecido' ? 'disabled' : '' }}>Baixa Patrimonial</option>
                         </select>
                     </div>
-                    <!--  -->
+                    
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="entrada_id" class="m-2 textoAzul3">Entrada:</label>
                         <select name="entrada_id" id="entrada_id" class="w-auto form-control w-sm-auto" required>

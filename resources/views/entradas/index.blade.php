@@ -3,7 +3,6 @@
 @section('title', 'Entradas')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -174,8 +173,6 @@
     <div class="ms-5 me-5 mt-1 mb-1 container-conteudo bg-light p-4">
         <div class="row">
             <div class="w-auto d-flex justify-content-center">
-                <!--CAMPO QUE DEVE SER MODIFICADO CONFORME INFORMAÇÕES DO BANCO-->
-                <!--<h1>Entradas</h1>-->
             </div>
         </div>
 
@@ -201,19 +198,14 @@
                         <th>Data da Transferência</th>
                         <th>Unidade Anterior</th>
                         <th>Nova Unidade</th>
-                        <!-- <th>Centro de Custo Anterior</th>
-                        <th>Centro de Custo Destino</th> -->
                         <th>Valor Total dos Bens</th>
                         <th>Número da Nota Fiscal</th>
                         <th>Data da Nota Fiscal</th>
-                        <!--<th>Órgão</th>
-                        <th>Unidade Orçamentária</th>
-                        <th>Total de Bens</th> -->
                     </tr>
                 </thead>
 
                 @foreach ($entradas as $entrada)
-                <tbody class="conteudo-itens"> <!--class="row conteudo-itens w-auto h-auto p-2" id="conteudo-itens-lado-direito">-->
+                <tbody class="conteudo-itens">
                     <tr>
                         <td scope="row">{{$entrada->id}}</td>
                         <td>{{ \Carbon\Carbon::parse($entrada->datadatransferencia)->format('d/m/Y') }}</td>

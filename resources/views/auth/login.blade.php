@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('cabecalho')
-<!-- Na tela de login e de cadastro o cabeçalho deve ter só o nome do sistema que é definido no layout main -->
+
 @endsection
 
 @section('content')
@@ -60,12 +60,6 @@
                     </a>
                     @endif
                 </div>
-
-                <!-- <div class="d-flex justify-content-center">
-                    <a href="{{ route('register') }}" style="text-decoration: none; margin-top: 10px;">
-                        <p style="color: var(--azul-cabecalho);">Não tenho uma conta!</p>
-                    </a>
-                </div> -->
             </div>
         </form>
     </x-auth-card>

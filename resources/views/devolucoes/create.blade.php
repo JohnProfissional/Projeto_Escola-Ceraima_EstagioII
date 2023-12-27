@@ -3,7 +3,6 @@
 @section('title', 'Cadastrar Devolução')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -163,7 +162,7 @@
         font-size: 1.5em;
     }
 </style>
- 
+
 <!--Conteúdo-->
 <div class="container-fluid">
     <div class="ms-5 text-start badge text-wrap sinalizador">

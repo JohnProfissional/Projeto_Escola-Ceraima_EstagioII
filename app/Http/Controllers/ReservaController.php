@@ -59,7 +59,6 @@ class ReservaController extends Controller
         return view('reservas.create', ['patrimonios' => $patrimonios, 'usuarios' => $usuarios]);
     }
 
-
     public function store(Request $request)
     {
         $reserva = new Reserva();

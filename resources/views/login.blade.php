@@ -3,7 +3,6 @@
 @section('title', 'Login')
 
 @section('cabecalho')
-<!--Na tela de login e de cadastro o cabeçalho deve ter só o nome do sistema q é definido no layout main-->
 
 @endsection('cabecalho')
 
@@ -55,16 +54,10 @@
                             {{ __('ENTRAR') }}
                         </button>
                     </div>
-                    
-                    <!-- <div class="d-flex justify-content-center">
-                        <a href="{{ route('register-user') }}" style="text-decoration: none; margin-top: 25px;">
-                            <p style="color: var(--azul-cabecalho);">Não tenho uma conta!</p>
-                        </a>
-                    </div> -->
 
                     <div class="d-flex justify-content-center">
                         @if (Route::has('password.request'))
-                        <a href="{{ route('password.request') }}"  style="text-decoration: none; color: var(--azul-cabecalho);">
+                        <a href="{{ route('password.request') }}" style="text-decoration: none; color: var(--azul-cabecalho);">
                             {{ __('Esqueceu sua senha?') }}
                         </a>
                         @endif

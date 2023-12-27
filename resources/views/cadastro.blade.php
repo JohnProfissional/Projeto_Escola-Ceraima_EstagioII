@@ -3,7 +3,7 @@
 @section('title', 'Cadastro')
 
 @section('cabecalho')
-<!--Na tela de login e de cadastro o cabeçalho deve ter só o nome do sistema q é definido no layout main-->
+
 @endsection('cabecalho')
 
 @section('content')
@@ -14,7 +14,6 @@
 
             <!-- Validation Errors -->
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
 
             <form class="p-4 p-md-5 cardLoginCadastro bg-light" id="form-cadastro" method="POST" action="{{ route('register-user') }}">
                 @csrf

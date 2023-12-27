@@ -44,7 +44,6 @@ class DevolucaoController extends Controller
     }
 
     public function create(){
-        //$usuarios = Auth::user();
         $usuarios = User::all();
         $emprestimos = Emprestimo::all();
         $patrimonios = Patrimonio::where('status', 'Servivel')->get();

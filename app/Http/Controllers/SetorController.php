@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comodo;
 use App\Models\Setor;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
@@ -32,11 +33,17 @@ class SetorController extends Controller
     public function show($id)
     {
         if ($id) {
-            $setor = Setor::where('id', $id)->get();
+            $setores = Setor::find($id);
+            $comodos = Comodo::where('setor_id', $setores->id)->get();
+
+            if (!$setores) {
+                return redirect()->route('setores.index')->with('error', 'Setor não encontrado');
+            }
         } else {
-            $setor = Setor::all();
+            $setores = Setor::all();
+            $comodos = Comodo::all();
         }
-        return view('setores.show', ['setores' => $setor]);
+        return view('setores.show', ['setores' => $setores, 'comodos' => $comodos]);
     }
 
     public function create()

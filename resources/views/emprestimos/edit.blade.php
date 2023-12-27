@@ -3,7 +3,6 @@
 @section('title', 'Editar Empréstimo')
 
 @section('cabecalho')
-<!--Cabecalho das telas (fora login e cadastro)-->
 
 <div class="d-flex cabecalho2">
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavbar">
@@ -196,7 +195,7 @@
 							<option value="" disabled>Selecione o Usuário</option>
 							@foreach($usuarios as $usuario)
 							<option value="{{ $usuario->id }}" {{ $Emprestimo->usuario_id == $usuario->id ? 'selected' : '' }}>
-								{{ $usuario->nome }}
+								{{ $usuario->name }}
 							</option>
 							@endforeach
 							@endif

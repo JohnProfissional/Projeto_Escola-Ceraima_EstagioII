@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->string('access_level')->default('user'); //nivel de acesso
+            $table->string('access_level')->default('user');
             $table->string('cpf', 16)->unique();
             $table->string('cargo',60);
             $table->rememberToken();

@@ -13,9 +13,6 @@ class CreateDefaultAdminUser extends Migration
      * @return void
      */
 
-    // Gerar uma senha aleatória
-
-
     public function up()
     {
         $mypassword = 'admin2023cadpatri';
