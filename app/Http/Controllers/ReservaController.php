@@ -13,7 +13,7 @@ class ReservaController extends Controller
     public function index(){
         $reservas = Reserva::all();
         return view('reservas.index', ['reservas'=>$reservas]);
-    }   
+    } 
 
     public function show($id){
         if($id){
@@ -26,9 +26,10 @@ class ReservaController extends Controller
     
     public function create(){
         $user = Auth::user();
+        $usuarios = User::all();
         $patrimonios = Patrimonio::all();
-        return view('reservas.create', ['patrimonios'=>$patrimonios, 'usuario'=>$user]); 
-    }
+        return view('reservas.create', ['patrimonios'=>$patrimonios, 'usuario'=>$user, 'usuarios'=>$usuarios]); 
+    } 
     
     public function store(Request $request){
         $reserva = new Reserva();        
@@ -49,7 +50,7 @@ class ReservaController extends Controller
 
     public function update(Request $request){
         Reserva::find($request->id)->update($request->except('_token_'));
-        return redirect()->route('reservas.index')->with('msg', 'Alteraçãorealizada com sucesso');
+        return redirect()->route('reservas.index')->with('msg', 'Alteração realizada com sucesso');
     }
 
     public function destroy($id){

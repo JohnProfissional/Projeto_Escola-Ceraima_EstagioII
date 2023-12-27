@@ -193,7 +193,7 @@
 							<option value="" disabled>Selecione o Usuário</option>
 							@foreach($usuarios as $usuario)
 							<option value="{{ $usuario->id }}" {{ $Devolucao->usuario_id == $usuario->id ? 'selected' : '' }}>
-								{{ $usuario->nome }}
+								{{ $usuario->name }}
 							</option>
 							@endforeach
 						</select>

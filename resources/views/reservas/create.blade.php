@@ -203,8 +203,16 @@
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            <option value="{{ $usuario->id }}" selected>{{ $usuario->name }}</option>
-                        </select>
+                            <!--<option value="{{ $usuario->id }}" selected>{{ $usuario->name }}</option>-->
+                            @if ($usuarios->isEmpty())
+                            <option value="" disabled>Nenhum Usuário Cadastrado</option>
+                            @else
+                            <option value="" disabled selected>Selecione o Usuário</option>
+                            @foreach($usuarios as $usuario)
+                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
+                            @endforeach
+                            @endif
+                        </select> 
                     </div>
                 </div>
 

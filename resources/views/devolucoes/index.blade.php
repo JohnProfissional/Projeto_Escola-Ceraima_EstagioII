@@ -220,7 +220,7 @@
                         <td>{{ \Carbon\Carbon::parse($devolucao->datadadevolucao)->format('d/m/Y') }}</td>
                         <td>{{$devolucao->acessarEmprestimo->dataemprestimo}}</td>
                         <td>{{$devolucao->acessarPatrimonio->descricaodopatrimonio}}</td>
-                        <td>{{$devolucao->acessarUsuario->nome}}</td>
+                        <td>{{$devolucao->acessarUsuario->name}}</td>
 
                         @can('access')
                         <td>

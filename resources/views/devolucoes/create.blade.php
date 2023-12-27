@@ -163,7 +163,7 @@
         font-size: 1.5em;
     }
 </style>
-
+ 
 <!--Conteúdo-->
 <div class="container-fluid">
     <div class="ms-5 text-start badge text-wrap sinalizador">
@@ -195,7 +195,7 @@
                             @else
                             <option value="" disabled selected>Selecione o Usuário</option>
                             @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->nome }}</option>
+                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
                             @endforeach
                             @endif
                         </select>
