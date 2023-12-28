@@ -217,17 +217,19 @@
                         <td>{{ \Carbon\Carbon::parse($emprestimo->acessarReserva->datareserva)->format('d/m/Y') }}</td>
                         <td>{{$emprestimo->acessarUsuario->name}}</td>
 
-                        @can('access')
                         <td>
+                            @if(Auth::user()->access_level === 'admin' || (Auth::user()->access_level === 'user' && Auth::user()->id === $emprestimo->usuario_id))
                             <div class="col" id="meio">
                                 <form action="{{route('emprestimos.edit', ['id' => $emprestimo->id])}}" method="get">
                                     @csrf
                                     <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
                                 </form>
                             </div>
+                            @endif
                         </td>
 
                         <td>
+                            @if(Auth::user()->access_level === 'admin' || (Auth::user()->access_level === 'user' && Auth::user()->id === $emprestimo->usuario_id))
                             <div class="col" id="meio">
                                 <form id="formExcluir" action="{{route('emprestimos.delete', ['id' => $emprestimo->id])}}" method="POST">
                                     @csrf
@@ -235,26 +237,23 @@
                                     <input type="submit" class="btn btn-primary" value="Deletar" onclick="return confirmarExclusao();"><br><br>
                                 </form>
                             </div>
+                            @endif
                         </td>
-                        @endcan
+
                     </tr>
                 </tbody>
-
                 @endforeach
             </table>
         </div>
 
-        @can('access')
         <div class="col-lg-12 me-3" style="text-align:right">
             <form action="{{route('emprestimos.create')}}" method="get">
                 @csrf
                 <input type="submit" class="btn btn-success" value="Novo">
             </form>
         </div>
-        @endcan
 
     </div>
-
 </div>
 
 <!-- Modal -->
@@ -278,7 +277,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     function confirmarExclusao() {

@@ -16,7 +16,7 @@ class CreateEmprestimosTable extends Migration
         Schema::create('emprestimos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();            
-            $table->decimal('quantidadeemprestada', 6,2);
+            $table->integer('quantidadeemprestada');
             $table->date('dataemprestimo');  
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users');

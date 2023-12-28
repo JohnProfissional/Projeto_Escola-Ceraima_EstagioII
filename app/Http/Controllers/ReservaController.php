@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Validator;
 
 class ReservaController extends Controller
 {
@@ -61,6 +62,12 @@ class ReservaController extends Controller
 
     public function store(Request $request)
     {
+        $reservaAtiva = Reserva::where('patrimonio_id', $request->patrimonio_id)->where('datareserva', $request->datareserva)->first();
+
+        if ($reservaAtiva) {
+            return redirect()->back()->with('error', 'Já existe uma reserva para este patrimônio nesta data. Por favor, selecione outra data.');
+        }
+
         $reserva = new Reserva();
         $reserva->datareserva = $request->datareserva;
         $reserva->quantidadeitensreservados = $request->quantidadeitensreservados;
@@ -72,15 +79,37 @@ class ReservaController extends Controller
 
     public function edit($id)
     {
+        $loggedUser = Auth::user();
+
+        if ($loggedUser->access_level === 'admin') {
+            $usuarios = User::all();
+        } else {
+            $usuarios = User::where('id', $loggedUser->id)->get();
+        }
+
         $Reserva = Reserva::findorFail($id);
-        $usuarios = User::all();
-        $patrimonios = Patrimonio::all();
+        $patrimonios = Patrimonio::where('status', 'Servivel')->get();
         return view('reservas.edit', ['Reserva' => $Reserva, 'usuarios' => $usuarios, 'patrimonios' => $patrimonios]);
     }
 
     public function update(Request $request)
     {
-        Reserva::find($request->id)->update($request->except('_token_'));
+        $reserva = Reserva::find($request->id);
+
+        if (!$reserva) {
+            return redirect()->back()->with('error', 'Reserva não encontrada');
+        }
+
+        if ($reserva->patrimonio_id != $request->patrimonio_id || $reserva->datareserva != $request->datareserva) {
+            $reservaAtiva = Reserva::where('patrimonio_id', $request->patrimonio_id)->where('datareserva', $request->datareserva)->where('id', '!=', $request->id)->first();
+
+            if ($reservaAtiva) {
+                return redirect()->back()->with('error', 'Já existe uma reserva para este patrimônio nesta data. Por favor, selecione outra data.');
+            }
+        }
+
+        $reserva->update($request->except('_token'));
+
         return redirect()->route('reservas.index')->with('msg', 'Alteração realizada com sucesso');
     }
 

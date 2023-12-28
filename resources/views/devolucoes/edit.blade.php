@@ -81,17 +81,17 @@
 						Perfil
 					</a>
 
-                    @can('access')
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
-                        <i class="bi bi-people"></i>
-                        Usuários
-                    </a>
-                    @endcan
+					@can('access')
+					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
+						<i class="bi bi-people"></i>
+						Usuários
+					</a>
+					@endcan
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
-                        <i class="bi bi-folder-plus"></i>
-                        Entrada de Patrimônios
-                    </a>
+						<i class="bi bi-folder-plus"></i>
+						Entrada de Patrimônios
+					</a>
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
 						<i class="bi bi-folder-plus"></i>
@@ -144,9 +144,9 @@
 					</a>
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('logout')}}">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Sair
-                    </a>
+						<i class="bi bi-box-arrow-right"></i>
+						Sair
+					</a>
 				</div>
 
 				<div class="modal-footer">
@@ -187,42 +187,20 @@
 						<input value="{{$Devolucao->descricaodadevolucao}}" name="descricaodadevolucao" type="text" id="descricaodadevolucao" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-						<label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-						<select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-							<option value="" disabled>Selecione o Usuário</option>
-							@foreach($usuarios as $usuario)
-							<option value="{{ $usuario->id }}" {{ $Devolucao->usuario_id == $usuario->id ? 'selected' : '' }}>
-								{{ $usuario->name }}
-							</option>
-							@endforeach
-						</select>
-					</div>
-					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-						<label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
-						<select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-							<option value="" disabled>Selecione o Patrimônio</option>
-							@foreach($patrimonios as $patrimonio)
-							<option value="{{ $patrimonio->id }}" {{ $Devolucao->patrimonio_id == $patrimonio->id ? 'selected' : '' }}>
-								{{ $patrimonio->descricaodopatrimonio }}
-							</option>
-							@endforeach
-						</select>
-					</div>
-					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-						<label for="emprestimo_id" class="m-2 textoAzul3">Empréstimo</label>
-						<select name="emprestimo_id" id="emprestimo_id" class="w-auto form-control w-sm-auto" required>
-							<option value="" disabled>Selecione o Empréstimo</option>
-							@foreach($emprestimos as $emprestimo)
-							<option value="{{ $emprestimo->id }}" {{ $Devolucao->emprestimo_id == $emprestimo->id ? 'selected' : '' }}>
-							{{ \Carbon\Carbon::parse($emprestimo->dataemprestimo)->format('d/m/Y')}}
-							</option>
-							@endforeach
-						</select>
-					</div>
-
-					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
 						<label for="quantidadedevolvida" class="m-2 textoAzul3">Quantidade Devolvida</label>
 						<input value="{{$Devolucao->quantidadedevolvida}}" name="quantidadedevolvida" type="text" id="quantidadedevolvida" class="w-auto form-control w-sm-auto" placeholder="" required>
+					</div>
+					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+						<label for="emprestimo_id" class="m-2 textoAzul3">ID Empréstimo</label>
+						<input value="{{$Devolucao->emprestimo_id}}" name="emprestimo_id" type="text" id="emprestimo_id" class="w-auto form-control w-sm-auto" placeholder="" required readonly>
+					</div>
+					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+						<label for="usuario_id" class="m-2 textoAzul3">ID Usuário</label>
+						<input value="{{$Devolucao->usuario_id}}" name="usuario_id" type="number" id="usuario_id" class="w-auto form-control w-sm-auto" required readonly>
+					</div>
+					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+						<label for="patrimonio_id" class="m-2 textoAzul3">ID Patrimônio</label>
+						<input value="{{$Devolucao->patrimonio_id}}" name="patrimonio_id" type="number" id="patrimonio_id" class="w-auto form-control w-sm-auto" required readonly>
 					</div>
 				</div>
 

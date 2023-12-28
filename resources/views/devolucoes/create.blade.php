@@ -187,31 +187,10 @@
                         <input type="text" id="descricaodadevolucao" class="w-auto form-control w-sm-auto" placeholder="" name="descricaodadevolucao" required>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-                        <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($usuarios->isEmpty())
-                            <option value="" disabled>Nenhum Usuário Cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $usuario)
-                            <option value="{{ $usuario->id }}">{{ $usuario->name }}</option>
-                            @endforeach
-                            @endif 
-                        </select>
+                        <label for="quantidadedevolvida" class="m-2 textoAzul3">Quantidade Devolvida:</label>
+                        <input name="quantidadedevolvida" type="number" id="quantidadedevolvida" class="w-auto form-control w-sm-auto" placeholder="" required>
                     </div>
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
-                        <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($patrimonios->isEmpty())
-                            <option value="" disabled>Nenhum Patrimônio Cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Patrimônio</option>
-                            @foreach($patrimonios as $patrimonio)
-                            <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio }}</option>
-                            @endforeach
-                            @endif
-                        </select>
-                    </div>
+
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="emprestimo_id" class="m-2 textoAzul3">Empréstimo</label>
                         <select name="emprestimo_id" id="emprestimo_id" class="w-auto form-control w-sm-auto" required>
@@ -220,15 +199,20 @@
                             @else
                             <option value="" disabled selected>Selecione o Empréstimo</option>
                             @foreach($emprestimos as $emprestimo)
-                            <option value="{{ $emprestimo->id }}">{{  \Carbon\Carbon::parse($emprestimo->dataemprestimo)->format('d/m/Y') }}</option>
+                            <option value="{{ $emprestimo->id }}" data-usuario="{{ $emprestimo->usuario_id }}" data-patrimonio="{{ $emprestimo->patrimonio_id }}">
+                                {{ \Carbon\Carbon::parse($emprestimo->dataemprestimo)->format('d/m/Y') }}
+                            </option>
                             @endforeach
                             @endif
                         </select>
                     </div>
-
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="quantidadedevolvida" class="m-2 textoAzul3">Quantidade Devolvida:</label>
-                        <input name="quantidadedevolvida" type="number" id="quantidadedevolvida" class="w-auto form-control w-sm-auto" placeholder="" required>
+                        <label for="usuario_id" class="m-2 textoAzul3">ID Usuário </label>
+                        <input name="usuario_id" type="number" id="usuario_id" class="w-auto form-control w-sm-auto" required readonly>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="patrimonio_id" class="m-2 textoAzul3">ID Patrimônio</label>
+                        <input name="patrimonio_id" type="number" id="patrimonio_id" class="w-auto form-control w-sm-auto" required readonly>
                     </div>
                 </div>
 
@@ -242,5 +226,19 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#emprestimo_id').change(function() {
+            var selectedOption = $(this).find(':selected');
+            var usuarioId = selectedOption.data('usuario');
+            var patrimonioId = selectedOption.data('patrimonio');
+            $('#usuario_id').val(usuarioId);
+            $('#patrimonio_id').val(patrimonioId);
+        });
+    });
+</script>
 
 @endsection('content')

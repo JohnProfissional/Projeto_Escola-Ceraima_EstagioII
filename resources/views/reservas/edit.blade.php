@@ -39,7 +39,6 @@
 			<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
 		</svg>
 	</button>
-
 </div>
 
 @endsection('cabecalho')
@@ -81,17 +80,17 @@
 						Perfil
 					</a>
 
-                    @can('access')
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
-                        <i class="bi bi-people"></i>
-                        Usuários
-                    </a>
-                    @endcan
+					@can('access')
+					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
+						<i class="bi bi-people"></i>
+						Usuários
+					</a>
+					@endcan
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
-                        <i class="bi bi-folder-plus"></i>
-                        Entrada de Patrimônios
-                    </a>
+						<i class="bi bi-folder-plus"></i>
+						Entrada de Patrimônios
+					</a>
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
 						<i class="bi bi-folder-plus"></i>
@@ -144,9 +143,9 @@
 					</a>
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('logout')}}">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Sair
-                    </a>
+						<i class="bi bi-box-arrow-right"></i>
+						Sair
+					</a>
 				</div>
 
 				<div class="modal-footer">
@@ -190,14 +189,23 @@
 						<label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
 						<select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
 							@if ($usuarios->isEmpty())
-							<option value="" disabled>Nenhum Usuário Cadastrado</option>
+								<option value="" disabled>Nenhum Usuário Cadastrado</option>
 							@else
-							<option value="" disabled>Selecione o Usuário</option>
-							@foreach($usuarios as $usuario)
-							<option value="{{ $usuario->id }}" {{ $Reserva->usuario_id == $usuario->id ? 'selected' : '' }}>
-								{{ $usuario->name }}
-							</option>
-							@endforeach
+								@if (Auth::user()->access_level === 'admin')
+									<option value="" disabled selected>Selecione o Usuário</option>
+									@foreach($usuarios as $user)
+										<option value="{{ $user->id }}">{{ $user->name }}</option>
+									@endforeach
+								@else
+									@if ($usuarios->count() === 1)
+										<option value="{{ $usuarios->first()->id }}" selected>{{ $usuarios->first()->name }}</option>
+									@else
+										<option value="" disabled selected>Selecione o Usuário</option>
+										@foreach($usuarios as $user)
+											<option value="{{ $user->id }}">{{ $user->name }}</option>
+										@endforeach
+									@endif
+								@endif
 							@endif
 						</select>
 					</div>

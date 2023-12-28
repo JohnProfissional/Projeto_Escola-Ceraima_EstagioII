@@ -81,17 +81,17 @@
 						Perfil
 					</a>
 
-                    @can('access')
-                    <a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
-                        <i class="bi bi-people"></i>
-                        Usuários
-                    </a>
-                    @endcan
+					@can('access')
+					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('usuarios.index') }}">
+						<i class="bi bi-people"></i>
+						Usuários
+					</a>
+					@endcan
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('entradas.index') }}">
-                        <i class="bi bi-folder-plus"></i>
-                        Entrada de Patrimônios
-                    </a>
+						<i class="bi bi-folder-plus"></i>
+						Entrada de Patrimônios
+					</a>
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('patrimonios.index') }}">
 						<i class="bi bi-folder-plus"></i>
@@ -144,9 +144,9 @@
 					</a>
 
 					<a class="nav-link align-itens-left text-left mt-4 mb-4 ms-2 me-2 p-2 itens-menu-lateral" href="{{ route('logout')}}">
-                        <i class="bi bi-box-arrow-right"></i>
-                        Sair
-                    </a>
+						<i class="bi bi-box-arrow-right"></i>
+						Sair
+					</a>
 				</div>
 
 				<div class="modal-footer">
@@ -187,49 +187,16 @@
 						<input value="{{$Emprestimo->dataemprestimo}}" name="dataemprestimo" type="date" id="dataemprestimo" class="w-auto form-control w-sm-auto" placeholder="" required>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-						<label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-						<select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-							@if ($usuarios->isEmpty())
-							<option value="" disabled>Nenhum Usuário Cadastrado</option>
-							@else
-							<option value="" disabled>Selecione o Usuário</option>
-							@foreach($usuarios as $usuario)
-							<option value="{{ $usuario->id }}" {{ $Emprestimo->usuario_id == $usuario->id ? 'selected' : '' }}>
-								{{ $usuario->name }}
-							</option>
-							@endforeach
-							@endif
-						</select>
+						<label for="reserva_id" class="m-2 textoAzul3">ID Reserva</label>
+						<input value="{{$Emprestimo->reserva_id}}" name="reserva_id" type="text" id="reserva_id" class="w-auto form-control w-sm-auto" placeholder="" required readonly>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-						<label for="reserva_id" class="m-2 textoAzul3">Reserva</label>
-						<select name="reserva_id" id="reserva_id" class="w-auto form-control w-sm-auto" required>
-							@if ($reservas->isEmpty())
-							<option value="" disabled>Nenhuma Reserva Cadastrada</option>
-							@else
-							<option value="" disabled>Selecione o Reserva</option>
-							@foreach($reservas as $reserva)
-							<option value="{{ $reserva->id }}" {{ $Emprestimo->reserva_id == $reserva->id ? 'selected' : '' }}>
-								{{ $reserva->datareserva }}
-							</option>
-							@endforeach
-							@endif
-						</select>
+						<label for="usuario_id" class="m-2 textoAzul3">ID Usuário</label>
+						<input value="{{$Emprestimo->usuario_id}}" name="usuario_id" type="number" id="usuario_id" class="w-auto form-control w-sm-auto" required readonly>
 					</div>
 					<div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-						<label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
-						<select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-							@if ($patrimonios->isEmpty())
-							<option value="" disabled>Nenhum Patrimônio Cadastrado</option>
-							@else
-							<option value="" disabled>Selecione o Patrimônio</option>
-							@foreach($patrimonios as $patrimonio)
-							<option value="{{ $patrimonio->id }}" {{ $Emprestimo->patrimonio_id == $patrimonio->id ? 'selected' : '' }}>
-								{{ $patrimonio->descricaodopatrimonio }}
-							</option>
-							@endforeach
-							@endif
-						</select>
+						<label for="patrimonio_id" class="m-2 textoAzul3">ID Patrimônio</label>
+						<input value="{{$Emprestimo->patrimonio_id}}" name="patrimonio_id" type="number" id="patrimonio_id" class="w-auto form-control w-sm-auto" required readonly>
 					</div>
 				</div>
 
@@ -238,6 +205,7 @@
 						Editar
 					</button>
 				</div>
+
 			</form>
 		</div>
 	</div>

@@ -187,12 +187,6 @@
                         <input name="dataemprestimo" type="date" id="dataemprestimo" class="w-auto form-control w-sm-auto" placeholder="" required>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
-                        <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
-                            <option value="{{ $usuarios->id }}" selected>{{ $usuarios->name }}</option>
-                        </select>
-                    </div>
-                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
                         <label for="reserva_id" class="m-2 textoAzul3">Reserva</label>
                         <select name="reserva_id" id="reserva_id" class="w-auto form-control w-sm-auto" required>
                             @if ($reservas->isEmpty())
@@ -200,23 +194,20 @@
                             @else
                             <option value="" disabled selected>Selecione a Reserva</option>
                             @foreach($reservas as $reserva)
-                            <option value="{{ $reserva->id }}">{{  \Carbon\Carbon::parse($reserva->datareserva)->format('d/m/Y') }}</option>
+                            <option value="{{ $reserva->id }}" data-usuario="{{ $reserva->usuario_id }}" data-patrimonio="{{ $reserva->patrimonio_id }}">
+                                {{ \Carbon\Carbon::parse($reserva->datareserva)->format('d/m/Y') }}
+                            </option>
                             @endforeach
                             @endif
                         </select>
                     </div>
                     <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
-                        <label for="patrimonio_id" class="m-2 textoAzul3">Patrimônio</label>
-                        <select name="patrimonio_id" id="patrimonio_id" class="w-auto form-control w-sm-auto" required>
-                            @if ($patrimonios->isEmpty())
-                            <option value="" disabled>Nenhum Patrimônio Cadastrado</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Patrimônio</option>
-                            @foreach($patrimonios as $patrimonio)
-                            <option value="{{ $patrimonio->id }}">{{ $patrimonio->descricaodopatrimonio }}</option>
-                            @endforeach
-                            @endif
-                        </select>
+                        <label for="usuario_id" class="m-2 textoAzul3">ID Usuário</label>
+                        <input name="usuario_id" type="number" id="usuario_id" class="w-auto form-control w-sm-auto" required readonly>
+                    </div>
+                    <div class="col col-lg-3 col-md-4 col-sm-auto m-lg-4 m-md-4 m-sm-0">
+                        <label for="patrimonio_id" class="m-2 textoAzul3">ID Patrimônio</label>
+                        <input name="patrimonio_id" type="number" id="patrimonio_id" class="w-auto form-control w-sm-auto" required readonly>
                     </div>
                 </div>
 
@@ -230,5 +221,19 @@
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#reserva_id').change(function() {
+            var selectedOption = $(this).find(':selected');
+            var usuarioId = selectedOption.data('usuario');
+            var patrimonioId = selectedOption.data('patrimonio');
+            $('#usuario_id').val(usuarioId);
+            $('#patrimonio_id').val(patrimonioId);
+        });
+    });
+</script>
 
 @endsection('content')

@@ -51,15 +51,16 @@ class EmprestimoController extends Controller
         $loggedUser = Auth::user();
 
         if ($loggedUser->access_level === 'admin') {
-            $usuarios = User::all();
-            $reservas = Reserva::all();
+            $reservas = Reserva::whereNotIn('id', function ($query) {
+                $query->select('reserva_id')->from('emprestimos');
+            })->get();
         } else {
-            $usuarios = User::where('id', $loggedUser->id)->get();
-            $reservas = Reserva::where('id', $loggedUser->id)->get();
+            $reservas = Reserva::where('usuario_id', $loggedUser->id)->whereNotIn('id', function ($query) {
+                $query->select('reserva_id')->from('emprestimos');
+            })->get();
         }
 
-        $patrimonios = Patrimonio::where('status', 'Servivel')->get();
-        return view('emprestimos.create', ['patrimonios' => $patrimonios, 'reservas' => $reservas, 'usuarios' => $usuarios]);
+        return view('emprestimos.create', ['reservas' => $reservas]);
     }
 
     public function store(Request $request)

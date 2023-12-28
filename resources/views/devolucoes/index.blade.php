@@ -32,18 +32,15 @@
                 </svg>
             </a>
         </ul>
-
     </div>
-
 
     <button class="cabecalho2">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
         </svg>
     </button>
-
-
 </div>
+
 @endsection('cabecalho')
 
 @section('content')
@@ -195,7 +192,6 @@
         </div>
 
         <div class="row m-3">
-
             <table class="table cabecalho-itens text-center p-2" id="conteudo-itens-lado-direito">
                 <thead>
                     <tr>
@@ -214,23 +210,25 @@
                     <tr>
                         <td scope="row">{{$devolucao->id}}</td>
                         <td>{{$devolucao->descricaodadevolucao}}</td>
-                        <td>{{$devolucao->quantidadedevolvida}}</td>                        
+                        <td>{{$devolucao->quantidadedevolvida}}</td>
                         <td>{{ \Carbon\Carbon::parse($devolucao->datadadevolucao)->format('d/m/Y') }}</td>
                         <td>{{ \Carbon\Carbon::parse($devolucao->acessarEmprestimo->dataemprestimo)->format('d/m/Y') }}</td>
                         <td>{{$devolucao->acessarPatrimonio->descricaodopatrimonio}}</td>
                         <td>{{$devolucao->acessarUsuario->name}}</td>
 
-                        @can('access')
                         <td>
+                            @if(Auth::user()->access_level === 'admin' || (Auth::user()->access_level === 'user' && Auth::user()->id === $devolucao->usuario_id))
                             <div class="col" id="meio">
                                 <form action="{{route('devolucoes.edit', ['id' => $devolucao->id])}}" method="get">
                                     @csrf
                                     <input type="submit" class="btn btn-primary" name="formulario" value="Alterar">
                                 </form>
                             </div>
+                            @endif
                         </td>
 
                         <td>
+                            @if(Auth::user()->access_level === 'admin' || (Auth::user()->access_level === 'user' && Auth::user()->id === $devolucao->usuario_id))
                             <div class="col" id="meio">
                                 <form id="formExcluir" action="{{route('devolucoes.delete', ['id' => $devolucao->id])}}" method="POST">
                                     @csrf
@@ -238,23 +236,21 @@
                                     <input type="submit" class="btn btn-primary" value="Deletar" onclick="return confirmarExclusao();"><br><br>
                                 </form>
                             </div>
+                            @endif
                         </td>
-                        @endcan
+
                     </tr>
                 </tbody>
-
                 @endforeach
             </table>
         </div>
 
-        @can('access')
         <div class="col-lg-12 me-3" style="text-align:right">
             <form action="{{route('devolucoes.create')}}" method="get">
                 @csrf
                 <input type="submit" class="btn btn-success" value="Nova">
             </form>
         </div>
-        @endcan
 
     </div>
 

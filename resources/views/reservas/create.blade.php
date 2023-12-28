@@ -203,23 +203,23 @@
                         <label for="usuario_id" class="m-2 textoAzul3">Usuário</label>
                         <select name="usuario_id" id="usuario_id" class="w-auto form-control w-sm-auto" required>
                             @if ($usuarios->isEmpty())
-                            <option value="" disabled>Nenhum Usuário Cadastrado</option>
+                                <option value="" disabled>Nenhum Usuário Cadastrado</option>
                             @else
-                            @if (Auth::user()->access_level === 'admin')
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                            @else
-                            @if ($usuarios->count() === 1)
-                            <option value="{{ $usuarios->first()->id }}" selected>{{ $usuarios->first()->name }}</option>
-                            @else
-                            <option value="" disabled selected>Selecione o Usuário</option>
-                            @foreach($usuarios as $user)
-                            <option value="{{ $user->id }}">{{ $user->name }}</option>
-                            @endforeach
-                            @endif
-                            @endif
+                                @if (Auth::user()->access_level === 'admin')
+                                    <option value="" disabled selected>Selecione o Usuário</option>
+                                    @foreach($usuarios as $user)
+                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                @else
+                                    @if ($usuarios->count() === 1)
+                                        <option value="{{ $usuarios->first()->id }}" selected>{{ $usuarios->first()->name }}</option>
+                                    @else
+                                        <option value="" disabled selected>Selecione o Usuário</option>
+                                        @foreach($usuarios as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    @endif
+                                @endif
                             @endif
                         </select>
                     </div>

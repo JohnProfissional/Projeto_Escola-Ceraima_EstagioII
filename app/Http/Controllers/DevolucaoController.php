@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class DevolucaoController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $devolucoes = Devolucao::all();
-        return view('devolucoes.index', ['devolucoes'=>$devolucoes]);
+        return view('devolucoes.index', ['devolucoes' => $devolucoes]);
     }
 
     public function indexBuscar(Request $request)
@@ -34,8 +35,9 @@ class DevolucaoController extends Controller
         return view('devolucoes.index', compact('devolucoes'));
     }
 
-    public function show($id){
-        if($id){
+    public function show($id)
+    {
+        if ($id) {
             $devolucao = Devolucao::where('id', $id)->get();
         } else {
             $devolucao = Devolucao::all();
@@ -43,14 +45,25 @@ class DevolucaoController extends Controller
         return view('devolucoes.show', ['devolucoes' => $devolucao]);
     }
 
-    public function create(){
-        $usuarios = User::all();
-        $emprestimos = Emprestimo::all();
-        $patrimonios = Patrimonio::where('status', 'Servivel')->get();
-        return view('devolucoes.create', ['patrimonios'=>$patrimonios, 'emprestimos'=>$emprestimos, 'usuarios'=>$usuarios]);        
+    public function create()
+    {
+        $loggedUser = Auth::user();
+
+        if ($loggedUser->access_level === 'admin') {
+            $emprestimos = Emprestimo::whereNotIn('id', function ($query) {
+                $query->select('emprestimo_id')->from('devolucoes');
+            })->get();
+        } else {
+            $emprestimos = Emprestimo::where('usuario_id', $loggedUser->id)->whereNotIn('id', function ($query) {
+                $query->select('emprestimo_id')->from('devolucoes');
+            })->get();
+        }
+
+        return view('devolucoes.create', ['emprestimos' => $emprestimos]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $devolucao = new Devolucao();
         $devolucao->datadadevolucao = $request->datadadevolucao;
         $devolucao->descricaodadevolucao = $request->descricaodadevolucao;
@@ -59,25 +72,27 @@ class DevolucaoController extends Controller
         $devolucao->patrimonio_id = $request->patrimonio_id;
         $devolucao->emprestimo_id = $request->emprestimo_id;
         $devolucao->save();
-        return redirect()->route('devolucoes.index'); 
+        return redirect()->route('devolucoes.index');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $Devolucao = Devolucao::findorFail($id);
         $usuarios = User::all();
         $emprestimos = Emprestimo::all();
         $patrimonios = Patrimonio::all();
-        return view('devolucoes.edit',['Devolucao'=>$Devolucao, 'patrimonios'=>$patrimonios, 'emprestimos'=>$emprestimos, 'usuarios'=>$usuarios]);
+        return view('devolucoes.edit', ['Devolucao' => $Devolucao, 'patrimonios' => $patrimonios, 'emprestimos' => $emprestimos, 'usuarios' => $usuarios]);
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         Devolucao::find($request->id)->update($request->except('_token_'));
         return redirect()->route('devolucoes.index')->with('msg', 'Alteração realizada com sucesso');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         Devolucao::findorfail($id)->delete();
         return redirect()->route('devolucoes.index')->with('msg', 'Devolução apagada');
     }
-
 }
